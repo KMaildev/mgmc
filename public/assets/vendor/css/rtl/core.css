@@ -9342,7 +9342,7 @@ html:not([dir=rtl]) .pagination.pagination-lg .page-item:not(.first)~.page-item:
 
 .form-label, .col-form-label {
   font-size: .75rem;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
   letter-spacing: inherit
 }
 

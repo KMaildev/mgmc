@@ -1,6 +1,5 @@
 @extends('layouts.menus.accounting')
 @section('content')
-
     <div class="row justify-content-center">
         <div class="col-xl-6">
             <div class="card mb-4">
@@ -8,7 +7,7 @@
                 <div class="card-body">
 
                     <form action="{{ route('accountclassification.update', $account_classifications->id) }}" method="POST"
-                        autocomplete="off" id="my-form" role="form">
+                        autocomplete="off" id="edit-form" role="form">
                         @csrf
                         @method('PUT')
                         <div class="mb-3 row">
@@ -48,4 +47,5 @@
 @endsection
 
 @section('script')
+    {!! JsValidator::formRequest('App\Http\Requests\UpdateAccountClassification', '#edit-form') !!}
 @endsection

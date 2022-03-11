@@ -19,6 +19,9 @@
 <script src="{{ asset('assets/js/main.js') }}"></script>
 <script src="{{ asset('assets/js/dashboards-analytics.js') }}"></script>
 <script src="{{ asset('assets/js/extended-ui-sweetalert2.js') }}"></script>
+<script src="{{ asset('assets/vendor/libs/select2/select2.js') }}"></script>
+<script src="{{ asset('assets/vendor/libs/bootstrap-select/bootstrap-select.js') }}"></script>
+<script src="{{ asset('assets/js/forms-selects.js') }}"></script>
 
 <script type="text/javascript" src="{{ url('vendor/jsvalidation/js/jsvalidation.js') }}"></script>
 @yield('script')

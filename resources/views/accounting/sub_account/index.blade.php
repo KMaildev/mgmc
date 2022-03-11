@@ -14,8 +14,7 @@
 
                             @include('layouts.includes.export')
 
-                            <a href="{{ route('chartofaccount.create') }}"
-                                class="dt-button create-new btn btn-primary btn-sm">
+                            <a href="{{ route('subaccount.create') }}" class="dt-button create-new btn btn-primary btn-sm">
                                 <span>
                                     <i class="bx bx-plus me-sm-2"></i>
                                     <span class="d-none d-sm-inline-block">Create</span>
@@ -30,7 +29,9 @@
                         <thead class="tbbg">
                             <tr>
                                 <th style="color: white; text-align: center; width: 1%;">#</th>
-                                <th style="color: white; text-align: center;">Number</th>
+                                <th style="color: white; text-align: center;">Main Account Code</th>
+                                <th style="color: white; text-align: center;">Main Account Name</th>
+                                <th style="color: white; text-align: center;">Sub Account</th>
                                 <th style="color: white; text-align: center;">Description</th>
                                 <th style="color: white; text-align: center;">Account Type</th>
                                 <th style="color: white; text-align: center;">OPENING BALANCE</th>
@@ -44,6 +45,15 @@
                                     <td style="text-align: center;">
                                         {{ $key + 1 }}
                                     </td>
+
+                                    <td>
+                                        {{ $chartof_account->chartof_account_table->coa_number ?? '' }}
+                                    </td>
+
+                                    <td>
+
+                                    </td>
+
                                     <td style="text-align: center;">
                                         {{ $chartof_account->coa_number }}
                                     </td>

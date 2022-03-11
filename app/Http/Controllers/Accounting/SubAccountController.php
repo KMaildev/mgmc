@@ -4,12 +4,12 @@ namespace App\Http\Controllers\Accounting;
 
 use App\Accounting\AccountType;
 use App\Accounting\ChartofAccount;
+use App\Accounting\SubAccount;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\StoreChartofAccount;
-use App\Http\Requests\UpdateChartofAccount;
+use App\Http\Requests\StoreSubAccount;
 use Illuminate\Http\Request;
 
-class ChartofAccountController extends Controller
+class SubAccountController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,8 +18,8 @@ class ChartofAccountController extends Controller
      */
     public function index()
     {
-        $chartof_accounts = ChartofAccount::orderBy('id')->where('sub_or_main_account', 'main_account')->get();
-        return view('accounting.chartof_account.index', compact('chartof_accounts'));
+        $chartof_accounts = ChartofAccount::orderBy('chartof_account_id')->where('sub_or_main_account', 'sub_account')->get();
+        return view('accounting.sub_account.index', compact('chartof_accounts'));
     }
 
     /**
@@ -30,7 +30,8 @@ class ChartofAccountController extends Controller
     public function create()
     {
         $account_types = AccountType::all();
-        return view('accounting.chartof_account.create', compact('account_types'));
+        $chartof_accounts = ChartofAccount::all();
+        return view('accounting.sub_account.create', compact('account_types', 'chartof_accounts'));
     }
 
     /**
@@ -39,17 +40,19 @@ class ChartofAccountController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreChartofAccount $request)
+    public function store(StoreSubAccount $request)
     {
         $Coa = new ChartofAccount();
         $Coa->account_type_id = $request->account_type;
-        $Coa->account_classification_id = $request->account_group;
+        $Coa->account_classification_id = $request->account_classification_id;
         $Coa->description = $request->description;
         $Coa->account_opening_balance = $request->opening_balance ?? 0;
-        $Coa->coa_number = $request->account_number;
-        $Coa->sub_or_main_account = 'main_account';
+        $Coa->coa_number = $request->sub_account_number;
+        $Coa->chartof_account_id = $request->main_account_code;
+        $Coa->sub_or_main_account = 'sub_account';
+
         $Coa->save();
-        return redirect()->route('chartofaccount.create')
+        return redirect()->route('subaccount.create')
             ->with('success', 'Created successfully.');
     }
 
@@ -72,9 +75,7 @@ class ChartofAccountController extends Controller
      */
     public function edit($id)
     {
-        $coa = ChartofAccount::findOrFail($id);
-        $account_types = AccountType::all();
-        return view('accounting.chartof_account.edit', compact('coa', 'account_types'));
+        //
     }
 
     /**
@@ -84,16 +85,9 @@ class ChartofAccountController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateChartofAccount $request, $id)
+    public function update(Request $request, $id)
     {
-        $Coa = ChartofAccount::findOrFail($id);
-        $Coa->account_type_id = $request->account_type;
-        $Coa->account_classification_id = $request->account_group;
-        $Coa->description = $request->description;
-        $Coa->account_opening_balance = $request->opening_balance ?? 0;
-        $Coa->coa_number = $request->account_number;
-        $Coa->update();
-        return redirect()->back()->with('success', 'Updated successfully.');
+        //
     }
 
     /**
@@ -104,16 +98,6 @@ class ChartofAccountController extends Controller
      */
     public function destroy($id)
     {
-        $Coa = ChartofAccount::findOrFail($id);
-        $Coa->delete();
-        return redirect()->route('chartofaccount.index')
-            ->with('success', 'Deleted successfully.');
-    }
-
-
-    public function dependentAjax($id)
-    {
-        $chartof_account = ChartofAccount::findOrFail($id);
-        return json_encode($chartof_account);
+        //
     }
 }

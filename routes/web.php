@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,6 +30,8 @@ Route::middleware('auth')->group(function () {
     Route::resource('accounttype', 'Accounting\AccountTypeController');
     Route::get('accounttypedependent/ajax/{id}', array('as' => 'accounttypedependent.ajax', 'uses' => 'Accounting\AccountTypeController@dependentAjax'));
 
-
     Route::resource('chartofaccount', 'Accounting\ChartofAccountController');
+    Route::get('chartofaccountdependent/ajax/{id}', array('as' => 'chartofaccountdependent.ajax', 'uses' => 'Accounting\ChartofAccountController@dependentAjax'));
+
+    Route::resource('subaccount', 'Accounting\SubAccountController');
 });

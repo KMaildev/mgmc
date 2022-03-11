@@ -32,6 +32,11 @@
                             <div data-i2n="Without menu">Chart of accounts </div>
                         </a>
                     </li>
+                    <li class="menu-item">
+                        <a href="{{ route('subaccount.index') }}" class="menu-link">
+                            <div data-i2n="Without menu">Sub Account </div>
+                        </a>
+                    </li>
                 </ul>
             </li>
         </ul>
