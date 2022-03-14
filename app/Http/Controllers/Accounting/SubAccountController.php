@@ -7,6 +7,7 @@ use App\Accounting\ChartofAccount;
 use App\Accounting\SubAccount;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreSubAccount;
+use App\Http\Requests\UpdateSubAccount;
 use Illuminate\Http\Request;
 
 class SubAccountController extends Controller
@@ -75,7 +76,9 @@ class SubAccountController extends Controller
      */
     public function edit($id)
     {
-        //
+        $chartof_accounts = ChartofAccount::all();
+        $edit = ChartofAccount::findOrFail($id);
+        return view('accounting.sub_account.edit', compact('chartof_accounts', 'edit'));
     }
 
     /**
@@ -85,9 +88,18 @@ class SubAccountController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateSubAccount $request, $id)
     {
-        //
+        $Coa = ChartofAccount::findOrFail($id);
+        $Coa->account_type_id = $request->account_type;
+        $Coa->account_classification_id = $request->account_classification_id;
+        $Coa->description = $request->description;
+        $Coa->account_opening_balance = $request->opening_balance ?? 0;
+        $Coa->coa_number = $request->sub_account_number;
+        $Coa->chartof_account_id = $request->main_account_code;
+        $Coa->sub_or_main_account = 'sub_account';
+        $Coa->update();
+        return redirect()->back()->with('success', 'Updated successfully.');
     }
 
     /**

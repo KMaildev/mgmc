@@ -40,18 +40,19 @@
                             </tr>
                         </thead>
                         <tbody class="table-border-bottom-0">
+
                             @foreach ($chartof_accounts as $key => $chartof_account)
                                 <tr>
                                     <td style="text-align: center;">
                                         {{ $key + 1 }}
                                     </td>
 
-                                    <td>
+                                    <td style="text-align: center;">
                                         {{ $chartof_account->chartof_account_table->coa_number ?? '' }}
                                     </td>
 
-                                    <td>
-
+                                    <td style="text-align: center;">
+                                        {{ $chartof_account->chartof_account_table->description ?? '' }}
                                     </td>
 
                                     <td style="text-align: center;">
@@ -79,7 +80,7 @@
                                                 <ul class="dropdown-menu">
                                                     <li>
                                                         <a class="dropdown-item"
-                                                            href="{{ route('chartofaccount.edit', $chartof_account->id) }}">Edit</a>
+                                                            href="{{ route('subaccount.edit', $chartof_account->id) }}">Edit</a>
                                                     </li>
 
                                                     <li>
@@ -98,6 +99,7 @@
                                     </td>
                                 </tr>
                             @endforeach
+
                         </tbody>
                     </table>
                 </div>

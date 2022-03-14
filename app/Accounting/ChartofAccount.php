@@ -21,4 +21,9 @@ class ChartofAccount extends Model
     {
         return $this->belongsTo(ChartofAccount::class, 'chartof_account_id', 'id');
     }
+
+    public function accounttypes()
+    {
+        return $this->hasMany(ChartofAccount::class);
+    }
 }

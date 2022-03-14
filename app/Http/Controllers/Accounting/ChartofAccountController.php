@@ -106,8 +106,7 @@ class ChartofAccountController extends Controller
     {
         $Coa = ChartofAccount::findOrFail($id);
         $Coa->delete();
-        return redirect()->route('chartofaccount.index')
-            ->with('success', 'Deleted successfully.');
+        return redirect()->back()->with('success', 'Deleted successfully.');
     }
 
 

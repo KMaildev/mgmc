@@ -1,6 +1,5 @@
 @extends('layouts.menus.accounting')
 @section('content')
-
     <div class="row justify-content-center">
         <div class="col-xl-6">
             <div class="card mb-4">
@@ -19,7 +18,8 @@
                                     name="account_type">
                                     <option value="">--Please Select Account Type--</option>
                                     @foreach ($account_types as $account_type)
-                                        <option value="{{ $account_type->id }}" @if ($account_type->id == $coa->account_type_id) selected @endif>
+                                        <option value="{{ $account_type->id }}"
+                                            @if ($account_type->id == $coa->account_type_id) selected @endif>
                                             {{ $account_type->description }}
                                         </option>
                                     @endforeach
@@ -103,9 +103,6 @@
     <script type="text/javascript">
         var account_group = document.getElementById("account_group");
         var account_classification_id = document.getElementById("account_classification_id");
-
-
-
 
 
         $(document).ready(function() {
