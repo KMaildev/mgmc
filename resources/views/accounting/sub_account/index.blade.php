@@ -6,7 +6,7 @@
 
                 <div class="card-body">
                     <div class="card-title header-elements">
-                        <h5 class="m-0 me-2">Chart Of Accounts</h5>
+                        <h5 class="m-0 me-2">Sub Accounts</h5>
                         <div class="card-title-elements ms-auto">
                             <div class="card-header-elements ms-auto">
                                 <input type="text" class="form-control form-control-sm" placeholder="Search" />

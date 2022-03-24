@@ -34,4 +34,6 @@ Route::middleware('auth')->group(function () {
     Route::get('chartofaccountdependent/ajax/{id}', array('as' => 'chartofaccountdependent.ajax', 'uses' => 'Accounting\ChartofAccountController@dependentAjax'));
 
     Route::resource('subaccount', 'Accounting\SubAccountController');
+    Route::resource('bankform', 'Accounting\BankFormController');
+    Route::resource('cashbook', 'Accounting\CashBookController');
 });

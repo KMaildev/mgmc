@@ -5,14 +5,34 @@
 
             <li class="menu-item">
                 <a href="{{ route('accountingdashboard.index') }}" class="menu-link">
-                    <i class="menu-icon tf-icons bx bx-layout"></i>
                     <div data-i1n="Layouts">Dashboard</div>
                 </a>
             </li>
 
             <li class="menu-item">
+                <a href="{{ route('cashbook.index') }}" class="menu-link">
+                    <div data-i1n="Layouts">
+                        Cash Book
+                    </div>
+                </a>
+            </li>
+
+            <li class="menu-item">
                 <a href="javascript:void(0)" class="menu-link menu-toggle">
-                    <i class="menu-icon tf-icons bx bx-layout"></i>
+                    <div data-i2n="Layouts">Accounting</div>
+                </a>
+
+                <ul class="menu-sub">
+                    <li class="menu-item">
+                        <a href="{{ route('bankform.index') }}" class="menu-link">
+                            <div data-i2n="Without menu"> Bank Form</div>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="menu-item">
+                <a href="javascript:void(0)" class="menu-link menu-toggle">
                     <div data-i2n="Layouts">Chart of accounts</div>
                 </a>
 

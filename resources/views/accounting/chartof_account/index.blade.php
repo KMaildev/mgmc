@@ -31,7 +31,8 @@
                             <tr>
                                 <th style="color: white; text-align: center; width: 1%;">#</th>
                                 <th style="color: white; text-align: center;">Number</th>
-                                <th style="color: white; text-align: center;">Description</th>
+                                <th style="color: white; text-align: center;">Description(A/C Header)</th>
+                                <th style="color: white; text-align: center;">Description(A/C Name)</th>
                                 <th style="color: white; text-align: center;">Account Type</th>
                                 <th style="color: white; text-align: center;">OPENING BALANCE</th>
                                 <th style="color: white; text-align: center;">Financial Statement</th>
@@ -47,6 +48,10 @@
                                     <td style="text-align: center;">
                                         {{ $chartof_account->coa_number }}
                                     </td>
+                                    <td style="text-align: center;">
+                                        {{ $chartof_account->account_type_table->description ?? '' }}
+                                    </td>
+
                                     <td style="text-align: center;">
                                         {{ $chartof_account->description }}
                                     </td>

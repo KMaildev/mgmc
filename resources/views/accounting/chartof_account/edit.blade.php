@@ -89,6 +89,7 @@
                             <label for="html5-search-input" class="col-md-3 col-form-label"></label>
                             <div class="col-md-9">
                                 <button type="submit" class="btn btn-danger">Save</button>
+                                <a href="{{ route('chartofaccount.index') }}" class="btn btn-success">Cancel</a>
                             </div>
                         </div>
                     </form>

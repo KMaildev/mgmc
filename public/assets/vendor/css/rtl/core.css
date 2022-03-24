@@ -6425,7 +6425,7 @@ a.invert-bg-dark:hover, a.invert-bg-dark:focus {
 }
 
 .card .table {
-  margin-bottom: 0
+  margin-bottom: 60px;
 }
 
 @supports(-moz-appearance: none) {
