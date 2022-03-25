@@ -35,7 +35,7 @@
                         <div class="mb-3 row">
                             <label for="html5-search-input" class="col-md-3 col-form-label"></label>
                             <div class="col-md-9">
-                                <button type="submit" class="btn btn-secondary">Save</button>
+                                <button type="submit" class="btn btn-primary">Save</button>
                                 <a href="{{ route('accountclassification.index') }}" class="btn btn-success">Cancel</a>
                             </div>
                         </div>

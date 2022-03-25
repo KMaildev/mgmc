@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Mar 24, 2022 at 08:51 PM
+-- Generation Time: Mar 25, 2022 at 11:58 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 7.4.27
 
@@ -108,14 +108,6 @@ CREATE TABLE `cash_books` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
---
--- Dumping data for table `cash_books`
---
-
-INSERT INTO `cash_books` (`id`, `cash_book_date`, `month`, `year`, `iv_one`, `iv_two`, `account_code_id`, `account_type_id`, `description`, `cash_account_id`, `bank_account`, `cash_in`, `cash_out`, `bank_in`, `bank_out`, `user_id`, `created_at`, `updated_at`) VALUES
-(1, '2022-03-25', '03', '2022', 'IV-00001', NULL, 12, '1', 'Cahs', 12, 0, '500', '0', '0', '0', 1, '2022-03-24 13:12:47', '2022-03-24 13:12:47'),
-(2, '2022-03-25', '03', '2022', 'IV-0002', 'IV-0002', 12, '1', 'asdfasd', 12, 0, '5000', '3000', '9000', '9000', 1, '2022-03-24 13:21:33', '2022-03-24 13:21:33');
-
 -- --------------------------------------------------------
 
 --
@@ -132,23 +124,35 @@ CREATE TABLE `chartof_accounts` (
   `account_classification_id` int(11) NOT NULL,
   `account_opening_balance` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `chartof_account_id` int(11) DEFAULT NULL,
-  `sub_or_main_account` text COLLATE utf8mb4_unicode_ci DEFAULT NULL
+  `sub_or_main_account` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `opening_balance_date` text COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+-- --------------------------------------------------------
+
 --
--- Dumping data for table `chartof_accounts`
+-- Table structure for table `customers`
 --
 
-INSERT INTO `chartof_accounts` (`id`, `coa_number`, `description`, `account_type_id`, `created_at`, `updated_at`, `account_classification_id`, `account_opening_balance`, `chartof_account_id`, `sub_or_main_account`) VALUES
-(1, '1-100', 'Bank', 2, '2022-03-10 22:35:04', '2022-03-10 22:35:04', 1, '0', NULL, 'main_account'),
-(2, '1-200', 'Account Receivable', 3, '2022-03-10 22:42:32', '2022-03-10 22:42:32', 1, '0', NULL, 'main_account'),
-(3, '1-202', 'Trade Receivable-Vehicles', 3, '2022-03-10 22:43:26', '2022-03-10 22:43:26', 1, '0', NULL, 'main_account'),
-(4, '1-100-7', 'AYA  Saving  MMK-0092202010055139/20021829943', 2, '2022-03-11 00:20:22', '2022-03-21 10:20:36', 1, '0', 1, 'sub_account'),
-(5, '1-100-2', 'AYA Current MMK-0092102010003865/10003821978', 2, '2022-03-11 00:30:17', '2022-03-11 00:30:17', 1, '0', 1, 'sub_account'),
-(6, '1-100-3', 'AYA  USD-10004060570', 2, '2022-03-11 00:30:45', '2022-03-11 00:30:45', 1, '0', 1, 'sub_account'),
-(7, '1-202-1', 'D-A Yay Kyo', 3, '2022-03-11 00:31:21', '2022-03-11 00:31:21', 1, '0', 3, 'sub_account'),
-(11, '1-301', 'Deferred Expenditure Factory Rental', 4, '2022-03-24 12:23:50', '2022-03-24 12:23:50', 1, '0', NULL, 'main_account'),
-(12, '1-010', 'Cash', 1, '2022-03-24 12:39:16', '2022-03-24 12:39:16', 1, '0', NULL, 'main_account');
+CREATE TABLE `customers` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `background` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `nrc_no` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `phone` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `email` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `address` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `country` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `city` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `state` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `description` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `dealer_customer_id` int(11) DEFAULT NULL,
+  `dealer_or_hp` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `opening_balance` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `opening_balance_date` text COLLATE utf8mb4_unicode_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -196,7 +200,12 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (12, '2022_02_11_182700_add_account_opening_balance_to_chartof_accounts_table', 10),
 (13, '2022_02_14_033711_add_account_opening_balance_to_chartof_accounts_table', 11),
 (14, '2022_03_11_063919_add_chartof_account_id_to_chartof_accounts_table', 12),
-(15, '2022_03_24_192125_create_cash_books_table', 13);
+(15, '2022_03_24_192125_create_cash_books_table', 13),
+(16, '2022_03_25_064339_create_customers_table', 14),
+(17, '2022_03_25_073157_create_suppliers_table', 15),
+(18, '2022_03_25_093621_create_products_table', 16),
+(19, '2022_03_25_101345_add_opening_balance_date_to_chartof_accounts_table', 17),
+(20, '2022_03_25_104526_add_new_column_to_customers_table', 18);
 
 -- --------------------------------------------------------
 
@@ -208,6 +217,46 @@ CREATE TABLE `password_resets` (
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `products`
+--
+
+CREATE TABLE `products` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `item_code` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `description` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `opening_cost` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `opening_quantity` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `qty_at_date` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `selling_price` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `sale_account_id` int(11) DEFAULT NULL,
+  `cost_of_unit` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `purchase_account_id` int(11) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `suppliers`
+--
+
+CREATE TABLE `suppliers` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `company` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `phone` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `email` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `address` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `description` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -267,6 +316,12 @@ ALTER TABLE `chartof_accounts`
   ADD UNIQUE KEY `chartof_accounts_coa_number_unique` (`coa_number`);
 
 --
+-- Indexes for table `customers`
+--
+ALTER TABLE `customers`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `failed_jobs`
 --
 ALTER TABLE `failed_jobs`
@@ -283,6 +338,18 @@ ALTER TABLE `migrations`
 --
 ALTER TABLE `password_resets`
   ADD KEY `password_resets_email_index` (`email`);
+
+--
+-- Indexes for table `products`
+--
+ALTER TABLE `products`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `suppliers`
+--
+ALTER TABLE `suppliers`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `users`
@@ -311,13 +378,19 @@ ALTER TABLE `account_types`
 -- AUTO_INCREMENT for table `cash_books`
 --
 ALTER TABLE `cash_books`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `chartof_accounts`
 --
 ALTER TABLE `chartof_accounts`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `customers`
+--
+ALTER TABLE `customers`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -329,7 +402,19 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+
+--
+-- AUTO_INCREMENT for table `products`
+--
+ALTER TABLE `products`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `suppliers`
+--
+ALTER TABLE `suppliers`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `users`

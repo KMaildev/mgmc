@@ -84,11 +84,24 @@
                             </div>
                         </div>
 
+                        <div class="mb-3 row">
+                            <label for="html5-text-input" class="col-md-3 col-form-label">
+                                Opening Balance as At Date
+                            </label>
+                            <div class="col-md-9">
+                                <input class="form-control @error('opening_balance_date') is-invalid @enderror" type="date"
+                                    name="opening_balance_date" value="{{ $coa->opening_balance_date }}" />
+                                @error('opening_balance_date')
+                                    <div class="invalid-feedback"> {{ $message }} </div>
+                                @enderror
+                            </div>
+                        </div>
+
 
                         <div class="mb-3 row">
                             <label for="html5-search-input" class="col-md-3 col-form-label"></label>
                             <div class="col-md-9">
-                                <button type="submit" class="btn btn-danger">Save</button>
+                                <button type="submit" class="btn btn-primary">Save</button>
                                 <a href="{{ route('chartofaccount.index') }}" class="btn btn-success">Cancel</a>
                             </div>
                         </div>

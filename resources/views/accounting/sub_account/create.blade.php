@@ -85,6 +85,19 @@
                             </div>
                         </div>
 
+                        <div class="mb-3 row">
+                            <label for="html5-text-input" class="col-md-3 col-form-label">
+                                Opening Balance as At Date
+                            </label>
+                            <div class="col-md-9">
+                                <input class="form-control @error('opening_balance_date') is-invalid @enderror" type="date"
+                                    name="opening_balance_date" />
+                                @error('opening_balance_date')
+                                    <div class="invalid-feedback"> {{ $message }} </div>
+                                @enderror
+                            </div>
+                        </div>
+
 
                         <div class="mb-3 row">
                             <label for="html5-search-input" class="col-md-3 col-form-label"></label>

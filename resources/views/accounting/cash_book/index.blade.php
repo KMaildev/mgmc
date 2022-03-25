@@ -8,10 +8,6 @@
                     <div class="card-title header-elements">
                         <h5 class="m-0 me-2">Cash Book</h5>
                         <div class="card-title-elements ms-auto">
-                            <div class="card-header-elements ms-auto">
-                                <input type="text" class="form-control form-control-sm" placeholder="Search" />
-                            </div>
-
                             @include('layouts.includes.export')
 
                             <a href="{{ route('cashbook.create') }}" class="dt-button create-new btn btn-primary btn-sm">
@@ -24,33 +20,43 @@
                     </div>
                 </div>
 
-                <div class="table-responsive text-nowrap">
-                    <table class="table table-bordered table-sm">
+
+                <div class="table-responsive text-nowrap rowheaders table-scroll" role="region" aria-labelledby="HeadersCol"
+                    tabindex="0">
+                    @include('shared.progressing', [
+                        'message' =>
+                            'Closing Banlance is In Progressing so the result in Cash Balance cannot be right. Now, if this part is exactly finish, we will keep on to write the next step including the Closing Balance. Thanks alot! ',
+                    ])
+
+                    <table class="table table-bordered main-table py-5" id="export_excel">
                         <thead class="tbbg">
-                            <tr>
-                                <th style="color: white; text-align: center; width: 1%;">#</th>
-                                <th style="color: white; text-align: center;">Date</th>
-                                <th style="color: white; text-align: center;">Month</th>
-                                <th style="color: white; text-align: center;">Year</th>
-                                <th style="color: white; text-align: center;">IV-No</th>
-                                <th style="color: white; text-align: center;">IV-No2</th>
-                                <th style="color: white; text-align: center;">A/C Code</th>
-                                <th style="color: white; text-align: center;">A/C Head</th>
-                                <th style="color: white; text-align: center;">A/C Name</th>
-                                <th style="color: white; text-align: center;">Description</th>
-                                <th style="color: white; text-align: center;">Cash-In</th>
-                                <th style="color: white; text-align: center;">Cash-Out</th>
-                                <th style="color: white; text-align: center;">Cash-Balance</th>
-                                <th style="color: white; text-align: center;">Bank-In</th>
-                                <th style="color: white; text-align: center;">Bank-Out</th>
-                                <th style="color: white; text-align: center;">Bank-Balance</th>
-                                <th style="color: white; text-align: center;">Deposit(Cash+Bank)</th>
-                                <th style="color: white; text-align: center;">Withdraw(Cash+Bank)</th>
-                                <th style="color: white; text-align: center;">Bank Name</th>
-                                <th style="color: white; text-align: center;">Action</th>
-                            </tr>
+                            <th style="color: white; text-align: center; width: 1%;">#</th>
+                            <th style="color: white; text-align: center;">Date</th>
+                            <th style="color: white; text-align: center;">Month</th>
+                            <th style="color: white; text-align: center;">Year</th>
+                            <th style="color: white; text-align: center;">IV-No</th>
+                            <th style="color: white; text-align: center;">IV-No2</th>
+                            <th style="color: white; text-align: center;">A/C Code</th>
+                            <th style="color: white; text-align: center;">A/C Head</th>
+                            <th style="color: white; text-align: center;">A/C Name</th>
+                            <th style="color: white; text-align: center;">Description</th>
+                            <th style="color: white; text-align: center;">Cash-In</th>
+                            <th style="color: white; text-align: center;">Cash-Out</th>
+                            <th style="color: white; text-align: center;">Cash-Balance</th>
+                            <th style="color: white; text-align: center;">Bank-In</th>
+                            <th style="color: white; text-align: center;">Bank-Out</th>
+                            <th style="color: white; text-align: center;">Bank-Balance</th>
+                            <th style="color: white; text-align: center;">Deposit(Cash+Bank)</th>
+                            <th style="color: white; text-align: center;">Withdraw(Cash+Bank)</th>
+                            <th style="color: white; text-align: center;">Bank Name</th>
+                            <th style="color: white; text-align: center;">Action</th>
                         </thead>
                         <tbody class="table-border-bottom-0">
+                            <?php $cash_balance = 0; ?>
+                            <?php $bank_balance = 0; ?>
+                            <?php $closing_balance = 0; ?>
+                            <?php $deposit = 0; ?>
+                            <?php $withdraw = 0; ?>
                             @foreach ($cash_books as $key => $cash_book)
                                 <tr>
                                     <td style="text-align: center;">
@@ -103,7 +109,10 @@
 
                                     {{-- cash balance --}}
                                     <td style="text-align: right;">
-                                        {{ $cash_book->cash_out }}
+                                        <?php
+                                        $cash_balance = $closing_balance + ($cash_book->cash_in - $cash_book->cash_out);
+                                        echo number_format($cash_balance);
+                                        ?>
                                     </td>
 
                                     <td style="text-align: right;">
@@ -116,12 +125,30 @@
 
                                     {{-- bank balance --}}
                                     <td style="text-align: right;">
-                                        {{ $cash_book->bank_out }}
+                                        <?php
+                                        $bank_balance = $closing_balance + ($cash_book->bank_in - $cash_book->bank_out);
+                                        echo number_format($bank_balance);
+                                        ?>
                                     </td>
 
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
+                                    <td style="text-align: right;">
+                                        <?php
+                                        $deposit = $cash_book->cash_in + $cash_book->bank_in;
+                                        echo number_format($deposit);
+                                        ?>
+                                    </td>
+
+                                    <td style="text-align: right">
+                                        <?php
+                                        $withdraw = $cash_book->cash_out + $cash_book->cash_out;
+                                        echo number_format($withdraw);
+                                        ?>
+                                    </td>
+
+                                    <td>
+                                        {{ $cash_book->get_bank_account->description ?? '' }}
+                                    </td>
+
                                     <td style="text-align: center;">
                                         <div class="demo-inline-spacing">
                                             <div class="btn-group">
@@ -154,19 +181,21 @@
                                             </div>
                                         </div>
                                     </td>
-
                                 </tr>
                             @endforeach
                         </tbody>
                         <tr>
-                            <th colspan="10">Total</th>
-                            <th style="text-align: right; font-weight: bold">
+                            <td colspan="10">Total:</td>
+                            <td style="text-align: right; font-weight: bold">
                                 {{ number_format($cash_books->sum('cash_in'), 2) }}
-                            </th>
-                            <th style="text-align: right; font-weight: bold">
+                            </td>
+                            <td style="text-align: right; font-weight: bold">
                                 {{ number_format($cash_books->sum('cash_out'), 2) }}
-                            </th>
-                            <th></th>
+                            </td>
+
+                            <td style="text-align: right; font-weight: bold">
+                                {{ number_format($cash_balance) }}
+                            </td>
 
                             <th style="text-align: right; font-weight: bold">
                                 {{ number_format($cash_books->sum('bank_in'), 2) }}
@@ -174,6 +203,14 @@
                             <th style="text-align: right; font-weight: bold">
                                 {{ number_format($cash_books->sum('bank_out'), 2) }}
                             </th>
+
+                            <td style="text-align: right; font-weight: bold">
+                                {{ number_format($bank_balance) }}
+                            </td>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
                         </tr>
                     </table>
                 </div>
@@ -181,4 +218,7 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('script')
 @endsection

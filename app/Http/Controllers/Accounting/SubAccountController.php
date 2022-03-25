@@ -48,6 +48,7 @@ class SubAccountController extends Controller
         $Coa->account_classification_id = $request->account_classification_id;
         $Coa->description = $request->description;
         $Coa->account_opening_balance = $request->opening_balance ?? 0;
+        $Coa->opening_balance_date = $request->opening_balance_date ?? '';
         $Coa->coa_number = $request->sub_account_number;
         $Coa->chartof_account_id = $request->main_account_code;
         $Coa->sub_or_main_account = 'sub_account';
@@ -95,6 +96,7 @@ class SubAccountController extends Controller
         $Coa->account_classification_id = $request->account_classification_id;
         $Coa->description = $request->description;
         $Coa->account_opening_balance = $request->opening_balance ?? 0;
+        $Coa->opening_balance_date = $request->opening_balance_date ?? '';
         $Coa->coa_number = $request->sub_account_number;
         $Coa->chartof_account_id = $request->main_account_code;
         $Coa->sub_or_main_account = 'sub_account';

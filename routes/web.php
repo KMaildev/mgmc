@@ -36,4 +36,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('subaccount', 'Accounting\SubAccountController');
     Route::resource('bankform', 'Accounting\BankFormController');
     Route::resource('cashbook', 'Accounting\CashBookController');
+    Route::resource('customer', 'CustomerController');
+    Route::resource('supplier', 'SupplierController');
+    Route::resource('products', 'ProductsController');
 });

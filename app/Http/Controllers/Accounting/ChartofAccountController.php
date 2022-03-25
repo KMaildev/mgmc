@@ -47,6 +47,7 @@ class ChartofAccountController extends Controller
         $Coa->description = $request->description;
         $Coa->account_opening_balance = $request->opening_balance ?? 0;
         $Coa->coa_number = $request->account_number;
+        $Coa->opening_balance_date = $request->opening_balance_date ?? '';
         $Coa->sub_or_main_account = 'main_account';
         $Coa->save();
         return redirect()->route('chartofaccount.create')
@@ -91,6 +92,7 @@ class ChartofAccountController extends Controller
         $Coa->account_classification_id = $request->account_group;
         $Coa->description = $request->description;
         $Coa->account_opening_balance = $request->opening_balance ?? 0;
+        $Coa->opening_balance_date = $request->opening_balance_date ?? '';
         $Coa->coa_number = $request->account_number;
         $Coa->update();
         return redirect()->back()->with('success', 'Updated successfully.');
