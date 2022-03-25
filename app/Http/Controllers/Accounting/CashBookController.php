@@ -6,6 +6,7 @@ use App\Accounting\CashBook;
 use App\Accounting\ChartofAccount;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreCashBook;
+use App\Http\Requests\UpdateCashBook;
 use Illuminate\Http\Request;
 
 use function Ramsey\Uuid\v1;
@@ -19,8 +20,8 @@ class CashBookController extends Controller
      */
     public function index()
     {
-        $chartof_accounts = ChartofAccount::orderBy('coa_number', 'asc')->get();
-        return view('accounting.cash_book.index', compact('chartof_accounts'));
+        $cash_books = CashBook::orderBy('id', 'ASC')->paginate(50);
+        return view('accounting.cash_book.index', compact('cash_books'));
     }
 
     /**
@@ -81,7 +82,9 @@ class CashBookController extends Controller
      */
     public function edit($id)
     {
-        //
+        $chartof_accounts = ChartofAccount::orderBy('coa_number', 'asc')->get();
+        $cash_book = CashBook::findOrFail($id);
+        return view('accounting.cash_book.edit', compact('chartof_accounts', 'cash_book'));
     }
 
     /**
@@ -91,9 +94,26 @@ class CashBookController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateCashBook $request, $id)
     {
-        //
+        $cash_book = CashBook::findOrFail($id);
+        $cash_book->cash_book_date = $request->date;
+        $cash_book->month = $request->month;
+        $cash_book->year = $request->year;
+        $cash_book->iv_one = $request->iv_one;
+        $cash_book->iv_two = $request->iv_two;
+        $cash_book->account_code_id = $request->account_code;
+        $cash_book->account_type_id = $request->account_type_id;
+        $cash_book->description = $request->description;
+        $cash_book->cash_account_id = $request->cash_account ?? 0;
+        $cash_book->bank_account = $request->bank_account ?? 0;
+        $cash_book->cash_in = $request->cash_in ?? 0;
+        $cash_book->cash_out = $request->cash_out ?? 0;
+        $cash_book->bank_in = $request->bank_in ?? 0;
+        $cash_book->bank_out = $request->bank_out ?? 0;
+        $cash_book->user_id = auth()->user()->id;
+        $cash_book->save();
+        return redirect()->back()->with('success', 'Updated successfully.');
     }
 
     /**
@@ -104,6 +124,8 @@ class CashBookController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $cash_book = CashBook::findOrFail($id);
+        $cash_book->delete();
+        return redirect()->back()->with('success', 'Deleted successfully.');
     }
 }
