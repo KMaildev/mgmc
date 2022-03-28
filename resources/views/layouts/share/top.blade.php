@@ -26,7 +26,8 @@
                                  <div class="d-flex">
                                      <div class="flex-shrink-0 me-3">
                                          <div class="avatar avatar-online">
-                                             <img src="{{ asset('assets/img/avatars/1.png') }}" alt class="rounded-circle">
+                                             <img src="{{ asset('assets/img/avatars/1.png') }}" alt
+                                                 class="rounded-circle">
                                          </div>
                                      </div>
                                      <div class="flex-grow-1">
@@ -40,9 +41,9 @@
                              <div class="dropdown-divider"></div>
                          </li>
                          <li>
-                             <a class="dropdown-item" href="#">
+                             <a class="dropdown-item" href="{{ route('changepassword.index') }}">
                                  <i class="bx bx-user me-2"></i>
-                                 <span class="align-middle">My Profile</span>
+                                 <span class="align-middle">Change Password</span>
                              </a>
                          </li>
                          <li>

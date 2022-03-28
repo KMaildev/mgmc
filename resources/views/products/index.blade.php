@@ -84,8 +84,7 @@
                                                 <ul class="dropdown-menu">
 
                                                     <li>
-                                                        <a class="dropdown-item"
-                                                            href="#">Detail</a>
+                                                        <a class="dropdown-item" href="#">Detail</a>
                                                     </li>
 
                                                     <li>
@@ -112,21 +111,21 @@
                         <tr>
                             <td colspan="4">Total:</td>
                             <td style="text-align: right; font-weight: bold">
-                                {{ number_format($product->sum('opening_cost'), 2) }}
+                                {{ number_format($products->sum('opening_cost'), 2) }}
                             </td>
 
                             <td style="text-align: right; font-weight: bold">
-                                {{ number_format($product->sum('opening_quantity'), 2) }}
+                                {{ number_format($products->sum('opening_quantity'), 2) }}
                             </td>
 
                             <td></td>
 
                             <td style="text-align: right; font-weight: bold">
-                                {{ number_format($product->sum('selling_price'), 2) }}
+                                {{ number_format($products->sum('selling_price'), 2) }}
                             </td>
                             <td></td>
                             <td style="text-align: right; font-weight: bold">
-                                {{ number_format($product->sum('cost_of_unit'), 2) }}
+                                {{ number_format($products->sum('cost_of_unit'), 2) }}
                             </td>
                         </tr>
                     </table>

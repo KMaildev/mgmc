@@ -17,11 +17,12 @@ class ProductsController extends Controller
      */
     public function index()
     {
-        $products = Products::query();
-        if (request('search')) {
-            $products->where('name', 'Like', '%' . request('search') . '%');
-        }
-        $products = $products->orderBy('id', 'ASC')->paginate(50);
+        // $products = Products::query();
+        // if (request('search')) {
+        //     $products->where('name', 'Like', '%' . request('search') . '%');
+        // }
+        // $products = $products->orderBy('id', 'ASC')->paginate(50);
+        $products = Products::all();
         return view('products.index', compact('products'));
     }
 

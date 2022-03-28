@@ -15,7 +15,8 @@
         "laravel/framework": "^7.29",
         "laravel/tinker": "^2.5",
         "laravel/ui": "^2.4",
-        "proengsoft/laravel-jsvalidation": "^4.7"
+        "proengsoft/laravel-jsvalidation": "^4.7",
+        "spatie/laravel-activitylog": "^3.17"
     },
     "require-dev": {
         "facade/ignition": "^2.0",

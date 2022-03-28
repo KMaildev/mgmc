@@ -10,7 +10,7 @@
                         <div class="card-title-elements ms-auto">
                             @include('layouts.includes.export')
 
-                            <a href="{{ route('cashbook.create') }}" class="dt-button create-new btn btn-primary btn-sm">
+                            <a href="{{ route('cashbook.create') }}" class="dt-button create-new btn btn-primary btn-sm" hidden>
                                 <span>
                                     <i class="bx bx-plus me-sm-2"></i>
                                     <span class="d-none d-sm-inline-block">Create</span>

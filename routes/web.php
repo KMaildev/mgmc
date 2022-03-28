@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use Spatie\Activitylog\Models\Activity;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,4 +40,10 @@ Route::middleware('auth')->group(function () {
     Route::resource('customer', 'CustomerController');
     Route::resource('supplier', 'SupplierController');
     Route::resource('products', 'ProductsController');
+    Route::resource('department', 'DepartmentController');
+    Route::resource('employee', 'EmployeeController');
+    Route::resource('changepassword', 'ChangePasswordController');
+
+
+    Route::resource('activity', 'Activity\ActivityLogController');
 });

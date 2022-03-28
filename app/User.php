@@ -2,13 +2,20 @@
 
 namespace App;
 
+use App\Models\Department;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Spatie\Activitylog\Traits\LogsActivity;
+use Spatie\Activitylog\LogOptions;
 
 class User extends Authenticatable
 {
-    use Notifiable;
+    use Notifiable, LogsActivity;
+
+    use LogsActivity;
+    protected static $logName = 'users_log';
+    protected static $logAttributes = ['name', 'email', 'employee_id', 'phone', 'nrc_number', 'address', 'department_id', 'created_at', 'updated_at'];
 
     /**
      * The attributes that are mass assignable.
@@ -16,7 +23,12 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 
+        'email', 
+        'password', 
+        'last_login_at',
+        'last_login_ip',
+        'agent'
     ];
 
     /**
@@ -36,4 +48,9 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function department()
+    {
+        return $this->belongsTo(Department::class, 'department_id', 'id');
+    }
 }

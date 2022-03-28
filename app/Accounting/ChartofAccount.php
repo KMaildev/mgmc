@@ -3,9 +3,15 @@
 namespace App\Accounting;
 
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Activitylog\Traits\LogsActivity;
 
 class ChartofAccount extends Model
 {
+
+    use LogsActivity;
+    protected static $logName = 'chart_of_account_log';
+    protected static $logAttributes = ['coa_number', 'description', 'account_type_id', 'opening_balance_date', 'created_at', 'updated_at'];
+
     public function account_type_table()
     {
         return $this->belongsTo(AccountType::class, 'account_type_id', 'id');
