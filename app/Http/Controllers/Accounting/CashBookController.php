@@ -20,8 +20,9 @@ class CashBookController extends Controller
      */
     public function index()
     {
-        $cash_books = CashBook::orderBy('id', 'ASC')->paginate(50);
-        return view('accounting.cash_book.index', compact('cash_books'));
+        $chartof_accounts = ChartofAccount::orderBy('coa_number', 'asc')->get();
+        $cash_books = CashBook::orderBy('id', 'ASC')->paginate(100);
+        return view('accounting.cash_book.index', compact('cash_books', 'chartof_accounts'));
     }
 
     /**

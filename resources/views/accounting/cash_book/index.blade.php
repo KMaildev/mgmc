@@ -9,8 +9,7 @@
                         <h5 class="m-0 me-2">Cash Book</h5>
                         <div class="card-title-elements ms-auto">
                             @include('layouts.includes.export')
-
-                            <a href="{{ route('cashbook.create') }}" class="dt-button create-new btn btn-primary btn-sm" hidden>
+                            <a href="{{ route('cashbook.create') }}" class="dt-button create-new btn btn-primary btn-sm">
                                 <span>
                                     <i class="bx bx-plus me-sm-2"></i>
                                     <span class="d-none d-sm-inline-block">Create</span>
@@ -20,38 +19,60 @@
                     </div>
                 </div>
 
-
-                <div class="table-responsive text-nowrap rowheaders table-scroll" role="region" aria-labelledby="HeadersCol"
-                    tabindex="0">
-                    @include('shared.progressing', [
-                        'message' =>
-                            'Closing Banlance is In Progressing so the result in Cash Balance cannot be right. Now, if this part is exactly finish, we will keep on to write the next step including the Closing Balance. Thanks alot! ',
-                    ])
-
+                <div class="table-responsive text-nowrap rowheaders">
                     <table class="table table-bordered main-table py-5" id="export_excel">
                         <thead class="tbbg">
                             <th style="color: white; text-align: center; width: 1%;">#</th>
-                            <th style="color: white; text-align: center;">Date</th>
-                            <th style="color: white; text-align: center;">Month</th>
-                            <th style="color: white; text-align: center;">Year</th>
-                            <th style="color: white; text-align: center;">IV-No</th>
-                            <th style="color: white; text-align: center;">IV-No2</th>
-                            <th style="color: white; text-align: center;">A/C Code</th>
-                            <th style="color: white; text-align: center;">A/C Head</th>
-                            <th style="color: white; text-align: center;">A/C Name</th>
-                            <th style="color: white; text-align: center;">Description</th>
-                            <th style="color: white; text-align: center;">Cash-In</th>
-                            <th style="color: white; text-align: center;">Cash-Out</th>
-                            <th style="color: white; text-align: center;">Cash-Balance</th>
-                            <th style="color: white; text-align: center;">Bank-In</th>
-                            <th style="color: white; text-align: center;">Bank-Out</th>
-                            <th style="color: white; text-align: center;">Bank-Balance</th>
-                            <th style="color: white; text-align: center;">Deposit(Cash+Bank)</th>
-                            <th style="color: white; text-align: center;">Withdraw(Cash+Bank)</th>
-                            <th style="color: white; text-align: center;">Bank Name</th>
-                            <th style="color: white; text-align: center;">Action</th>
+                            <th style="color: white; text-align: center;">
+                                Date</th>
+                            <th style="color: white; text-align: center;">
+                                Month</th>
+                            <th style="color: white; text-align: center;">
+                                Year</th>
+                            <th style="color: white; text-align: center;">
+                                IV-No</th>
+                            <th style="color: white; text-align: center;">
+                                IV-No2</th>
+                            <th style="color: white; text-align: center;">
+                                A/C Code</th>
+                            <th style="color: white; text-align: center;">
+                                A/C Head</th>
+                            <th style="color: white; text-align: center;">
+                                A/C Name</th>
+                            <th style="color: white; text-align: center;">
+                                Description</th>
+                            <th style="color: white; text-align: center;">
+                                Cash AC</th>
+                            <th style="color: white; text-align: center;">
+                                Cash-In</th>
+                            <th style="color: white; text-align: center;">
+                                Cash-Out</th>
+                            <th style="color: white; text-align: center;">
+                                Cash-Balance</th>
+                            <th style="color: white; text-align: center;">
+                                Bank AC</th>
+                            <th style="color: white; text-align: center;">
+                                Bank-In</th>
+                            <th style="color: white; text-align: center;">
+                                Bank-Out</th>
+                            <th style="color: white; text-align: center;">
+                                Bank-Balance</th>
+                            <th style="color: white; text-align: center;">
+                                Deposit(Cash+Bank)</th>
+                            <th style="color: white; text-align: center;">
+                                Withdraw(Cash+Bank)</th>
+                            <th style="color: white; text-align: center;">
+                                Bank Name</th>
+                            <th style="color: white; text-align: center;">
+                                Action</th>
                         </thead>
                         <tbody class="table-border-bottom-0">
+
+                            {{-- cash book create --}}
+                            @include('accounting.cash_book.create_form', [
+                                'chartof_accounts' => $chartof_accounts,
+                            ])
+
                             <?php $cash_balance = 0; ?>
                             <?php $bank_balance = 0; ?>
                             <?php $closing_balance = 0; ?>
