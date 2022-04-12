@@ -1,8 +1,7 @@
 @extends('layouts.menus.accounting')
 @section('content')
-    <link rel="stylesheet" href="{{ asset('css/table.css') }}" />
-    <div class="row justify-content-center outer-wrapper">
-        <div class="col-md-12 col-sm-12 col-lg-12 inner-wrapper">
+    <div class="row justify-content-center">
+        <div class="col-md-12 col-sm-12 col-lg-12">
             <div class="card">
 
                 <div class="card-body">
@@ -10,13 +9,18 @@
                         <h5 class="m-0 me-2">Cash Book</h5>
                         <div class="card-title-elements ms-auto">
                             @include('layouts.includes.export')
+                            <a href="{{ route('cashbook.create') }}" class="dt-button create-new btn btn-primary btn-sm">
+                                <span>
+                                    <i class="bx bx-plus me-sm-2"></i>
+                                    <span class="d-none d-sm-inline-block">Create</span>
+                                </span>
+                            </a>
                         </div>
                     </div>
                 </div>
 
-                <div class="table-responsive text-nowrap rowheaders table-scroll outer-wrapper">
-                    <table class="table table-bordered main-table py-5" id="export_excel"
-                        style="margin-bottom: 1px !important;">
+                <div class="table-responsive text-nowrap rowheaders">
+                    <table class="table table-bordered main-table py-5" id="export_excel">
                         <thead class="tbbg">
                             <th style="color: white; text-align: center; width: 1%;">#</th>
                             <th style="color: white; text-align: center;">
@@ -62,7 +66,7 @@
                             <th style="color: white; text-align: center;">
                                 Action</th>
                         </thead>
-                        <tbody class="table-border-bottom-0 t">
+                        <tbody class="table-border-bottom-0">
 
                             {{-- cash book create --}}
                             @if ($cash_book_form_status == 'is_create')
@@ -263,9 +267,6 @@
                         </tr>
                     </table>
                 </div>
-
-                <div class="pseduo-track"></div>
-                {!! $cash_books->links() !!}
 
             </div>
         </div>

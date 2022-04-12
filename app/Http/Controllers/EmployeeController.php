@@ -9,6 +9,9 @@ use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
+use App\Exports\UsersExport;
+use Maatwebsite\Excel\Facades\Excel;
+
 class EmployeeController extends Controller
 {
     /**
@@ -111,5 +114,11 @@ class EmployeeController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function export()
+    {
+        return "Work";
+        // return Excel::download(new UsersExport, 'users.xlsx');
     }
 }

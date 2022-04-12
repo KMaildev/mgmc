@@ -12,6 +12,14 @@
             </li>
 
             <li class="menu-item">
+                <a href="{{ route('activity.show', 'cash_books_log') }}" class="menu-link">
+                    <div data-i1n="Layouts">
+                        {{ Str::upper(str_replace('_', ' ', 'cash_books_log')) }}
+                    </div>
+                </a>
+            </li>
+
+            <li class="menu-item">
                 <a href="{{ route('activity.show', 'chart_of_account_log') }}" class="menu-link">
                     <div data-i1n="Layouts">
                         {{ Str::upper(str_replace('_', ' ', 'chart_of_account_log')) }}
@@ -44,21 +52,7 @@
                 </a>
             </li>
 
-            <li class="menu-item">
-                <a href="{{ route('activity.show', 'customers_log') }}" class="menu-link">
-                    <div data-i1n="Layouts">
-                        {{ Str::upper(str_replace('_', ' ', 'customers_log')) }}
-                    </div>
-                </a>
-            </li>
 
-            <li class="menu-item">
-                <a href="{{ route('activity.show', 'suppliers_log') }}" class="menu-link">
-                    <div data-i1n="Layouts">
-                        {{ Str::upper(str_replace('_', ' ', 'suppliers_log')) }}
-                    </div>
-                </a>
-            </li>
 
             <li class="menu-item">
                 <a href="javascript:void(0)" class="menu-link menu-toggle">
@@ -87,6 +81,22 @@
                         <a href="{{ route('activity.show', 'users_log') }}" class="menu-link">
                             <div data-i2n="Without menu">
                                 {{ Str::upper(str_replace('_', ' ', 'users_log')) }}
+                            </div>
+                        </a>
+                    </li>
+
+                    <li class="menu-item">
+                        <a href="{{ route('activity.show', 'customers_log') }}" class="menu-link">
+                            <div data-i1n="Layouts">
+                                {{ Str::upper(str_replace('_', ' ', 'customers_log')) }}
+                            </div>
+                        </a>
+                    </li>
+
+                    <li class="menu-item">
+                        <a href="{{ route('activity.show', 'suppliers_log') }}" class="menu-link">
+                            <div data-i1n="Layouts">
+                                {{ Str::upper(str_replace('_', ' ', 'suppliers_log')) }}
                             </div>
                         </a>
                     </li>

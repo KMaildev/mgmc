@@ -18,9 +18,9 @@ class AccountTypeController extends Controller
      */
     public function index()
     {
-        $account_types = AccountType::latest()->paginate(20);
+        $account_types = AccountType::latest()->paginate(100);
         return view('accounting.accounttype.index', compact('account_types'))
-            ->with('i', (request()->input('page', 1) - 1) * 20);
+            ->with('i', (request()->input('page', 1) - 1) * 100);
     }
 
     /**

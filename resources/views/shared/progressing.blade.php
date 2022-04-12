@@ -1,4 +1,8 @@
 <span style="color: red">
+    {{ $title }}
+</span>
+
+<span style="color: green">
     {{ $message }}
 </span>
 

@@ -42,8 +42,10 @@ Route::middleware('auth')->group(function () {
     Route::resource('products', 'ProductsController');
     Route::resource('department', 'DepartmentController');
     Route::resource('employee', 'EmployeeController');
+
+    // Route::get('employee/export/', [EmployeeController::class, 'export']);
+    Route::get('employee/export/', 'EmployeeController@export')->name('export');
+
     Route::resource('changepassword', 'ChangePasswordController');
-
-
     Route::resource('activity', 'Activity\ActivityLogController');
 });

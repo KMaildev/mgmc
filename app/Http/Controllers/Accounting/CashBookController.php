@@ -20,9 +20,10 @@ class CashBookController extends Controller
      */
     public function index()
     {
-        $chartof_accounts = ChartofAccount::orderBy('coa_number', 'asc')->get();
+        $chartof_accounts = ChartofAccount::orderBy('coa_number', 'ASC')->get();
         $cash_books = CashBook::orderBy('id', 'ASC')->paginate(100);
-        return view('accounting.cash_book.index', compact('cash_books', 'chartof_accounts'));
+        $cash_book_form_status = 'is_create';
+        return view('accounting.cash_book.index', compact('cash_books', 'chartof_accounts', 'cash_book_form_status'));
     }
 
     /**
@@ -32,7 +33,7 @@ class CashBookController extends Controller
      */
     public function create()
     {
-        $chartof_accounts = ChartofAccount::orderBy('coa_number', 'asc')->get();
+        $chartof_accounts = ChartofAccount::orderBy('coa_number', 'ASC')->get();
         return view('accounting.cash_book.create', compact('chartof_accounts'));
     }
 
@@ -83,9 +84,14 @@ class CashBookController extends Controller
      */
     public function edit($id)
     {
+        // $cash_book = CashBook::findOrFail($id);
+        // return view('accounting.cash_book.edit', compact('chartof_accounts', 'cash_book'));
+
         $chartof_accounts = ChartofAccount::orderBy('coa_number', 'asc')->get();
-        $cash_book = CashBook::findOrFail($id);
-        return view('accounting.cash_book.edit', compact('chartof_accounts', 'cash_book'));
+        $cash_books = CashBook::orderBy('id', 'DESC')->paginate(100);
+        $edit_cash_book_data = CashBook::findOrFail($id);
+        $cash_book_form_status = 'is_edit';
+        return view('accounting.cash_book.index', compact('cash_books', 'chartof_accounts', 'edit_cash_book_data', 'cash_book_form_status'));
     }
 
     /**
@@ -114,7 +120,7 @@ class CashBookController extends Controller
         $cash_book->bank_out = $request->bank_out ?? 0;
         $cash_book->user_id = auth()->user()->id;
         $cash_book->save();
-        return redirect()->back()->with('success', 'Updated successfully.');
+        return redirect()->route('cashbook.index')->with('success', 'Updated successfully.');
     }
 
     /**
