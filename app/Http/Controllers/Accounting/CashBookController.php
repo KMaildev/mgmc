@@ -4,12 +4,12 @@ namespace App\Http\Controllers\Accounting;
 
 use App\Accounting\CashBook;
 use App\Accounting\ChartofAccount;
+use App\Exports\CashBookExport;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreCashBook;
 use App\Http\Requests\UpdateCashBook;
 use Illuminate\Http\Request;
-
-use function Ramsey\Uuid\v1;
+use Maatwebsite\Excel\Facades\Excel;
 
 class CashBookController extends Controller
 {
@@ -21,8 +21,21 @@ class CashBookController extends Controller
     public function index()
     {
         $chartof_accounts = ChartofAccount::orderBy('coa_number', 'ASC')->get();
-        $cash_books = CashBook::orderBy('id', 'ASC')->paginate(100);
         $cash_book_form_status = 'is_create';
+
+        $cash_books = CashBook::orderBy('id', 'ASC')->paginate(100);
+        if (request('search')) {
+            $cash_books = CashBook::where(function ($query) {
+                $query->where('iv_one', 'Like', '%' . request('search') . '%');
+                $query->orWhere('iv_two', 'Like', '%' . request('search') . '%');
+                $query->orWhere('description', 'Like', '%' . request('search') . '%');
+            })->paginate(100);
+        }
+
+        if (request('from_date') && request('to_date')) {
+            $cash_books = CashBook::whereBetween('cash_book_date', [request('from_date'), request('to_date')])->paginate(100);
+        }
+
         return view('accounting.cash_book.index', compact('cash_books', 'chartof_accounts', 'cash_book_form_status'));
     }
 
@@ -134,5 +147,16 @@ class CashBookController extends Controller
         $cash_book = CashBook::findOrFail($id);
         $cash_book->delete();
         return redirect()->back()->with('success', 'Deleted successfully.');
+    }
+
+
+    /**
+     * @return \Illuminate\Support\Collection
+     */
+    public function cashbook_export()
+    {
+        $chartof_accounts = ChartofAccount::orderBy('coa_number', 'ASC')->get();
+        $cash_books = CashBook::orderBy('id', 'ASC')->paginate(100);
+        return Excel::download(new CashBookExport($chartof_accounts, $cash_books), 'cash_book_' . date("Y-m-d H:i:s") . '.xlsx');
     }
 }

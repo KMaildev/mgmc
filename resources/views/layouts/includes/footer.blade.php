@@ -22,8 +22,14 @@
 <script src="{{ asset('assets/vendor/libs/select2/select2.js') }}"></script>
 <script src="{{ asset('assets/vendor/libs/bootstrap-select/bootstrap-select.js') }}"></script>
 <script src="{{ asset('assets/js/forms-selects.js') }}"></script>
-
 <script type="text/javascript" src="{{ url('vendor/jsvalidation/js/jsvalidation.js') }}"></script>
+
+{{-- Daterange picker --}}
+<script type="text/javascript" src="{{ asset('js/moment.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/daterangepicker.min.js') }}"></script>
+
+<script type="text/javascript" src="{{ asset('js/custom.js') }}"></script>
+
 @yield('script')
 
 <script type="text/javascript">
@@ -47,6 +53,4 @@
         });
     });
 </script>
-
-
 </html>

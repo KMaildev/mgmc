@@ -36,15 +36,18 @@ Route::middleware('auth')->group(function () {
 
     Route::resource('subaccount', 'Accounting\SubAccountController');
     Route::resource('bankform', 'Accounting\BankFormController');
-    Route::resource('cashbook', 'Accounting\CashBookController');
+
     Route::resource('customer', 'CustomerController');
     Route::resource('supplier', 'SupplierController');
     Route::resource('products', 'ProductsController');
     Route::resource('department', 'DepartmentController');
-    Route::resource('employee', 'EmployeeController');
 
-    // Route::get('employee/export/', [EmployeeController::class, 'export']);
-    Route::get('employee/export/', 'EmployeeController@export')->name('export');
+    Route::resource('employee', 'EmployeeController');
+    Route::get('emp_export', 'EmployeeController@emp_export')->name('emp_export');
+
+    Route::resource('cashbook', 'Accounting\CashBookController');
+    Route::get('cashbook_export', 'Accounting\CashBookController@cashbook_export')->name('cashbook_export');
+
 
     Route::resource('changepassword', 'ChangePasswordController');
     Route::resource('activity', 'Activity\ActivityLogController');

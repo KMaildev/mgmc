@@ -1,22 +1,37 @@
 @extends('layouts.menus.accounting')
 @section('content')
     <link rel="stylesheet" href="{{ asset('css/table.css') }}" />
+
     <div class="row justify-content-center outer-wrapper">
+
+        @include('accounting.cash_book.shared.search', [
+            'chartof_accounts' => $chartof_accounts,
+        ])
+
         <div class="col-md-12 col-sm-12 col-lg-12 inner-wrapper">
             <div class="card">
-
                 <div class="card-body">
                     <div class="card-title header-elements">
                         <h5 class="m-0 me-2">Cash Book</h5>
                         <div class="card-title-elements ms-auto">
-                            @include('layouts.includes.export')
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-success btn-sm dropdown-toggle"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                    Export
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a class="dropdown-item" href="{{ route('cashbook_export') }}">Excel
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
-
                 <div class="table-responsive text-nowrap rowheaders table-scroll outer-wrapper">
-                    <table class="table table-bordered main-table py-5" id="export_excel"
-                        style="margin-bottom: 1px !important;">
+                    <table class="table table-bordered main-table py-5" style="margin-bottom: 1px !important;"
+                        id="tbl_exporttable_to_xls">
                         <thead class="tbbg">
                             <th style="color: white; text-align: center; width: 1%;">#</th>
                             <th style="color: white; text-align: center;">
@@ -121,7 +136,7 @@
                                     </td>
 
                                     <td style="text-align: center;">
-                                        {{ $cash_book->description }}
+                                        {!! Str::words($cash_book->description, 7, ' ...') !!}
                                     </td>
 
                                     <td style="text-align: center;">
@@ -144,7 +159,6 @@
                                         echo number_format($cash_balance);
                                         ?>
                                     </td>
-
 
                                     <td style="text-align: center;">
                                         {{ $cash_book->get_bank_account->coa_number ?? '' }}
@@ -263,10 +277,8 @@
                         </tr>
                     </table>
                 </div>
-
                 <div class="pseduo-track"></div>
                 {!! $cash_books->links() !!}
-
             </div>
         </div>
     </div>

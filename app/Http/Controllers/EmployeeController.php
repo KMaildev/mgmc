@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Hash;
 use App\Exports\UsersExport;
 use Maatwebsite\Excel\Facades\Excel;
 
+
 class EmployeeController extends Controller
 {
     /**
@@ -116,9 +117,13 @@ class EmployeeController extends Controller
         //
     }
 
-    public function export()
+
+    /**
+     * @return \Illuminate\Support\Collection
+     */
+    public function emp_export()
     {
-        return "Work";
-        // return Excel::download(new UsersExport, 'users.xlsx');
+        return Excel::download(new UsersExport, 'users.xlsx');
+        return redirect()->back()->with('success', 'Export.');
     }
 }
