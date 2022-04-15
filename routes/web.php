@@ -48,6 +48,8 @@ Route::middleware('auth')->group(function () {
     Route::resource('cashbook', 'Accounting\CashBookController');
     Route::get('cashbook_export', 'Accounting\CashBookController@cashbook_export')->name('cashbook_export');
 
+    Route::resource('daily_report', 'Accounting\DailyReportController');
+
 
     Route::resource('changepassword', 'ChangePasswordController');
     Route::resource('activity', 'Activity\ActivityLogController');

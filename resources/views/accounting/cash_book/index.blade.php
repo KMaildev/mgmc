@@ -28,7 +28,18 @@
                             </div>
                         </div>
                     </div>
+
+                    <p style="color: red">
+                        @php
+                            echo $filter_date['from_date'];
+                            echo '～';
+                            echo $filter_date['to_date'];
+                        @endphp
+                    </p>
+
                 </div>
+
+
                 <div class="table-responsive text-nowrap rowheaders table-scroll outer-wrapper">
                     <table class="table table-bordered main-table py-5" style="margin-bottom: 1px !important;"
                         id="tbl_exporttable_to_xls">
@@ -114,7 +125,7 @@
 
                             <?php $deposit = 0; ?>
                             <?php $withdraw = 0; ?>
-                            <?php $closing_cash_balance = 8898194.85; //8898194.85   8889694.85 ?>
+                            <?php $closing_cash_balance = 0; //8898194.85   8889694.85 ?>
                             <?php $closing_bank_balance = 0; //606246564.14 ?>
 
                             @php

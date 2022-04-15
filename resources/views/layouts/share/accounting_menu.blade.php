@@ -155,7 +155,7 @@
 
                 <ul class="menu-sub">
                     <li class="menu-item">
-                        <a href="#" class="menu-link">
+                        <a href="{{ route('daily_report.index') }}" class="menu-link">
                             <div data-i2n="Without menu"> Daily Report</div>
                         </a>
                     </li>
