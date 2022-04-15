@@ -112,11 +112,9 @@
                                 ])
                             @endif
 
-                            <?php $cash_balance_total = 0; ?>
-                            <?php $bank_balance_total = 0; ?>
                             <?php $deposit = 0; ?>
                             <?php $withdraw = 0; ?>
-                            <?php $closing_cash_balance = 0; //8898194.85 ?>
+                            <?php $closing_cash_balance = 8898194.85; //8898194.85   8889694.85 ?>
                             <?php $closing_bank_balance = 0; //606246564.14 ?>
 
                             @php
@@ -127,14 +125,18 @@
                             @endphp
 
 
-                            <?php
-                            foreach ($before_first_days as $day) {
-                                $closing_cash_balance = $closing_cash_balance + ($day->credit - $day->debit);
-                            
-                                $daily_cash_past = $cash_daily_closing_balance;
-                                $cash_daily_closing_balance = $daily_cash_past + ($day->cash_in - $day->cash_out);
-                            }
-                            ?>
+                            {{-- Closing Clash and Bank Balance --}}
+                            @foreach ($beforeFirstDays as $key => $beforeFirstDay)
+                                @php
+                                    // Cash
+                                    $daily_cash_past = $cash_daily_closing_balance;
+                                    $cash_daily_closing_balance = $daily_cash_past + ($beforeFirstDay->cash_in - $beforeFirstDay->cash_out);
+                                    
+                                    // Bank
+                                    $daily_bank_past = $bank_daily_closing_balance;
+                                    $bank_daily_closing_balance = $daily_bank_past + ($beforeFirstDay->bank_in - $beforeFirstDay->bank_out);
+                                @endphp
+                            @endforeach
 
                             @foreach ($cash_books as $key => $cash_book)
                                 <tr>
@@ -198,7 +200,6 @@
                                             $daily_cash_past = $cash_daily_closing_balance;
                                             $cash_daily_closing_balance = $daily_cash_past + ($cash_book->cash_in - $cash_book->cash_out);
                                             echo number_format($cash_daily_closing_balance, 2);
-                                            $cash_balance_total += $cash_daily_closing_balance;
                                         @endphp
                                     </td>
 
@@ -220,7 +221,6 @@
                                             $daily_bank_past = $bank_daily_closing_balance;
                                             $bank_daily_closing_balance = $daily_bank_past + ($cash_book->bank_in - $cash_book->bank_out);
                                             echo number_format($bank_daily_closing_balance, 2);
-                                            $bank_balance_total += $bank_daily_closing_balance;
                                         @endphp
                                     </td>
 
@@ -289,9 +289,7 @@
                                 {{ number_format($cash_books->sum('cash_out'), 2) }}
                             </td>
 
-                            <td style="text-align: right; font-weight: bold">
-                                {{ number_format($cash_balance_total, 2) }}
-                            </td>
+                            <td></td>
 
                             <td></td>
                             {{-- Bank Calculator --}}
@@ -303,9 +301,7 @@
                                 {{ number_format($cash_books->sum('bank_out'), 2) }}
                             </td>
 
-                            <td style="text-align: right; font-weight: bold">
-                                {{ number_format($bank_balance_total, 2) }}
-                            </td>
+                            <td></td>
 
                             {{-- Deposit(Cash+Bank) --}}
                             <td style="text-align: right; font-weight: bold">

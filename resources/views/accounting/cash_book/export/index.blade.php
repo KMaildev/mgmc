@@ -25,57 +25,81 @@
         </tr>
     </thead>
     <tbody>
-        {{-- cash book create --}}
-        <?php $cash_balance = 0; ?>
-        <?php $bank_balance = 0; ?>
-        <?php $closing_balance = 0; ?>
+    <tbody class="table-border-bottom-0 t">
+
         <?php $deposit = 0; ?>
         <?php $withdraw = 0; ?>
+        <?php $closing_cash_balance = 0; //8898194.85   8889694.85 ?>
+        <?php $closing_bank_balance = 0; //606246564.14 ?>
+
+        @php
+            $cash_daily_closing_balance = $closing_cash_balance;
+        @endphp
+        @php
+            $bank_daily_closing_balance = $closing_bank_balance;
+        @endphp
+
+
+        {{-- Closing Clash and Bank Balance --}}
+        @foreach ($beforeFirstDays as $key => $beforeFirstDay)
+            @php
+                // Cash
+                $daily_cash_past = $cash_daily_closing_balance;
+                $cash_daily_closing_balance = $daily_cash_past + ($beforeFirstDay->cash_in - $beforeFirstDay->cash_out);
+                
+                // Bank
+                $daily_bank_past = $bank_daily_closing_balance;
+                $bank_daily_closing_balance = $daily_bank_past + ($beforeFirstDay->bank_in - $beforeFirstDay->bank_out);
+            @endphp
+        @endforeach
+
         @foreach ($cash_books as $key => $cash_book)
             <tr>
-                <td style="text-align: right;">
+                <td style="text-align: center;">
                     {{ $key + 1 }}
                 </td>
 
-                <td style="text-align: right;">
+                <td style="text-align: center;">
                     {{ $cash_book->cash_book_date }}
                 </td>
 
-                <td style="text-align: right;">
+                <td style="text-align: center;">
                     {{ $cash_book->month }}
                 </td>
 
-                <td style="text-align: right;">
+                <td style="text-align: center;">
                     {{ $cash_book->year }}
                 </td>
 
-                <td style="text-align: right;">
+                <td style="text-align: center;">
                     {{ $cash_book->iv_one }}
                 </td>
 
-                <td style="text-align: right;">
+                <td style="text-align: center;">
                     {{ $cash_book->iv_two }}
                 </td>
 
-                <td style="text-align: right;">
+                <td style="text-align: center;">
                     {{ $cash_book->chartof_account_table->coa_number ?? '' }}
                 </td>
 
-                <td style="text-align: right;">
+                <td style="text-align: center;">
                     {{ $cash_book->account_types_table->description ?? '' }}
                 </td>
 
-                <td style="text-align: right;">
+                <td style="text-align: center;">
                     {{ $cash_book->chartof_account_table->description ?? '' }}
                 </td>
 
-                <td style="text-align: right;">
-                    {{ $cash_book->description }}
+                <td style="text-align: center;">
+                    {{-- {{ $cash_book->description }} --}}
+                    {!! Str::words($cash_book->description, 7, ' ...') !!}
                 </td>
 
-                <td style="text-align: right;">
+                <td style="text-align: center;">
                     {{ $cash_book->get_cash_account->coa_number ?? '' }}
                 </td>
+
 
                 <td style="text-align: right;">
                     {{ number_format($cash_book->cash_in, 2) }}
@@ -87,13 +111,14 @@
 
                 {{-- cash balance --}}
                 <td style="text-align: right;">
-                    <?php
-                    $cash_balance = $closing_balance + ($cash_book->cash_in - $cash_book->cash_out);
-                    echo number_format($cash_balance);
-                    ?>
+                    @php
+                        $daily_cash_past = $cash_daily_closing_balance;
+                        $cash_daily_closing_balance = $daily_cash_past + ($cash_book->cash_in - $cash_book->cash_out);
+                        echo number_format($cash_daily_closing_balance, 2);
+                    @endphp
                 </td>
 
-                <td style="text-align: right;">
+                <td style="text-align: center;">
                     {{ $cash_book->get_bank_account->coa_number ?? '' }}
                 </td>
 
@@ -107,27 +132,30 @@
 
                 {{-- bank balance --}}
                 <td style="text-align: right;">
-                    <?php
-                    $bank_balance = $closing_balance + ($cash_book->bank_in - $cash_book->bank_out);
-                    echo number_format($bank_balance);
-                    ?>
+                    @php
+                        $daily_bank_past = $bank_daily_closing_balance;
+                        $bank_daily_closing_balance = $daily_bank_past + ($cash_book->bank_in - $cash_book->bank_out);
+                        echo number_format($bank_daily_closing_balance, 2);
+                    @endphp
                 </td>
 
+                {{-- Deposit(Cash+Bank) --}}
                 <td style="text-align: right;">
                     <?php
                     $deposit = $cash_book->cash_in + $cash_book->bank_in;
-                    echo number_format($deposit);
+                    echo number_format($deposit, 2);
                     ?>
                 </td>
 
-                <td style="text-align: right;">
+                {{-- Withdraw(Cash+Bank) --}}
+                <td style="text-align: right">
                     <?php
                     $withdraw = $cash_book->cash_out + $cash_book->bank_out;
-                    echo number_format($withdraw);
+                    echo number_format($withdraw, 2);
                     ?>
                 </td>
 
-                <td style="text-align: right;">
+                <td style="text-align: center;">
                     {{ $cash_book->get_bank_account->description ?? '' }}
                 </td>
             </tr>
@@ -136,41 +164,35 @@
     <tr>
         <td colspan="11">Total:</td>
         {{-- Cash Calculator --}}
-        <td style="text-align: right;">
+        <td style="text-align: right; font-weight: bold">
             {{ number_format($cash_books->sum('cash_in'), 2) }}
         </td>
-
-        <td style="text-align: right;">
+        <td style="text-align: right; font-weight: bold">
             {{ number_format($cash_books->sum('cash_out'), 2) }}
         </td>
 
-        <td style="text-align: right;">
-            {{ number_format($cash_balance) }}
-        </td>
+        <td></td>
 
         <td></td>
         {{-- Bank Calculator --}}
-        <td style="text-align: right;">
+        <td style="text-align: right; font-weight: bold">
             {{ number_format($cash_books->sum('bank_in'), 2) }}
         </td>
 
-        <td style="text-align: right;">
+        <td style="text-align: right; font-weight: bold">
             {{ number_format($cash_books->sum('bank_out'), 2) }}
         </td>
 
-        <td style="text-align: right;">
-            {{-- echo number_format($bank_balance); --}}
-            {{ number_format($cash_books->sum('closing_balance') + $cash_books->sum('cash_in') + $cash_books->sum('bank_in')) }}
-        </td>
+        <td></td>
 
         {{-- Deposit(Cash+Bank) --}}
-        <td style="text-align: right;">
-            {{ number_format($cash_books->sum('cash_in') + $cash_books->sum('bank_in')) }}
+        <td style="text-align: right; font-weight: bold">
+            {{ number_format($cash_books->sum('cash_in') + $cash_books->sum('bank_in'), 2) }}
         </td>
 
         {{-- Withdraw(Cash+Bank) --}}
-        <td style="text-align: right;">
-            {{ number_format($cash_books->sum('cash_out') + $cash_books->sum('bank_out')) }}
+        <td style="text-align: right; font-weight: bold">
+            {{ number_format($cash_books->sum('cash_out') + $cash_books->sum('bank_out'), 2) }}
         </td>
 
         <th></th>

@@ -35,18 +35,26 @@ class CashBookController extends Controller
         }
 
         if (request('from_date') && request('to_date')) {
-            $first_day = request('from_date');
             $cash_books = CashBook::whereBetween('cash_book_date', [request('from_date'), request('to_date')])->paginate(500);
+
+            // Closing Clash and Bank Balance
+            $from_date = request('from_date');
+            $beforeFirstDays = DB::table('cash_books')
+                ->whereDate('cash_book_date', '<', $from_date)
+                ->get();
         } else {
             $first_day = date('Y-m-d', strtotime('first day of this month'));
             $end_day = date('Y-m-d', strtotime('last day of this month'));
             $cash_books = CashBook::whereBetween('cash_book_date', [$first_day, $end_day])->paginate(500);
 
-            $before_first_days = DB::table('cash_books')
-                ->whereDate('cash_book_date', '<=', $first_day)
+            // Closing Clash and Bank Balance
+            $from_date = request('from_date');
+            $beforeFirstDays = DB::table('cash_books')
+                ->whereDate('cash_book_date', '<', $first_day)
                 ->get();
         }
-        return view('accounting.cash_book.index', compact('cash_books', 'chartof_accounts', 'cash_book_form_status', 'before_first_days'));
+
+        return view('accounting.cash_book.index', compact('cash_books', 'chartof_accounts', 'beforeFirstDays', 'cash_book_form_status'));
     }
 
     /**
@@ -166,7 +174,28 @@ class CashBookController extends Controller
     public function cashbook_export()
     {
         $chartof_accounts = ChartofAccount::orderBy('coa_number', 'ASC')->get();
-        $cash_books = CashBook::orderBy('id', 'ASC')->paginate(100);
-        return Excel::download(new CashBookExport($chartof_accounts, $cash_books), 'cash_book_' . date("Y-m-d H:i:s") . '.xlsx');
+        $cash_books = CashBook::orderBy('id', 'ASC')->paginate(1000);
+
+        if (request('from_date') && request('to_date')) {
+            $cash_books = CashBook::whereBetween('cash_book_date', [request('from_date'), request('to_date')])->paginate(1000);
+
+            // Closing Clash and Bank Balance
+            $from_date = request('from_date');
+            $beforeFirstDays = DB::table('cash_books')
+                ->whereDate('cash_book_date', '<', $from_date)
+                ->get();
+        } else {
+            $first_day = date('Y-m-d', strtotime('first day of this month'));
+            $end_day = date('Y-m-d', strtotime('last day of this month'));
+            $cash_books = CashBook::whereBetween('cash_book_date', [$first_day, $end_day])->paginate(1000);
+
+            // Closing Clash and Bank Balance
+            $from_date = request('from_date');
+            $beforeFirstDays = DB::table('cash_books')
+                ->whereDate('cash_book_date', '<', $first_day)
+                ->get();
+        }
+
+        return Excel::download(new CashBookExport($chartof_accounts, $cash_books, $beforeFirstDays), 'cash_book_' . date("Y-m-d H:i:s") . '.xlsx');
     }
 }
