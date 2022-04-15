@@ -21,7 +21,6 @@
 
 
 
-
                 {{-- Search --}}
                 <div class="col-md-12" id="Search">
                     <form action="{{ route('cashbook.index') }}" autocomplete="off" method="GET">
@@ -68,20 +67,3 @@
         </div>
     </div>
 </div>
-
-@section('script')
-    <script>
-        $("#SearchRadio").click(function() {
-            $("#Search").show();
-            $("#FilterSearch").hide();
-        });
-
-        $("#FilterSearchRadio").click(function() {
-            $("#Search").hide();
-            $("#FilterSearch").show();
-        });
-
-        $("#Search").show();
-        $("#FilterSearch").hide();
-    </script>
-@endsection

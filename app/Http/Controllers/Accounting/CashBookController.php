@@ -8,7 +8,9 @@ use App\Exports\CashBookExport;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreCashBook;
 use App\Http\Requests\UpdateCashBook;
+use DateTime;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Facades\Excel;
 
 class CashBookController extends Controller
@@ -23,20 +25,28 @@ class CashBookController extends Controller
         $chartof_accounts = ChartofAccount::orderBy('coa_number', 'ASC')->get();
         $cash_book_form_status = 'is_create';
 
-        $cash_books = CashBook::orderBy('id', 'ASC')->paginate(100);
+        $cash_books = CashBook::orderBy('id', 'ASC')->paginate(500);
         if (request('search')) {
             $cash_books = CashBook::where(function ($query) {
                 $query->where('iv_one', 'Like', '%' . request('search') . '%');
                 $query->orWhere('iv_two', 'Like', '%' . request('search') . '%');
                 $query->orWhere('description', 'Like', '%' . request('search') . '%');
-            })->paginate(100);
+            })->paginate(500);
         }
 
         if (request('from_date') && request('to_date')) {
-            $cash_books = CashBook::whereBetween('cash_book_date', [request('from_date'), request('to_date')])->paginate(100);
-        }
+            $first_day = request('from_date');
+            $cash_books = CashBook::whereBetween('cash_book_date', [request('from_date'), request('to_date')])->paginate(500);
+        } else {
+            $first_day = date('Y-m-d', strtotime('first day of this month'));
+            $end_day = date('Y-m-d', strtotime('last day of this month'));
+            $cash_books = CashBook::whereBetween('cash_book_date', [$first_day, $end_day])->paginate(500);
 
-        return view('accounting.cash_book.index', compact('cash_books', 'chartof_accounts', 'cash_book_form_status'));
+            $before_first_days = DB::table('cash_books')
+                ->whereDate('cash_book_date', '<=', $first_day)
+                ->get();
+        }
+        return view('accounting.cash_book.index', compact('cash_books', 'chartof_accounts', 'cash_book_form_status', 'before_first_days'));
     }
 
     /**

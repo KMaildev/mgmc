@@ -4,8 +4,8 @@
     <tr>
         <td></td>
         <td>
-            <input type="date"
-                class="form-control-custom input-text-center form-control-sm @error('date') is-invalid @enderror"
+            <input type="text"
+                class="form-control-custom input-text-center form-control-sm date_picker @error('date') is-invalid @enderror"
                 name="date" id="cashDateField" />
             @error('date')
                 <div class="invalid-feedback"> {{ $message }} </div>
@@ -73,12 +73,14 @@
         </td>
 
         <td>
-            <input type="text"
-                class="form-control-custom input-text-center form-control-sm @error('description') is-invalid @enderror"
-                name="description" />
-            @error('description')
-                <div class="invalid-feedback"> {{ $message }} </div>
-            @enderror
+            <center>
+                <input type="text"
+                    class="form-control-custom input-text-center form-control-sm @error('description') is-invalid @enderror"
+                    name="description" style="padding-left: 100px; padding-right: 100px" />
+                @error('description')
+                    <div class="invalid-feedback"> {{ $message }} </div>
+                @enderror
+            </center>
         </td>
 
 
@@ -175,7 +177,7 @@
 @section('script')
     {!! JsValidator::formRequest('App\Http\Requests\StoreCashBook', '#create-form') !!}
 
-    <script type="text/javascript">
+    <script script type="text/javascript">
         var accountHead = document.getElementById("accountHead");
         var accountName = document.getElementById("accountName");
         var bankName = document.getElementById("bankName");
@@ -247,14 +249,16 @@
         });
 
 
-        function getCashBookDate(e) {
-            var dateArr = e.srcElement.value.split('-');
-            if (dateArr.length > 1) {
-                Month.value = dateArr[1];
-                Year.value = dateArr[0];
-                console.log(dateArr[1] + '/' + dateArr[2] + '/' + dateArr[0]);
+        $(document).ready(function() {
+            function getCashBookDate(e) {
+                var dateArr = e.srcElement.value.split('-');
+                if (dateArr.length > 1) {
+                    Month.value = dateArr[1];
+                    Year.value = dateArr[0];
+                    console.log(dateArr[1] + '/' + dateArr[2] + '/' + dateArr[0]);
+                }
             }
-        }
-        document.getElementById("cashDateField").addEventListener("blur", getCashBookDate)
+            document.getElementById("cashDateField").addEventListener("blur", getCashBookDate)
+        });
     </script>
 @endsection

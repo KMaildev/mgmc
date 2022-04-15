@@ -1,5 +1,4 @@
 // Generan Date Picker 
-
 $('.date_picker').daterangepicker({
     "singleDatePicker": true,
     "autoApply": true,
@@ -8,3 +7,18 @@ $('.date_picker').daterangepicker({
         "format": "YYYY-MM-DD",
     }
 });
+
+
+// Cash Book Search
+$("#SearchRadio").click(function () {
+    $("#Search").show();
+    $("#FilterSearch").hide();
+});
+
+$("#FilterSearchRadio").click(function () {
+    $("#Search").hide();
+    $("#FilterSearch").show();
+});
+
+$("#Search").show();
+$("#FilterSearch").hide();

@@ -35,47 +35,68 @@
                         <thead class="tbbg">
                             <th style="color: white; text-align: center; width: 1%;">#</th>
                             <th style="color: white; text-align: center;">
-                                Date</th>
+                                Date
+                            </th>
                             <th style="color: white; text-align: center;">
-                                Month</th>
+                                Month
+                            </th>
                             <th style="color: white; text-align: center;">
-                                Year</th>
+                                Year
+                            </th>
                             <th style="color: white; text-align: center;">
-                                IV-No</th>
+                                IV-No
+                            </th>
                             <th style="color: white; text-align: center;">
-                                IV-No2</th>
+                                IV-No2
+                            </th>
                             <th style="color: white; text-align: center;">
-                                A/C Code</th>
+                                A/C Code
+                            </th>
                             <th style="color: white; text-align: center;">
-                                A/C Head</th>
+                                A/C Head
+                            </th>
                             <th style="color: white; text-align: center;">
-                                A/C Name</th>
+                                A/C Name
+                            </th>
                             <th style="color: white; text-align: center;">
-                                Description</th>
+                                Description
+                            </th>
                             <th style="color: white; text-align: center;">
-                                Cash AC</th>
+                                Cash AC
+                            </th>
                             <th style="color: white; text-align: center;">
-                                Cash-In</th>
+                                Cash-In
+                            </th>
                             <th style="color: white; text-align: center;">
-                                Cash-Out</th>
+                                Cash-Out
+                            </th>
+                            <th style="color: white; text-align: center; padding-right: 50px; padding-left: 50px;">
+                                Cash-Balance
+                            </th>
                             <th style="color: white; text-align: center;">
-                                Cash-Balance</th>
+                                Bank AC
+                            </th>
                             <th style="color: white; text-align: center;">
-                                Bank AC</th>
+                                Bank-In
+                            </th>
                             <th style="color: white; text-align: center;">
-                                Bank-In</th>
+                                Bank-Out
+                            </th>
+                            <th style="color: white; text-align: center; padding-right: 50px; padding-left: 50px;">
+                                Bank-Balance
+                            </th>
+                            <th style="color: white; text-align: center; padding-right: 50px; padding-left: 50px;">
+                                Deposit(Cash+Bank)
+                            </th>
+                            <th style="color: white; text-align: center; padding-right: 50px; padding-left: 50px;">
+                                Withdraw(Cash+Bank)
+                            </th>
                             <th style="color: white; text-align: center;">
-                                Bank-Out</th>
+                                Bank Name
+                            </th>
                             <th style="color: white; text-align: center;">
-                                Bank-Balance</th>
-                            <th style="color: white; text-align: center;">
-                                Deposit(Cash+Bank)</th>
-                            <th style="color: white; text-align: center;">
-                                Withdraw(Cash+Bank)</th>
-                            <th style="color: white; text-align: center;">
-                                Bank Name</th>
-                            <th style="color: white; text-align: center;">
-                                Action</th>
+                                Action
+                            </th>
                         </thead>
                         <tbody class="table-border-bottom-0 t">
 
@@ -91,12 +112,30 @@
                                 ])
                             @endif
 
-
-                            <?php $cash_balance = 0; ?>
-                            <?php $bank_balance = 0; ?>
-                            <?php $closing_balance = 0; ?>
+                            <?php $cash_balance_total = 0; ?>
+                            <?php $bank_balance_total = 0; ?>
                             <?php $deposit = 0; ?>
                             <?php $withdraw = 0; ?>
+                            <?php $closing_cash_balance = 0; //8898194.85 ?>
+                            <?php $closing_bank_balance = 0; //606246564.14 ?>
+
+                            @php
+                                $cash_daily_closing_balance = $closing_cash_balance;
+                            @endphp
+                            @php
+                                $bank_daily_closing_balance = $closing_bank_balance;
+                            @endphp
+
+
+                            <?php
+                            foreach ($before_first_days as $day) {
+                                $closing_cash_balance = $closing_cash_balance + ($day->credit - $day->debit);
+                            
+                                $daily_cash_past = $cash_daily_closing_balance;
+                                $cash_daily_closing_balance = $daily_cash_past + ($day->cash_in - $day->cash_out);
+                            }
+                            ?>
+
                             @foreach ($cash_books as $key => $cash_book)
                                 <tr>
                                     <td style="text-align: center;">
@@ -136,6 +175,7 @@
                                     </td>
 
                                     <td style="text-align: center;">
+                                        {{-- {{ $cash_book->description }} --}}
                                         {!! Str::words($cash_book->description, 7, ' ...') !!}
                                     </td>
 
@@ -154,10 +194,12 @@
 
                                     {{-- cash balance --}}
                                     <td style="text-align: right;">
-                                        <?php
-                                        $cash_balance = $closing_balance + ($cash_book->cash_in - $cash_book->cash_out);
-                                        echo number_format($cash_balance);
-                                        ?>
+                                        @php
+                                            $daily_cash_past = $cash_daily_closing_balance;
+                                            $cash_daily_closing_balance = $daily_cash_past + ($cash_book->cash_in - $cash_book->cash_out);
+                                            echo number_format($cash_daily_closing_balance, 2);
+                                            $cash_balance_total += $cash_daily_closing_balance;
+                                        @endphp
                                     </td>
 
                                     <td style="text-align: center;">
@@ -174,23 +216,27 @@
 
                                     {{-- bank balance --}}
                                     <td style="text-align: right;">
-                                        <?php
-                                        $bank_balance = $closing_balance + ($cash_book->bank_in - $cash_book->bank_out);
-                                        echo number_format($bank_balance);
-                                        ?>
+                                        @php
+                                            $daily_bank_past = $bank_daily_closing_balance;
+                                            $bank_daily_closing_balance = $daily_bank_past + ($cash_book->bank_in - $cash_book->bank_out);
+                                            echo number_format($bank_daily_closing_balance, 2);
+                                            $bank_balance_total += $bank_daily_closing_balance;
+                                        @endphp
                                     </td>
 
+                                    {{-- Deposit(Cash+Bank) --}}
                                     <td style="text-align: right;">
                                         <?php
                                         $deposit = $cash_book->cash_in + $cash_book->bank_in;
-                                        echo number_format($deposit);
+                                        echo number_format($deposit, 2);
                                         ?>
                                     </td>
 
+                                    {{-- Withdraw(Cash+Bank) --}}
                                     <td style="text-align: right">
                                         <?php
                                         $withdraw = $cash_book->cash_out + $cash_book->bank_out;
-                                        echo number_format($withdraw);
+                                        echo number_format($withdraw, 2);
                                         ?>
                                     </td>
 
@@ -244,7 +290,7 @@
                             </td>
 
                             <td style="text-align: right; font-weight: bold">
-                                {{ number_format($cash_balance) }}
+                                {{ number_format($cash_balance_total, 2) }}
                             </td>
 
                             <td></td>
@@ -258,18 +304,17 @@
                             </td>
 
                             <td style="text-align: right; font-weight: bold">
-                                {{-- echo number_format($bank_balance); --}}
-                                {{ number_format($cash_books->sum('closing_balance') + $cash_books->sum('cash_in') + $cash_books->sum('bank_in')) }}
+                                {{ number_format($bank_balance_total, 2) }}
                             </td>
 
                             {{-- Deposit(Cash+Bank) --}}
                             <td style="text-align: right; font-weight: bold">
-                                {{ number_format($cash_books->sum('cash_in') + $cash_books->sum('bank_in')) }}
+                                {{ number_format($cash_books->sum('cash_in') + $cash_books->sum('bank_in'), 2) }}
                             </td>
 
                             {{-- Withdraw(Cash+Bank) --}}
                             <td style="text-align: right; font-weight: bold">
-                                {{ number_format($cash_books->sum('cash_out') + $cash_books->sum('bank_out')) }}
+                                {{ number_format($cash_books->sum('cash_out') + $cash_books->sum('bank_out'), 2) }}
                             </td>
 
                             <th></th>
