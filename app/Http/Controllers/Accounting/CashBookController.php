@@ -187,26 +187,35 @@ class CashBookController extends Controller
      */
     public function cashbook_export()
     {
+
         $chartof_accounts = ChartofAccount::orderBy('coa_number', 'ASC')->get();
-        $cash_books = CashBook::orderBy('id', 'ASC')->paginate(1000);
+        $cash_books = CashBook::orderBy('cash_book_date', 'ASC')->get();
+        if (request('search')) {
+            $cash_books = CashBook::where(function ($query) {
+                $query->where('iv_one', 'Like', '%' . request('search') . '%');
+                $query->orWhere('iv_two', 'Like', '%' . request('search') . '%');
+                $query->orWhere('description', 'Like', '%' . request('search') . '%');
+            })->paginate(500);
+        }
 
         if (request('from_date') && request('to_date')) {
-            $cash_books = CashBook::whereBetween('cash_book_date', [request('from_date'), request('to_date')])->paginate(1000);
+            $cash_books = CashBook::whereBetween('cash_book_date', [request('from_date'), request('to_date')])->paginate(500);
 
             // Closing Clash and Bank Balance
             $from_date = request('from_date');
+            $to_date = request('to_date');
+
             $beforeFirstDays = DB::table('cash_books')
                 ->whereDate('cash_book_date', '<', $from_date)
                 ->get();
         } else {
-            $first_day = date('Y-m-d', strtotime('first day of this month'));
-            $end_day = date('Y-m-d', strtotime('last day of this month'));
-            $cash_books = CashBook::whereBetween('cash_book_date', [$first_day, $end_day])->paginate(1000);
+            $from_date = '2019-06-01'; //date('Y-m-d', strtotime('first day of this month'));
+            $to_date = date('Y-m-d', strtotime('last day of this month'));
+            $cash_books = CashBook::whereBetween('cash_book_date', [$from_date, $to_date])->orderBy('cash_book_date', 'ASC')->paginate(500);
 
             // Closing Clash and Bank Balance
-            $from_date = request('from_date');
             $beforeFirstDays = DB::table('cash_books')
-                ->whereDate('cash_book_date', '<', $first_day)
+                ->whereDate('cash_book_date', '<', $from_date)
                 ->get();
         }
 

@@ -25,8 +25,6 @@
         </tr>
     </thead>
     <tbody>
-    <tbody class="table-border-bottom-0 t">
-
         <?php $deposit = 0; ?>
         <?php $withdraw = 0; ?>
         <?php $closing_cash_balance = 0; //8898194.85   8889694.85 ?>
@@ -38,7 +36,6 @@
         @php
             $bank_daily_closing_balance = $closing_bank_balance;
         @endphp
-
 
         {{-- Closing Clash and Bank Balance --}}
         @foreach ($beforeFirstDays as $key => $beforeFirstDay)
@@ -92,8 +89,7 @@
                 </td>
 
                 <td style="text-align: center;">
-                    {{-- {{ $cash_book->description }} --}}
-                    {!! Str::words($cash_book->description, 7, ' ...') !!}
+                    {{ $cash_book->description }}
                 </td>
 
                 <td style="text-align: center;">
@@ -195,7 +191,6 @@
             {{ number_format($cash_books->sum('cash_out') + $cash_books->sum('bank_out'), 2) }}
         </td>
 
-        <th></th>
         <th></th>
     </tr>
 </table>
