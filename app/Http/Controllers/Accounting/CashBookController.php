@@ -25,7 +25,8 @@ class CashBookController extends Controller
         $chartof_accounts = ChartofAccount::orderBy('coa_number', 'ASC')->get();
         $cash_book_form_status = 'is_create';
 
-        $cash_books = CashBook::orderBy('id', 'ASC')->paginate(500);
+        // $cash_books = CashBook::orderBy('cash_book_date', 'ASC')->paginate(500);
+        $cash_books = CashBook::orderBy('cash_book_date', 'ASC')->get();
         if (request('search')) {
             $cash_books = CashBook::where(function ($query) {
                 $query->where('iv_one', 'Like', '%' . request('search') . '%');
@@ -47,7 +48,7 @@ class CashBookController extends Controller
         } else {
             $from_date = '2019-06-01'; //date('Y-m-d', strtotime('first day of this month'));
             $to_date = date('Y-m-d', strtotime('last day of this month'));
-            $cash_books = CashBook::whereBetween('cash_book_date', [$from_date, $to_date])->paginate(500);
+            $cash_books = CashBook::whereBetween('cash_book_date', [$from_date, $to_date])->orderBy('cash_book_date', 'ASC')->paginate(500);
 
             // Closing Clash and Bank Balance
             $beforeFirstDays = DB::table('cash_books')
@@ -125,17 +126,17 @@ class CashBookController extends Controller
         $edit_cash_book_data = CashBook::findOrFail($id);
         $cash_book_form_status = 'is_edit';
 
-        $first_day = date('Y-m-d', strtotime('first day of this month'));
-        $end_day = date('Y-m-d', strtotime('last day of this month'));
-        $cash_books = CashBook::whereBetween('cash_book_date', [$first_day, $end_day])->paginate(500);
+        $from_date = date('Y-m-d', strtotime('first day of this month'));
+        $to_date = date('Y-m-d', strtotime('last day of this month'));
+        $cash_books = CashBook::whereBetween('cash_book_date', [$from_date, $to_date])->paginate(500);
 
         // Closing Clash and Bank Balance
-        $from_date = request('from_date');
         $beforeFirstDays = DB::table('cash_books')
-            ->whereDate('cash_book_date', '<', $first_day)
+            ->whereDate('cash_book_date', '<', $from_date)
             ->get();
 
-        return view('accounting.cash_book.index', compact('cash_books', 'chartof_accounts', 'edit_cash_book_data', 'beforeFirstDays', 'cash_book_form_status'));
+        $filter_date = ['from_date' => $from_date, 'to_date' => $to_date];
+        return view('accounting.cash_book.index', compact('cash_books', 'chartof_accounts', 'edit_cash_book_data', 'beforeFirstDays', 'cash_book_form_status', 'filter_date'));
     }
 
     /**
