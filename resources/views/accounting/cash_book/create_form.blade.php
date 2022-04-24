@@ -168,7 +168,7 @@
 
     </tr>
 
-    <input type="hidden" class="form-control" id="account_type_id" name="account_type_id" required />
+    <input type="hidden" class="form-control" id="account_type_id" name="account_type_id" />
     <input type="hidden" name="account_code" id="AccountCode">
     <input type="hidden" name="cash_account" id="CashAccount">
     <input type="hidden" name="bank_account" id="BankAccount">

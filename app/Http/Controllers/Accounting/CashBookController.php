@@ -85,8 +85,8 @@ class CashBookController extends Controller
         $cash_book->year = $request->year;
         $cash_book->iv_one = $request->iv_one;
         $cash_book->iv_two = $request->iv_two;
-        $cash_book->account_code_id = $request->account_code;
-        $cash_book->account_type_id = $request->account_type_id;
+        $cash_book->account_code_id = $request->account_code ?? 0;
+        $cash_book->account_type_id = $request->account_type_id ?? 0;
         $cash_book->description = $request->description;
         $cash_book->cash_account_id = $request->cash_account ?? 0;
         $cash_book->bank_account = $request->bank_account ?? 0;
@@ -126,7 +126,7 @@ class CashBookController extends Controller
         $edit_cash_book_data = CashBook::findOrFail($id);
         $cash_book_form_status = 'is_edit';
 
-        $from_date = date('Y-m-d', strtotime('first day of this month'));
+        $from_date = '2019-06-01'; //date('Y-m-d', strtotime('first day of this month'));
         $to_date = date('Y-m-d', strtotime('last day of this month'));
         $cash_books = CashBook::whereBetween('cash_book_date', [$from_date, $to_date])->paginate(500);
 
@@ -154,8 +154,8 @@ class CashBookController extends Controller
         $cash_book->year = $request->year;
         $cash_book->iv_one = $request->iv_one;
         $cash_book->iv_two = $request->iv_two;
-        $cash_book->account_code_id = $request->account_code;
-        $cash_book->account_type_id = $request->account_type_id;
+        $cash_book->account_code_id = $request->account_code ?? 0;
+        $cash_book->account_type_id = $request->account_type_id ?? 0;
         $cash_book->description = $request->description;
         $cash_book->cash_account_id = $request->cash_account ?? 0;
         $cash_book->bank_account = $request->bank_account ?? 0;
