@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Accounting\ChartofAccount;
 use App\Http\Requests\StoreProducts;
 use App\Http\Requests\UpdateProducts;
+use App\Models\Brand;
 use App\Models\Products;
 use Illuminate\Http\Request;
 
@@ -17,11 +18,6 @@ class ProductsController extends Controller
      */
     public function index()
     {
-        // $products = Products::query();
-        // if (request('search')) {
-        //     $products->where('name', 'Like', '%' . request('search') . '%');
-        // }
-        // $products = $products->orderBy('id', 'ASC')->paginate(50);
         $products = Products::all();
         return view('products.index', compact('products'));
     }
@@ -33,8 +29,8 @@ class ProductsController extends Controller
      */
     public function create()
     {
-        $chartof_accounts = ChartofAccount::all();
-        return view('products.create', compact('chartof_accounts'));
+        $brands = Brand::all();
+        return view('products.create', compact('brands'));
     }
 
     /**
@@ -45,19 +41,28 @@ class ProductsController extends Controller
      */
     public function store(StoreProducts $request)
     {
+        $user_id = auth()->user()->id;
         $product = new Products();
-        $product->name = $request->name;
-        $product->item_code = $request->item_code;
-        $product->description = $request->description;
-        $product->opening_cost = $request->opening_cost ?? 0;
-        $product->opening_quantity = $request->opening_quantity ?? 0;
-        $product->qty_at_date = $request->qty_at_date;
-        $product->selling_price = $request->selling_price ?? 0;
-        $product->sale_account_id = $request->sale_account_id;
-        $product->cost_of_unit = $request->cost_of_unit ?? 0;
-        $product->purchase_account_id = $request->purchase_account_id;
+        $product->product = $request->product;
+        $product->type = $request->type;
+        $product->model_no = $request->model_no;
+        $product->model_year = $request->model_year;
+        $product->configuration = $request->configuration;
+        $product->body_color = $request->body_color;
+        $product->interior_color = $request->interior_color;
+        $product->engine_power = $request->engine_power;
+        $product->chessi_no = $request->chessi_no;
+        $product->engine_no = $request->engine_no;
+        $product->weight = $request->weight;
+        $product->door = $request->door;
+        $product->seater = $request->seater;
+        $product->vehicle_no = $request->vehicle_no;
+        $product->quantity = $request->quantity;
+        $product->remark = $request->remark;
+        $product->brand_id = $request->brand_id ?? 0;
+        $product->user_id = $user_id ?? 0;
         $product->save();
-        return redirect()->back()->with('success', 'Created successfully.');
+        return redirect()->back()->with('success', 'Your processing has been completed.');
     }
 
     /**
@@ -79,9 +84,9 @@ class ProductsController extends Controller
      */
     public function edit($id)
     {
-        $chartof_accounts = ChartofAccount::all();
+        $brands = Brand::all();
         $product = Products::findOrFail($id);
-        return view('products.edit', compact('chartof_accounts', 'product'));
+        return view('products.edit', compact('brands', 'product'));
     }
 
     /**
@@ -93,19 +98,28 @@ class ProductsController extends Controller
      */
     public function update(UpdateProducts $request, $id)
     {
+        $user_id = auth()->user()->id;
         $product = Products::findOrFail($id);
-        $product->name = $request->name;
-        $product->item_code = $request->item_code;
-        $product->description = $request->description;
-        $product->opening_cost = $request->opening_cost ?? 0;
-        $product->opening_quantity = $request->opening_quantity ?? 0;
-        $product->qty_at_date = $request->qty_at_date;
-        $product->selling_price = $request->selling_price ?? 0;
-        $product->sale_account_id = $request->sale_account_id;
-        $product->cost_of_unit = $request->cost_of_unit ?? 0;
-        $product->purchase_account_id = $request->purchase_account_id;
+        $product->product = $request->product;
+        $product->type = $request->type;
+        $product->model_no = $request->model_no;
+        $product->model_year = $request->model_year;
+        $product->configuration = $request->configuration;
+        $product->body_color = $request->body_color;
+        $product->interior_color = $request->interior_color;
+        $product->engine_power = $request->engine_power;
+        $product->chessi_no = $request->chessi_no;
+        $product->engine_no = $request->engine_no;
+        $product->weight = $request->weight;
+        $product->door = $request->door;
+        $product->seater = $request->seater;
+        $product->vehicle_no = $request->vehicle_no;
+        $product->quantity = $request->quantity;
+        $product->remark = $request->remark;
+        $product->brand_id = $request->brand_id ?? 0;
+        $product->user_id = $user_id ?? 0;
         $product->update();
-        return redirect()->back()->with('success', 'Updated successfully.');
+        return redirect()->back()->with('success', 'Your processing has been completed.');
     }
 
     /**
@@ -118,6 +132,6 @@ class ProductsController extends Controller
     {
         $product = Products::findOrFail($id);
         $product->delete();
-        return redirect()->back()->with('success', 'Deleted successfully.');
+        return redirect()->back()->with('success', 'Your processing has been completed.');
     }
 }

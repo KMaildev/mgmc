@@ -2,189 +2,177 @@
 @section('content')
     <div class="row justify-content-center">
         <div class="col-md-9 col-lg-9 col-sm-12">
-            <div class="col-xxl">
-                <div class="card mb-4">
-                    <h5 class="card-header">Product</h5>
-                    <form class="card-body" autocomplete="off" action="{{ route('products.store') }}" method="POST"
-                        id="create-form">
-                        @csrf
+            <div class="card mb-4">
+                <h5 class="card-header">Product</h5>
+                <form class="card-body" autocomplete="off" action="{{ route('products.store') }}" method="POST"
+                    id="create-form">
+                    @csrf
+                    <div class="row g-3">
 
-                        <h6 class="mb-3" style="font-weight: bold">Product Information</h6>
+                        <div class="col-md-6">
+                            <label class="form-label" for="multicol-country">Brand</label>
+                            <select class="select2 form-select" data-allow-clear="true" name="brand_id">
+                                <option value="">Select</option>
+                                @foreach ($brands as $brand)
+                                    <option value="{{ $brand->id }}">
+                                        {{ $brand->name }}
+                                    </option>
+                                @endforeach
+                            </select>
+                            @error('brand_id')
+                                <div class="invalid-feedback"> {{ $message }} </div>
+                            @enderror
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="form-label">Product</label>
+                            <input type="text" class="form-control @error('product') is-invalid @enderror" name="product"
+                                value="{{ old('product') }}" />
+                            @error('product')
+                                <div class="invalid-feedback"> {{ $message }} </div>
+                            @enderror
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="form-label">Type</label>
+                            <input type="text" class="form-control @error('type') is-invalid @enderror" name="type"
+                                value="{{ old('type') }}" />
+                            @error('type')
+                                <div class="invalid-feedback"> {{ $message }} </div>
+                            @enderror
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="form-label">Model No</label>
+                            <input type="text" class="form-control @error('model_no') is-invalid @enderror" name="model_no"
+                                value="{{ old('model_no') }}" />
+                            @error('model_no')
+                                <div class="invalid-feedback"> {{ $message }} </div>
+                            @enderror
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="form-label">Model Year</label>
+                            <input type="text" class="form-control @error('model_year') is-invalid @enderror"
+                                name="model_year" value="{{ old('model_year') }}" />
+                            @error('model_year')
+                                <div class="invalid-feedback"> {{ $message }} </div>
+                            @enderror
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="form-label">Configuration</label>
+                            <input type="text" class="form-control @error('configuration') is-invalid @enderror"
+                                name="configuration" value="{{ old('configuration') }}" />
+                            @error('configuration')
+                                <div class="invalid-feedback"> {{ $message }} </div>
+                            @enderror
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="form-label">Body Color</label>
+                            <input type="text" class="form-control @error('body_color') is-invalid @enderror"
+                                name="body_color" value="{{ old('body_color') }}" />
+                            @error('body_color')
+                                <div class="invalid-feedback"> {{ $message }} </div>
+                            @enderror
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="form-label">Interior Color</label>
+                            <input type="text" class="form-control @error('interior_color') is-invalid @enderror"
+                                name="interior_color" value="{{ old('interior_color') }}" />
+                            @error('interior_color')
+                                <div class="invalid-feedback"> {{ $message }} </div>
+                            @enderror
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="form-label">Engine Power</label>
+                            <input type="text" class="form-control @error('engine_power') is-invalid @enderror"
+                                name="engine_power" value="{{ old('engine_power') }}" />
+                            @error('engine_power')
+                                <div class="invalid-feedback"> {{ $message }} </div>
+                            @enderror
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="form-label">Chessi No</label>
+                            <input type="text" class="form-control @error('chessi_no') is-invalid @enderror"
+                                name="chessi_no" value="{{ old('chessi_no') }}" />
+                            @error('chessi_no')
+                                <div class="invalid-feedback"> {{ $message }} </div>
+                            @enderror
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="form-label">Engine No</label>
+                            <input type="text" class="form-control @error('engine_no') is-invalid @enderror"
+                                name="engine_no" value="{{ old('engine_no') }}" />
+                            @error('engine_no')
+                                <div class="invalid-feedback"> {{ $message }} </div>
+                            @enderror
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="form-label">Weight</label>
+                            <input type="text" class="form-control @error('weight') is-invalid @enderror" name="weight"
+                                value="{{ old('weight') }}" />
+                            @error('weight')
+                                <div class="invalid-feedback"> {{ $message }} </div>
+                            @enderror
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="form-label">Door</label>
+                            <input type="text" class="form-control @error('door') is-invalid @enderror" name="door"
+                                value="{{ old('door') }}" />
+                            @error('door')
+                                <div class="invalid-feedback"> {{ $message }} </div>
+                            @enderror
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="form-label">Seater</label>
+                            <input type="text" class="form-control @error('seater') is-invalid @enderror" name="seater"
+                                value="{{ old('seater') }}" />
+                            @error('seater')
+                                <div class="invalid-feedback"> {{ $message }} </div>
+                            @enderror
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="form-label">Vehicle No</label>
+                            <input type="text" class="form-control @error('vehicle_no') is-invalid @enderror"
+                                name="vehicle_no" value="{{ old('vehicle_no') }}" />
+                            @error('vehicle_no')
+                                <div class="invalid-feedback"> {{ $message }} </div>
+                            @enderror
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="form-label">Quantity</label>
+                            <input type="text" class="form-control @error('quantity') is-invalid @enderror" name="quantity"
+                                value="0" />
+                            @error('quantity')
+                                <div class="invalid-feedback"> {{ $message }} </div>
+                            @enderror
+                        </div>
+
                         <div class="col-md-12">
-                            <div class="row">
-                                <div class="col-md-6 col-lg-6">
-                                    <div class="row mb-3">
-                                        <label class="col-sm-3 col-form-label text-sm-end"
-                                            for="alignment-full-name">Name*</label>
-                                        <div class="col-sm-9">
-                                            <input type="text" class="form-control @error('name') is-invalid @enderror"
-                                                name="name" value="{{ old('name') }}" />
-                                            @error('name')
-                                                <div class="invalid-feedback"> {{ $message }} </div>
-                                            @enderror
-                                        </div>
-                                    </div>
-
-                                    <div class="row mb-3">
-                                        <label class="col-sm-3 col-form-label text-sm-end"
-                                            for="alignment-full-name">Code*</label>
-                                        <div class="col-sm-9">
-                                            <input type="text" class="form-control @error('item_code') is-invalid @enderror"
-                                                name="item_code" value="{{ old('code') }}" />
-                                            @error('item_code')
-                                                <div class="invalid-feedback"> {{ $message }} </div>
-                                            @enderror
-                                        </div>
-                                    </div>
-
-                                    <div class="row mb-3">
-                                        <label class="col-sm-3 col-form-label text-sm-end"
-                                            for="alignment-full-name">Description</label>
-                                        <div class="col-sm-9">
-                                            <textarea id="basic-default-message"
-                                                class="form-control @error('description') is-invalid @enderror">{{ old('description') }}</textarea>
-                                            @error('description')
-                                                <div class="invalid-feedback"> {{ $message }} </div>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-6 col-lg-6">
-                                    <div class="row mb-3">
-                                        <label class="col-sm-3 col-form-label text-sm-end" for="alignment-full-name">Opening
-                                            Cost</label>
-                                        <div class="col-sm-9">
-                                            <input type="text"
-                                                class="form-control @error('opening_cost') is-invalid @enderror"
-                                                name="opening_cost" value="0" />
-                                            @error('opening_cost')
-                                                <div class="invalid-feedback"> {{ $message }} </div>
-                                            @enderror
-                                        </div>
-                                    </div>
-
-
-                                    <div class="row mb-3">
-                                        <label class="col-sm-3 col-form-label text-sm-end" for="alignment-full-name">Opening
-                                            Quantity</label>
-                                        <div class="col-sm-9">
-                                            <input type="text"
-                                                class="form-control @error('opening_quantity') is-invalid @enderror"
-                                                name="opening_quantity" value="0" />
-                                            @error('opening_quantity')
-                                                <div class="invalid-feedback"> {{ $message }} </div>
-                                            @enderror
-                                        </div>
-                                    </div>
-
-                                    <div class="row mb-3">
-                                        <label class="col-sm-3 col-form-label text-sm-end" for="alignment-full-name">Opening
-                                            Quantity as
-                                            At Date</label>
-                                        <div class="col-sm-9">
-                                            <input type="date"
-                                                class="form-control @error('qty_at_date') is-invalid @enderror"
-                                                name="qty_at_date" value="{{ old('qty_at_date') }}" />
-                                            @error('qty_at_date')
-                                                <div class="invalid-feedback"> {{ $message }} </div>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            <label class="form-label">Remark</label>
+                            <input type="text" class="form-control @error('remark') is-invalid @enderror" name="remark"
+                                value="{{ old('remark') }}" />
+                            @error('remark')
+                                <div class="invalid-feedback"> {{ $message }} </div>
+                            @enderror
                         </div>
-
-                        <hr class="my-4 mx-n4" />
-
-                        <div class="col-md-12">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <h6 class="mb-b" style="font-weight: bold">Selling Product Details</h6>
-                                    <div class="row mb-3">
-                                        <label class="col-sm-3 col-form-label text-sm-end" for="alignment-username">
-                                            Selling Price
-                                        </label>
-                                        <div class="col-sm-9">
-                                            <input type="text"
-                                                class="form-control @error('selling_price') is-invalid @enderror"
-                                                name="selling_price" value="{{ old('selling_price') }}" />
-                                            @error('selling_price')
-                                                <div class="invalid-feedback"> {{ $message }} </div>
-                                            @enderror
-                                        </div>
-                                    </div>
-
-
-                                    <div class="row mb-3">
-                                        <label class="col-sm-3 col-form-label text-sm-end" for="SaleAccountID">Sales
-                                            Account*</label>
-                                        <div class="col-sm-9">
-                                            <select id="SaleAccountID" class="select2 form-select form-select-lg"
-                                                data-allow-clear="true" name="sale_account_id">
-                                                @foreach ($chartof_accounts as $chartof_account)
-                                                    <option value="{{ $chartof_account->id }}">
-                                                        {{ $chartof_account->coa_number }}
-                                                    </option>
-                                                @endforeach
-                                            </select>
-                                            @error('sale_account_id')
-                                                <div class="invalid-feedback"> {{ $message }} </div>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-6">
-                                    <h6 class="mb-b" style="font-weight: bold">Buying Product Details</h6>
-                                    <div class="row mb-3">
-                                        <label class="col-sm-3 col-form-label text-sm-end" for="alignment-username">Cost
-                                            of unit</label>
-                                        <div class="col-sm-9">
-                                            <input type="text"
-                                                class="form-control @error('cost_of_unit') is-invalid @enderror"
-                                                name="cost_of_unit" value="0" />
-                                            @error('cost_of_unit')
-                                                <div class="invalid-feedback"> {{ $message }} </div>
-                                            @enderror
-                                        </div>
-                                    </div>
-
-                                    <div class="row mb-3">
-                                        <label class="col-sm-3 col-form-label text-sm-end" for="PurchaseAccountID">Purchase
-                                            Account*</label>
-                                        <div class="col-sm-9">
-                                            <select id="PurchaseAccountID" class="select2 form-select form-select-lg"
-                                                data-allow-clear="true" name="purchase_account_id">
-                                                @foreach ($chartof_accounts as $chartof_account)
-                                                    <option value="{{ $chartof_account->id }}">
-                                                        {{ $chartof_account->coa_number }}
-                                                    </option>
-                                                @endforeach
-                                            </select>
-                                            @error('purchase_account_id')
-                                                <div class="invalid-feedback"> {{ $message }} </div>
-                                            @enderror
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="pt-4">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <center>
-                                        <button type="submit" class="btn btn-primary me-sm-2 me-1">Save</button>
-                                        <a href="{{ route('products.index') }}"
-                                            class="btn btn-label-secondary">Cancel</a>
-                                    </center>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                </div>
+                    </div>
+                    <div class="pt-4">
+                        <button type="submit" class="btn btn-primary me-sm-3 me-1">Save</button>
+                        <a href="{{ route('products.index') }}" class="btn btn-label-secondary">Cancel</a>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

@@ -132,11 +132,19 @@
                 </a>
 
                 <ul class="menu-sub">
+
+                    <li class="menu-item">
+                        <a href="{{ route('brand.index') }}" class="menu-link">
+                            <div data-i2n="Without menu"> Brand</div>
+                        </a>
+                    </li>
+
                     <li class="menu-item">
                         <a href="{{ route('products.index') }}" class="menu-link">
                             <div data-i2n="Without menu"> Products</div>
                         </a>
                     </li>
+
                 </ul>
             </li>
 

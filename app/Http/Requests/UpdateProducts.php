@@ -24,13 +24,9 @@ class UpdateProducts extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required',
-            'opening_cost' => 'numeric',
-            'opening_quantity' => 'numeric',
-            'selling_price' => 'numeric',
-            'sale_account_id' => 'required',
-            'cost_of_unit' => 'numeric',
-            'purchase_account_id' => 'required',
+            'brand_id' => 'required',
+            'product' => 'required',
+            'quantity' => 'numeric',
         ];
     }
 }

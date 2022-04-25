@@ -8,8 +8,6 @@
                     <div class="card-title header-elements">
                         <h5 class="m-0 me-2">List of Products</h5>
                         <div class="card-title-elements ms-auto">
-                            @include('layouts.includes.export')
-
                             <a href="{{ route('products.create') }}" class="dt-button create-new btn btn-primary btn-sm">
                                 <span>
                                     <i class="bx bx-plus me-sm-2"></i>
@@ -20,60 +18,84 @@
                     </div>
                 </div>
 
-                <div class="table-responsive text-nowrap rowheaders table-scroll" role="region" aria-labelledby="HeadersCol"
-                    tabindex="0">
-                    <table class="table table-bordered main-table py-5" id="export_excel">
+                <div class="table-responsive text-nowrap table-scroll outer-wrapper" role="region"
+                    aria-labelledby="HeadersCol" tabindex="0">
+                    <table class="table table-bordered main-table py-5" id="export_excel"
+                        style="margin-bottom: 1px !important;">
                         <thead class="tbbg">
-                            <th style="color: white; text-align: center; width: 1%;">#</th>
-                            <th style="color: white; text-align: center;">Name</th>
-                            <th style="color: white; text-align: center;">Code</th>
-                            <th style="color: white; text-align: center;">Description</th>
-                            <th style="color: white; text-align: center;">Opening Cost</th>
-                            <th style="color: white; text-align: center;">Quantity on Hand</th>
-                            <th style="color: white; text-align: center;">Opening Quantity as At Date</th>
-                            <th style="color: white; text-align: center;">Selling Price</th>
-                            <th style="color: white; text-align: center;">Sales Account</th>
-                            <th style="color: white; text-align: center;">Cost of unit</th>
-                            <th style="color: white; text-align: center;">Purchase Account</th>
+                            <th style="color: white; text-align: center; width: 1%;">Sr.No</th>
+                            <th style="color: white; text-align: center;">Brand Name</th>
+                            <th style="color: white; text-align: center;">Product</th>
+                            <th style="color: white; text-align: center;">Type</th>
+                            <th style="color: white; text-align: center;">Model No</th>
+                            <th style="color: white; text-align: center;">Model Year</th>
+                            <th style="color: white; text-align: center;">Configuration</th>
+                            <th style="color: white; text-align: center;">Body Color</th>
+                            <th style="color: white; text-align: center;">Interior Color</th>
+                            <th style="color: white; text-align: center;">Engine Power</th>
+                            <th style="color: white; text-align: center;">Chessi No</th>
+                            <th style="color: white; text-align: center;">Engine No.</th>
+                            <th style="color: white; text-align: center;">Weight </th>
+                            <th style="color: white; text-align: center;">Door</th>
+                            <th style="color: white; text-align: center;">Seater</th>
+                            <th style="color: white; text-align: center;">Vehicle No.</th>
+                            <th style="color: white; text-align: center;">Quantity</th>
                             <th style="color: white; text-align: center;">Action</th>
                         </thead>
                         <tbody class="table-border-bottom-0">
                             @foreach ($products as $key => $product)
                                 <tr>
-                                    <td>
+                                    <td style="text-align: center;">
                                         {{ $key + 1 }}
                                     </td>
                                     <td style="text-align: center;">
-                                        {{ $product->name }}
+                                        {{ $product->brands_table->name ?? '-' }}
                                     </td>
                                     <td style="text-align: center;">
-                                        {{ $product->item_code }}
+                                        {{ $product->product }}
                                     </td>
                                     <td style="text-align: center;">
-                                        {{ $product->description }}
+                                        {{ $product->type }}
                                     </td>
                                     <td style="text-align: right;">
-                                        {{ number_format($product->opening_cost) }}
+                                        {{ $product->model_no }}
                                     </td>
                                     <td style="text-align: right;">
-                                        {{ number_format($product->opening_quantity) }}
+                                        {{ $product->model_year }}
                                     </td>
                                     <td style="text-align: center;">
-                                        {{ $product->qty_at_date }}
+                                        {{ $product->configuration }}
                                     </td>
                                     <td style="text-align: right;">
-                                        {{ number_format($product->selling_price) }}
+                                        {{ $product->body_color }}
                                     </td>
                                     <td style="text-align: center;">
-                                        {{ $product->get_sale_account->coa_number }}
+                                        {{ $product->interior_color }}
                                     </td>
                                     <td style="text-align: right;">
-                                        {{ number_format($product->cost_of_unit) }}
+                                        {{ $product->engine_power }}
                                     </td>
                                     <td style="text-align: center;">
-                                        {{ $product->get_purchase_account->coa_number }}
+                                        {{ $product->chessi_no }}
                                     </td>
-
+                                    <td style="text-align: center;">
+                                        {{ $product->engine_no }}
+                                    </td>
+                                    <td style="text-align: center;">
+                                        {{ $product->weight }}
+                                    </td>
+                                    <td style="text-align: center;">
+                                        {{ $product->door }}
+                                    </td>
+                                    <td style="text-align: center;">
+                                        {{ $product->seater }}
+                                    </td>
+                                    <td style="text-align: center;">
+                                        {{ $product->vehicle_no }}
+                                    </td>
+                                    <td style="text-align: center;">
+                                        {{ $product->quantity }}
+                                    </td>
                                     <td style="text-align: center;">
                                         <div class="demo-inline-spacing">
                                             <div class="btn-group">
@@ -82,10 +104,6 @@
                                                     Action
                                                 </button>
                                                 <ul class="dropdown-menu">
-
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">Detail</a>
-                                                    </li>
 
                                                     <li>
                                                         <a class="dropdown-item"
@@ -108,27 +126,8 @@
                                 </tr>
                             @endforeach
                         </tbody>
-                        <tr>
-                            <td colspan="4">Total:</td>
-                            <td style="text-align: right; font-weight: bold">
-                                {{ number_format($products->sum('opening_cost'), 2) }}
-                            </td>
-
-                            <td style="text-align: right; font-weight: bold">
-                                {{ number_format($products->sum('opening_quantity'), 2) }}
-                            </td>
-
-                            <td></td>
-
-                            <td style="text-align: right; font-weight: bold">
-                                {{ number_format($products->sum('selling_price'), 2) }}
-                            </td>
-                            <td></td>
-                            <td style="text-align: right; font-weight: bold">
-                                {{ number_format($products->sum('cost_of_unit'), 2) }}
-                            </td>
-                        </tr>
                     </table>
+                    <div class="pseduo-track"></div>
                 </div>
 
             </div>

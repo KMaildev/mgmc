@@ -1,6 +1,5 @@
 @extends('layouts.menus.accounting')
 @section('content')
-    <link rel="stylesheet" href="{{ asset('css/table.css') }}" />
 
     <div class="row justify-content-center outer-wrapper">
 

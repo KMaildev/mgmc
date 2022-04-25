@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreBrand;
+use App\Http\Requests\UpdateBrand;
+use App\Models\Brand;
 use Illuminate\Http\Request;
 
 class BrandController extends Controller
@@ -13,7 +16,8 @@ class BrandController extends Controller
      */
     public function index()
     {
-        //
+        $brands = Brand::all();
+        return view('brands.index', compact('brands'));
     }
 
     /**
@@ -23,7 +27,7 @@ class BrandController extends Controller
      */
     public function create()
     {
-        //
+        return view('brands.create');
     }
 
     /**
@@ -32,9 +36,12 @@ class BrandController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreBrand $request)
     {
-        //
+        $brank = new Brand();
+        $brank->name = $request->name;
+        $brank->save();
+        return redirect()->back()->with('success', 'Your processing has been completed.');
     }
 
     /**
@@ -56,7 +63,8 @@ class BrandController extends Controller
      */
     public function edit($id)
     {
-        //
+        $brand = Brand::findOrFail($id);
+        return view('brands.edit', compact('brand'));
     }
 
     /**
@@ -66,9 +74,12 @@ class BrandController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateBrand $request, $id)
     {
-        //
+        $brank = Brand::findOrFail($id);
+        $brank->name = $request->name;
+        $brank->update();
+        return redirect()->back()->with('success', 'Your processing has been completed.');
     }
 
     /**
@@ -79,6 +90,8 @@ class BrandController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $brand = Brand::findOrFail($id);
+        $brand->delete();
+        return redirect()->back()->with('success', 'Your processing has been completed.');
     }
 }

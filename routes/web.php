@@ -40,6 +40,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('customer', 'CustomerController');
     Route::resource('supplier', 'SupplierController');
     Route::resource('products', 'ProductsController');
+    Route::resource('brand', 'BrandController');
     Route::resource('department', 'DepartmentController');
 
     Route::resource('employee', 'EmployeeController');
