@@ -14,17 +14,25 @@ class CreateProductsTable extends Migration
     public function up()
     {
         Schema::create('products', function (Blueprint $table) {
-            $table->id();
-            $table->text('name')->nullable();
-            $table->text('item_code')->nullable();
-            $table->text('description')->nullable();
-            $table->text('opening_cost')->nullable();
-            $table->text('opening_quantity')->nullable();
-            $table->text('qty_at_date')->nullable();
-            $table->text('selling_price')->nullable();
-            $table->integer('sale_account_id')->nullable(); //COA ID
-            $table->text('cost_of_unit')->nullable();
-            $table->integer('purchase_account_id')->nullable(); //COA ID
+            $table->increments('id');
+            $table->text('product')->nullable();
+            $table->text('type')->nullable();
+            $table->text('model_no')->nullable();
+            $table->text('model_year')->nullable();
+            $table->text('configuration')->nullable();
+            $table->text('body_color')->nullable();
+            $table->text('interior_color')->nullable();
+            $table->text('engine_power')->nullable();
+            $table->text('chessi_no')->nullable();
+            $table->text('engine_no')->nullable();
+            $table->text('weight')->nullable();
+            $table->text('door')->nullable();
+            $table->text('seater')->nullable();
+            $table->text('vehicle_no')->nullable();
+            $table->text('quantity')->nullable();
+            $table->text('remark')->nullable();
+            $table->text('user_id')->nullable();
+            $table->text('brand_id')->nullable();
             $table->timestamps();
         });
     }

@@ -14,7 +14,7 @@ class CreateCashBooksTable extends Migration
     public function up()
     {
         Schema::create('cash_books', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
             $table->text('cash_book_date')->nullable();
             $table->text('month')->nullable();
             $table->text('year')->nullable();

@@ -14,7 +14,7 @@ class CreateCustomersTable extends Migration
     public function up()
     {
         Schema::create('customers', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
             $table->text('name')->nullable();
             $table->text('background')->nullable();
             $table->text('nrc_no')->nullable();
@@ -27,6 +27,8 @@ class CreateCustomersTable extends Migration
             $table->text('description')->nullable();
             $table->integer('dealer_customer_id')->nullable();
             $table->text('dealer_or_hp')->nullable();
+            $table->text('opening_balance')->nullable();
+            $table->text('opening_balance_date')->nullable();
             $table->timestamps();
         });
     }

@@ -26,7 +26,6 @@
                         <thead class="tbbg">
                             <th style="color: white; text-align: center; width: 1%;">#</th>
                             <th style="color: white; text-align: center;">Name</th>
-                            <th style="color: white; text-align: center;">Company</th>
                             <th style="color: white; text-align: center;">Phone</th>
                             <th style="color: white; text-align: center;">Email</th>
                             <th style="color: white; text-align: center;">Address</th>
@@ -41,9 +40,6 @@
                                     </td>
                                     <td>
                                         {{ $supplier->name }}
-                                    </td>
-                                    <td>
-                                        {{ $supplier->company }}
                                     </td>
                                     <td>
                                         {{ $supplier->phone }}
@@ -65,10 +61,6 @@
                                                     Action
                                                 </button>
                                                 <ul class="dropdown-menu">
-
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">Detail</a>
-                                                    </li>
 
                                                     <li>
                                                         <a class="dropdown-item"

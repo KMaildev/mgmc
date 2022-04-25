@@ -14,10 +14,15 @@ class CreateChartofAccountsTable extends Migration
     public function up()
     {
         Schema::create('chartof_accounts', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
             $table->string('coa_number')->unique();
-            $table->string('description');
-            $table->integer('account_type_id');
+            $table->string('description')->nullable();
+            $table->integer('account_type_id')->nullable();
+            $table->integer('account_classification_id')->nullable();
+            $table->text('account_opening_balance')->nullable();
+            $table->integer('chartof_account_id')->nullable();
+            $table->text('sub_or_main_account')->nullable();
+            $table->text('opening_balance_date')->nullable();
             $table->timestamps();
         });
     }

@@ -16,7 +16,7 @@
 
                                 <div class="row g-3">
 
-                                    <div class="col-md-3">
+                                    <div class="col-md-4">
                                         <label class="form-label" for="formtabs-username">Name</label>
                                         <input type="text" class="form-control @error('name') is-invalid @enderror"
                                             name="name" value="{{ old('name') }}" />
@@ -25,7 +25,7 @@
                                         @enderror
                                     </div>
 
-                                    <div class="col-md-3">
+                                    <div class="col-md-3" hidden>
                                         <label class="form-label" for="formtabs-username">Company</label>
                                         <input type="text" class="form-control @error('company') is-invalid @enderror"
                                             name="company" value="{{ old('company') }}" />
@@ -35,7 +35,7 @@
                                     </div>
 
 
-                                    <div class="col-md-3">
+                                    <div class="col-md-4">
                                         <label class="form-label" for="formtabs-email">Phone</label>
                                         <div class="input-group input-group-merge">
                                             <input type="text" class="form-control @error('phone') is-invalid @enderror"
@@ -46,7 +46,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-md-3">
+                                    <div class="col-md-4">
                                         <label class="form-label" for="formtabs-email">Email</label>
                                         <div class="input-group input-group-merge">
                                             <input type="text" class="form-control @error('email') is-invalid @enderror"
@@ -72,7 +72,7 @@
                                     </div>
 
                                     <div class="col-md-6">
-                                        <label class="form-label" for="formtabs-username">Description</label>
+                                        <label class="form-label" for="formtabs-username">Description or Remark</label>
                                         <input type="text" class="form-control @error('description') is-invalid @enderror"
                                             name="description" value="{{ old('description') }}" />
                                         @error('description')
