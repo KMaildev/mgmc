@@ -39,10 +39,14 @@ Route::middleware('auth')->group(function () {
 
     Route::resource('customer', 'CustomerController');
     Route::resource('supplier', 'SupplierController');
-    Route::resource('products', 'ProductsController');
     Route::resource('brand', 'BrandController');
-    Route::resource('department', 'DepartmentController');
 
+    Route::resource('products', 'ProductsController');
+    Route::post('product_import', 'ProductsController@product_import')->name('product_import');
+
+    Route::resource('import_car', 'Accounting\ImportCarController');
+
+    Route::resource('department', 'DepartmentController');
     Route::resource('employee', 'EmployeeController');
     Route::get('emp_export', 'EmployeeController@emp_export')->name('emp_export');
 
@@ -50,7 +54,6 @@ Route::middleware('auth')->group(function () {
     Route::get('cashbook_export', 'Accounting\CashBookController@cashbook_export')->name('cashbook_export');
 
     Route::resource('daily_report', 'Accounting\DailyReportController');
-
 
     Route::resource('changepassword', 'ChangePasswordController');
     Route::resource('activity', 'Activity\ActivityLogController');

@@ -1,6 +1,5 @@
 @extends('layouts.menus.accounting')
 @section('content')
-
     <div class="row justify-content-center outer-wrapper">
 
         @include('accounting.cash_book.shared.search', [

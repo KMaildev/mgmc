@@ -18,38 +18,35 @@
                     </div>
                 </div>
 
-                <div class="table-responsive text-nowrap table-scroll outer-wrapper" role="region"
+                <div class="table-responsive text-nowrap rowheaders table-scroll outer-wrapper" role="region"
                     aria-labelledby="HeadersCol" tabindex="0">
-                    <table class="table table-bordered main-table py-5" id="export_excel"
-                        style="margin-bottom: 1px !important;">
+                    <table class="table table-bordered main-table" id="export_excel">
                         <thead class="tbbg">
                             <th style="color: white; text-align: center; width: 1%;">Sr.No</th>
-                            <th style="color: white; text-align: center;">Brand Name</th>
-                            <th style="color: white; text-align: center;">Product</th>
-                            <th style="color: white; text-align: center;">Type</th>
-                            <th style="color: white; text-align: center;">Model No</th>
-                            <th style="color: white; text-align: center;">Model Year</th>
-                            <th style="color: white; text-align: center;">Configuration</th>
-                            <th style="color: white; text-align: center;">Body Color</th>
-                            <th style="color: white; text-align: center;">Interior Color</th>
-                            <th style="color: white; text-align: center;">Engine Power</th>
-                            <th style="color: white; text-align: center;">Chessi No</th>
-                            <th style="color: white; text-align: center;">Engine No.</th>
-                            <th style="color: white; text-align: center;">Weight </th>
-                            <th style="color: white; text-align: center;">Door</th>
-                            <th style="color: white; text-align: center;">Seater</th>
-                            <th style="color: white; text-align: center;">Vehicle No.</th>
-                            <th style="color: white; text-align: center;">Quantity</th>
-                            <th style="color: white; text-align: center;">Action</th>
+                            <th style="color: white; text-align: center; width: 10%;">Brand Name</th>
+                            <th style="color: white; text-align: center; width: 10%;">Product</th>
+                            <th style="color: white; text-align: center; width: 10%;">Type</th>
+                            <th style="color: white; text-align: center; width: 10%;">Model No</th>
+                            <th style="color: white; text-align: center; width: 10%;">Model Year</th>
+                            <th style="color: white; text-align: center; width: 10%;">Configuration</th>
+                            <th style="color: white; text-align: center; width: 10%;">Engine Power</th>
+                            <th style="color: white; text-align: center; width: 10%;">Chessi No</th>
+                            <th style="color: white; text-align: center; width: 10%;">Engine No.</th>
+                            <th style="color: white; text-align: center; width: 10%;">Weight </th>
+                            <th style="color: white; text-align: center; width: 10%;">Door</th>
+                            <th style="color: white; text-align: center; width: 10%;">Seater</th>
+                            <th style="color: white; text-align: center; width: 10%;">Vehicle No.</th>
+                            <th style="color: white; text-align: center; width: 10%;">Quantity</th>
+                            <th style="color: white; text-align: center; width: 10%;">Action</th>
                         </thead>
-                        <tbody class="table-border-bottom-0">
+                        <tbody class="table-border-bottom-0 row_position" id="tablecontents">
                             @foreach ($products as $key => $product)
                                 <tr>
                                     <td style="text-align: center;">
                                         {{ $key + 1 }}
                                     </td>
                                     <td style="text-align: center;">
-                                        {{ $product->brands_table->name ?? '-' }}
+                                        {{ $product->brand_name ?? '-' }}
                                     </td>
                                     <td style="text-align: center;">
                                         {{ $product->product }}
@@ -65,12 +62,6 @@
                                     </td>
                                     <td style="text-align: center;">
                                         {{ $product->configuration }}
-                                    </td>
-                                    <td style="text-align: right;">
-                                        {{ $product->body_color }}
-                                    </td>
-                                    <td style="text-align: center;">
-                                        {{ $product->interior_color }}
                                     </td>
                                     <td style="text-align: right;">
                                         {{ $product->engine_power }}
@@ -111,6 +102,11 @@
                                                     </li>
 
                                                     <li>
+                                                        <a class="dropdown-item"
+                                                            href="{{ route('products.show', $product->id) }}">Detail</a>
+                                                    </li>
+
+                                                    <li>
                                                         <form action="{{ route('products.destroy', $product->id) }}"
                                                             method="POST">
                                                             @csrf
@@ -127,7 +123,6 @@
                             @endforeach
                         </tbody>
                     </table>
-                    <div class="pseduo-track"></div>
                 </div>
 
             </div>

@@ -5,9 +5,11 @@ namespace App\Http\Controllers;
 use App\Accounting\ChartofAccount;
 use App\Http\Requests\StoreProducts;
 use App\Http\Requests\UpdateProducts;
+use App\Imports\ProductsImport;
 use App\Models\Brand;
 use App\Models\Products;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class ProductsController extends Controller
 {
@@ -61,6 +63,10 @@ class ProductsController extends Controller
         $product->remark = $request->remark;
         $product->brand_id = $request->brand_id ?? 0;
         $product->user_id = $user_id ?? 0;
+        $product->brand_name = $request->brand_name;
+        $product->commodity = $request->commodity;
+        $product->id_no = $request->id_no;
+        $product->unit = $request->unit;
         $product->save();
         return redirect()->back()->with('success', 'Your processing has been completed.');
     }
@@ -73,7 +79,8 @@ class ProductsController extends Controller
      */
     public function show($id)
     {
-        //
+        $product = Products::findOrFail($id);
+        return view('products.show', compact('product'));
     }
 
     /**
@@ -118,6 +125,10 @@ class ProductsController extends Controller
         $product->remark = $request->remark;
         $product->brand_id = $request->brand_id ?? 0;
         $product->user_id = $user_id ?? 0;
+        $product->brand_name = $request->brand_name;
+        $product->commodity = $request->commodity;
+        $product->id_no = $request->id_no;
+        $product->unit = $request->unit;
         $product->update();
         return redirect()->back()->with('success', 'Your processing has been completed.');
     }
@@ -132,6 +143,16 @@ class ProductsController extends Controller
     {
         $product = Products::findOrFail($id);
         $product->delete();
+        return redirect()->back()->with('success', 'Your processing has been completed.');
+    }
+
+
+    /**
+     * @return \Illuminate\Support\Collection
+     */
+    public function product_import()
+    {
+        Excel::import(new ProductsImport, request()->file('file'));
         return redirect()->back()->with('success', 'Your processing has been completed.');
     }
 }

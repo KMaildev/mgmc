@@ -3,7 +3,7 @@
     width: 100%;
     z-index: 1;
     overflow: auto;
-    height: calc(70vh);
+    height: calc(65vh);
 }
 
 .table-scroll th,
@@ -61,3 +61,91 @@
 .inner-wrapper {
     display: flex;
 }
+
+
+
+/* Second Table  */
+.second_table,
+th,
+td {
+    border: 1px solid black;
+    /* background-color: #D6EEEE; */
+    font-size: 12px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* proposal style table */
+tr:nth-child(even) th[scope=row] {
+    background-color: #f2f2f2;
+}
+
+tr:nth-child(odd) th[scope=row] {
+    background-color: #fff;
+}
+
+tr:nth-child(even) {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+tr:nth-child(odd) {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.colheaders td:nth-of-type(2) {
+    font-style: italic;
+}
+
+.colheaders th:nth-of-type(3),
+.colheaders td:nth-of-type(3) {
+    text-align: right;
+}
+
+.rowheaders td:nth-of-type(1) {
+    font-style: italic;
+}
+
+.rowheaders th:nth-of-type(3),
+.rowheaders td:nth-of-type(2) {
+    text-align: right;
+}
+
+/* Fixed Headers */
+th {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    z-index: 2;
+}
+
+th[scope=row] {
+    position: -webkit-sticky;
+    position: sticky;
+    left: 0;
+    z-index: 1;
+}
+
+th[scope=row] {
+    /* vertical-align: top; */
+    color: inherit;
+    background-color: inherit;
+    background: linear-gradient(90deg, transparent 0%, transparent calc(100% - .05em), #d6d6d6 calc(100% - .05em), #d6d6d6 100%);
+}
+
+th:not([scope=row]):first-child {
+    left: 0;
+    z-index: 3;
+    /* background: linear-gradient(90deg, #666 0%, #666 calc(100% - .05em), #ccc calc(100% - .05em), #ccc 100%); */
+}
+
+/* proposal style table */

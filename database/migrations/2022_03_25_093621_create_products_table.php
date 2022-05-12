@@ -33,6 +33,23 @@ class CreateProductsTable extends Migration
             $table->text('remark')->nullable();
             $table->text('user_id')->nullable();
             $table->text('brand_id')->nullable();
+
+
+            $table->text('brand_name')->nullable();
+            $table->text('commodity')->nullable();
+            $table->text('id_no')->nullable();
+            $table->text('unit')->nullable();
+
+            $table->text('amount_usd')->nullable();
+            $table->text('exchange_rate')->nullable();
+            $table->text('adjustment_value_ad')->nullable();
+            $table->text('import_duty_other_tax_percent')->nullable();
+            $table->text('commercial_tax_percent')->nullable();
+            $table->text('maccs_service_fee')->nullable();
+            $table->text('security_fee')->nullable();
+            $table->text('redemption_fine')->nullable();
+            $table->text('advance_tax_percent')->nullable();
+            $table->text('import_date')->nullable();
             $table->timestamps();
         });
     }

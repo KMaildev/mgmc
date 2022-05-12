@@ -145,6 +145,15 @@
                         </a>
                     </li>
 
+
+                    <li class="menu-item">
+                        <a href="{{ route('import_car.index') }}" class="menu-link">
+                            <div data-i2n="Without menu">
+                                Import Car
+                            </div>
+                        </a>
+                    </li>
+
                 </ul>
             </li>
 
