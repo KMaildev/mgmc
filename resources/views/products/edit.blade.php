@@ -164,7 +164,7 @@
                         <div class="col-md-6">
                             <label class="form-label">Quantity</label>
                             <input type="text" class="form-control @error('quantity') is-invalid @enderror" name="quantity"
-                                value="0" value="{{ $product->quantity }}" />
+                                value="{{ $product->quantity }}" />
                             @error('quantity')
                                 <div class="invalid-feedback"> {{ $message }} </div>
                             @enderror
@@ -230,8 +230,10 @@
 
                         <div class="col-md-6">
                             <label class="form-label">Import Duty And Other Tax Percent</label>
-                            <input type="text" class="form-control @error('import_duty_other_tax_percent') is-invalid @enderror"
-                                name="import_duty_other_tax_percent" value="{{ $product->import_duty_other_tax_percent }}" />
+                            <input type="text"
+                                class="form-control @error('import_duty_other_tax_percent') is-invalid @enderror"
+                                name="import_duty_other_tax_percent"
+                                value="{{ $product->import_duty_other_tax_percent }}" />
                             @error('import_duty_other_tax_percent')
                                 <div class="invalid-feedback"> {{ $message }} </div>
                             @enderror

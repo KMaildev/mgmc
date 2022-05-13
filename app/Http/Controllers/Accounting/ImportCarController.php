@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Accounting;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\UpdateImportCar;
 use App\Models\Products;
 use Illuminate\Http\Request;
 
@@ -15,8 +16,11 @@ class ImportCarController extends Controller
      */
     public function index()
     {
-        $products = Products::all();
-        return view('accounting.import_car.index', compact('products'));
+        $products = Products::orderBy('id')->get()->groupBy(function ($data) {
+            return $data->id_no . 'explode_id_commodity' . $data->commodity;
+        });
+        $form_status = 'is_create';
+        return view('accounting.import_car.index', compact('products', 'form_status'));
     }
 
     /**
@@ -59,7 +63,12 @@ class ImportCarController extends Controller
      */
     public function edit($id)
     {
-        //
+        $product_edit = Products::findOrFail($id);
+        $form_status = 'is_edit';
+        $products = Products::orderBy('id')->get()->groupBy(function ($data) {
+            return $data->id_no . 'explode_id_commodity' . $data->commodity;
+        });
+        return view('accounting.import_car.index', compact('products', 'product_edit', 'form_status'));
     }
 
     /**
@@ -69,9 +78,28 @@ class ImportCarController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateImportCar $request, $id)
     {
-        //
+        $user_id = auth()->user()->id;
+        $product = Products::findOrFail($id);
+
+        $product->user_id = $user_id ?? 0;
+
+        $product->commodity = $request->commodity;
+        $product->id_no = $request->id_no;
+        $product->unit = $request->unit;
+        $product->quantity = $request->quantity;
+        $product->amount_usd = $request->amount_usd;
+        $product->exchange_rate = $request->exchange_rate;
+        $product->adjustment_value_ad = $request->adjustment_value_ad;
+        $product->import_duty_other_tax_percent = $request->import_duty_other_tax_percent;
+        $product->commercial_tax_percent = $request->commercial_tax_percent;
+        $product->maccs_service_fee = $request->maccs_service_fee;
+        $product->security_fee = $request->security_fee;
+        $product->redemption_fine = $request->redemption_fine;
+        $product->advance_tax_percent = $request->advance_tax_percent;
+        $product->update();
+        return redirect('import_car')->with('success', 'Your processing has been completed.');
     }
 
     /**

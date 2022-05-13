@@ -21,15 +21,15 @@ class ProductsImport implements ToCollection, WithHeadingRow
         Validator::make($rows->toArray(), [
             '*.product' => 'required',
             '*.brand_name' => 'required',
-            '*.quantity' => 'required|numeric',
-            '*.amount_usd' => 'required|numeric',
-            '*.exchange_rate' => 'required|numeric',
-            '*.adjustment_value_ad' => 'required|numeric',
-            '*.commercial_tax_percent' => 'required|numeric',
-            '*.maccs_service_fee' => 'required|numeric',
-            '*.security_fee' => 'required|numeric',
-            '*.redemption_fine' => 'required|numeric',
-            '*.advance_tax_percent' => 'required|numeric',
+            '*.quantity' => 'numeric',
+            '*.amount_usd' => 'numeric',
+            '*.exchange_rate' => 'numeric',
+            '*.adjustment_value_ad' => 'numeric',
+            '*.commercial_tax_percent' => 'numeric',
+            '*.maccs_service_fee' => 'numeric',
+            '*.security_fee' => 'numeric',
+            '*.redemption_fine' => 'numeric',
+            '*.advance_tax_percent' => 'numeric',
         ])->validate();
 
         foreach ($rows as $row) {

@@ -67,6 +67,16 @@ class ProductsController extends Controller
         $product->commodity = $request->commodity;
         $product->id_no = $request->id_no;
         $product->unit = $request->unit;
+        $product->amount_usd = $request->amount_usd;
+        $product->exchange_rate = $request->exchange_rate;
+        $product->adjustment_value_ad = $request->adjustment_value_ad;
+        $product->import_duty_other_tax_percent = $request->import_duty_other_tax_percent;
+        $product->commercial_tax_percent = $request->commercial_tax_percent;
+        $product->maccs_service_fee = $request->maccs_service_fee;
+        $product->security_fee = $request->security_fee;
+        $product->redemption_fine = $request->redemption_fine;
+        $product->advance_tax_percent = $request->advance_tax_percent;
+
         $product->save();
         return redirect()->back()->with('success', 'Your processing has been completed.');
     }
@@ -129,6 +139,17 @@ class ProductsController extends Controller
         $product->commodity = $request->commodity;
         $product->id_no = $request->id_no;
         $product->unit = $request->unit;
+
+        $product->amount_usd = $request->amount_usd;
+        $product->exchange_rate = $request->exchange_rate;
+        $product->adjustment_value_ad = $request->adjustment_value_ad;
+        $product->import_duty_other_tax_percent = $request->import_duty_other_tax_percent;
+        $product->commercial_tax_percent = $request->commercial_tax_percent;
+        $product->maccs_service_fee = $request->maccs_service_fee;
+        $product->security_fee = $request->security_fee;
+        $product->redemption_fine = $request->redemption_fine;
+        $product->advance_tax_percent = $request->advance_tax_percent;
+
         $product->update();
         return redirect()->back()->with('success', 'Your processing has been completed.');
     }
