@@ -30,9 +30,6 @@ class CreateAccountTypesTable extends Migration
      */
     public function down()
     {
-        // Schema::dropIfExists('account_types');
-        Schema::table('account_types', function (Blueprint $table) {
-            $table->dropColumn('number', 'description', 'account_classification_id', 'financial_statement');
-        });
+        Schema::dropIfExists('account_types');
     }
 }

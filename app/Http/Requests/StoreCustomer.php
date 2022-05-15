@@ -27,6 +27,7 @@ class StoreCustomer extends FormRequest
             'name' => 'required',
             'address' => 'required',
             'phone' => 'required',
+            'opening_balance' => "numeric",
         ];
     }
 }

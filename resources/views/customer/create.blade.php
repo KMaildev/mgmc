@@ -49,17 +49,10 @@
                                     </div>
 
                                     <div class="col-md-3">
-                                        <label class="form-label" for="formtabs-username">Background</label>
-                                        <select id="CustomerId" class="select2 form-select form-select-lg"
-                                            data-allow-clear="false" name="background">
-                                            <option value="Individual">
-                                                Individual
-                                            </option>
-                                            <option value="Company">
-                                                Company
-                                            </option>
-                                        </select>
-                                        @error('customer')
+                                        <label class="form-label" for="formtabs-username">Company Name</label>
+                                        <input type="text" class="form-control @error('company_name') is-invalid @enderror"
+                                            name="company_name" value="{{ old('company_name') }}" />
+                                        @error('company_name')
                                             <div class="invalid-feedback"> {{ $message }} </div>
                                         @enderror
                                     </div>
@@ -145,17 +138,17 @@
                                         @enderror
                                     </div>
 
-                                    <div class="col-md-3">
+                                    <div class="col-md-3" hidden>
                                         <label class="form-label" for="formtabs-username">Opening Balance</label>
                                         <input type="text"
                                             class="form-control @error('opening_balance') is-invalid @enderror"
-                                            name="opening_balance" value="{{ old('opening_balance') }}" />
+                                            name="opening_balance" value="0" />
                                         @error('opening_balance')
                                             <div class="invalid-feedback"> {{ $message }} </div>
                                         @enderror
                                     </div>
 
-                                    <div class="col-md-3">
+                                    <div class="col-md-3" hidden>
                                         <label class="form-label" for="formtabs-username">Opening Balance as At
                                             Date</label>
                                         <input type="date"
@@ -165,6 +158,7 @@
                                             <div class="invalid-feedback"> {{ $message }} </div>
                                         @enderror
                                     </div>
+
                                 </div>
                                 <div class="pt-4">
                                     <button type="submit" class="btn btn-primary me-sm-3 me-1">Save</button>
@@ -212,17 +206,10 @@
                                     </div>
 
                                     <div class="col-md-3">
-                                        <label class="form-label" for="formtabs-username">Background</label>
-                                        <select class="select2 form-select form-select-lg" data-allow-clear="false"
-                                            name="background">
-                                            <option value="Individual">
-                                                Individual
-                                            </option>
-                                            <option value="Company">
-                                                Company
-                                            </option>
-                                        </select>
-                                        @error('customer')
+                                        <label class="form-label" for="formtabs-username">Company Name</label>
+                                        <input type="text" class="form-control @error('company_name') is-invalid @enderror"
+                                            name="company_name" value="{{ old('company_name') }}" />
+                                        @error('company_name')
                                             <div class="invalid-feedback"> {{ $message }} </div>
                                         @enderror
                                     </div>
@@ -308,27 +295,26 @@
                                         @enderror
                                     </div>
 
-                                    <div class="col-md-3">
+                                    <div class="col-md-3" hidden>
                                         <label class="form-label" for="formtabs-username">Opening Balance</label>
                                         <input type="text"
                                             class="form-control @error('opening_balance') is-invalid @enderror"
-                                            name="opening_balance" value="{{ old('opening_balance') }}" />
+                                            name="opening_balance" value="0" />
                                         @error('opening_balance')
                                             <div class="invalid-feedback"> {{ $message }} </div>
                                         @enderror
                                     </div>
 
-                                    <div class="col-md-3">
+                                    <div class="col-md-3" hidden>
                                         <label class="form-label" for="formtabs-username">Opening Balance as At
                                             Date</label>
                                         <input type="date"
                                             class="form-control @error('opening_balance_date') is-invalid @enderror"
-                                            name="opening_balance_date" value="{{ old('opening_balance_date') }}" />
+                                            name="opening_balance_date"  value="{{ old('opening_balance_date') }}"/>
                                         @error('opening_balance_date')
                                             <div class="invalid-feedback"> {{ $message }} </div>
                                         @enderror
                                     </div>
-
                                 </div>
                                 <div class="pt-4">
                                     <button type="submit" class="btn btn-primary me-sm-3 me-1">Save</button>
@@ -336,6 +322,7 @@
                                 </div>
                             </form>
                         </div>
+
                     </div>
                 </div>
             </div>

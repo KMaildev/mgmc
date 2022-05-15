@@ -3,7 +3,7 @@
     <div class="row justify-content-center">
 
         <div class="col-md-9 col-lg-9 col-sm-12">
-            <h6 class="text-muted">Within cards</h6>
+            <h6 class="text-muted">Create Product</h6>
             <div class="card shadow-none border mb-3">
                 <div class="card-header border-bottom">
                     <ul class="nav nav-tabs card-header-tabs" role="tablist">
@@ -35,7 +35,7 @@
                             <p style="color: red;">
                                 Only insert up to 50 records at a time.
                             </p>
-                            <a href="{{ asset('data/product_import.xlsx') }}" class="btn btn-primary text-white"
+                            <a href="{{ asset('data/product_import.csv') }}" class="btn btn-primary text-white"
                                 download="">
                                 <i class="fa fa-download"></i>
                                 Simple File Download

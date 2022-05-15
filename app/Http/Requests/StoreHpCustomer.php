@@ -28,6 +28,7 @@ class StoreHpCustomer extends FormRequest
             'address' => 'required',
             'phone' => 'required',
             'dealer_customer_id' => 'required',
+            'opening_balance' => "numeric",
         ];
     }
 }

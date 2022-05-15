@@ -47,7 +47,7 @@ class CustomerController extends Controller
         $customer->phone = $request->phone;
         $customer->email = $request->email;
         $customer->address = $request->address;
-        $customer->background = $request->background;
+        $customer->company_name = $request->company_name;
         $customer->nrc_no = $request->nrc_no;
         $customer->country = $request->country;
         $customer->city = $request->city;
@@ -101,7 +101,7 @@ class CustomerController extends Controller
         $customer->phone = $request->phone;
         $customer->email = $request->email;
         $customer->address = $request->address;
-        $customer->background = $request->background;
+        $customer->company_name = $request->company_name;
         $customer->nrc_no = $request->nrc_no;
         $customer->country = $request->country;
         $customer->city = $request->city;

@@ -38,45 +38,26 @@
 
             <li class="menu-item">
                 <a href="javascript:void(0)" class="menu-link menu-toggle">
-                    <div data-i2n="Layouts">Customers</div>
+                    <div data-i2n="Layouts">Sales</div>
                 </a>
 
                 <ul class="menu-sub">
+
                     <li class="menu-item">
                         <a href="{{ route('customer.index') }}" class="menu-link">
                             <div data-i2n="Without menu"> Customers</div>
                         </a>
                     </li>
 
+
                     <li class="menu-item">
-                        <a href="#" class="menu-link">
-                            <div data-i2n="Without menu"> Customer Sales Orders</div>
+                        <a href="{{ route('customer.index') }}" class="menu-link">
+                            <div data-i2n="Without menu">
+                                Sales Invoices
+                            </div>
                         </a>
                     </li>
 
-                    <li class="menu-item">
-                        <a href="#" class="menu-link">
-                            <div data-i2n="Without menu"> Customer Invoices</div>
-                        </a>
-                    </li>
-
-                    <li class="menu-item">
-                        <a href="#" class="menu-link">
-                            <div data-i2n="Without menu"> Customer Returns</div>
-                        </a>
-                    </li>
-
-                    <li class="menu-item">
-                        <a href="#" class="menu-link">
-                            <div data-i2n="Without menu"> Customer Receipts</div>
-                        </a>
-                    </li>
-
-                    <li class="menu-item">
-                        <a href="#" class="menu-link">
-                            <div data-i2n="Without menu"> Allocate Payments</div>
-                        </a>
-                    </li>
                 </ul>
             </li>
 

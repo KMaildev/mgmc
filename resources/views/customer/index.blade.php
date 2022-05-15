@@ -87,10 +87,6 @@
                                                 <ul class="dropdown-menu">
 
                                                     <li>
-                                                        <a class="dropdown-item" href="#">Detail</a>
-                                                    </li>
-
-                                                    <li>
                                                         <a class="dropdown-item"
                                                             href="{{ route('customer.edit', $customer->id) }}">Edit</a>
                                                     </li>

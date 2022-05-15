@@ -4,7 +4,7 @@
         <div class="col-md-10 col-sm-12 col-lg-10">
             <div class="col">
                 <h6 class="mt-4">
-                    New Customer
+                    Edit Customer
                 </h6>
                 <div class="card mb-3">
 
@@ -51,18 +51,11 @@
                                         </div>
 
                                         <div class="col-md-3">
-                                            <label class="form-label" for="formtabs-username">Background</label>
-                                            <select id="CustomerId" class="select2 form-select form-select-lg"
-                                                data-allow-clear="false" name="background">
-                                                <option value="Individual"
-                                                    @if ($customer->background == 'Individual') selected @endif>
-                                                    Individual
-                                                </option>
-                                                <option value="Company" @if ($customer->background == 'Company') selected @endif>
-                                                    Company
-                                                </option>
-                                            </select>
-                                            @error('customer')
+                                            <label class="form-label" for="formtabs-username">Company Name</label>
+                                            <input type="text"
+                                                class="form-control @error('company_name') is-invalid @enderror"
+                                                name="company_name" value="{{ $customer->company_name }}" />
+                                            @error('company_name')
                                                 <div class="invalid-feedback"> {{ $message }} </div>
                                             @enderror
                                         </div>
@@ -149,7 +142,7 @@
                                             @enderror
                                         </div>
 
-                                        <div class="col-md-3">
+                                        <div class="col-md-3" hidden>
                                             <label class="form-label" for="formtabs-username">Opening Balance</label>
                                             <input type="text"
                                                 class="form-control @error('opening_balance') is-invalid @enderror"
@@ -159,7 +152,7 @@
                                             @enderror
                                         </div>
 
-                                        <div class="col-md-3">
+                                        <div class="col-md-3" hidden>
                                             <label class="form-label" for="formtabs-username">Opening Balance as At
                                                 Date</label>
                                             <input type="date"
@@ -221,18 +214,11 @@
                                         </div>
 
                                         <div class="col-md-3">
-                                            <label class="form-label" for="formtabs-username">Background</label>
-                                            <select id="CustomerId" class="select2 form-select form-select-lg"
-                                                data-allow-clear="false" name="background">
-                                                <option value="Individual"
-                                                    @if ($customer->background == 'Individual') selected @endif>
-                                                    Individual
-                                                </option>
-                                                <option value="Company" @if ($customer->background == 'Company') selected @endif>
-                                                    Company
-                                                </option>
-                                            </select>
-                                            @error('customer')
+                                            <label class="form-label" for="formtabs-username">Company Name</label>
+                                            <input type="text"
+                                                class="form-control @error('company_name') is-invalid @enderror"
+                                                name="company_name" value="{{ $customer->company_name }}" />
+                                            @error('company_name')
                                                 <div class="invalid-feedback"> {{ $message }} </div>
                                             @enderror
                                         </div>
@@ -321,7 +307,7 @@
                                             @enderror
                                         </div>
 
-                                        <div class="col-md-3">
+                                        <div class="col-md-3" hidden>
                                             <label class="form-label" for="formtabs-username">Opening Balance</label>
                                             <input type="text"
                                                 class="form-control @error('opening_balance') is-invalid @enderror"
@@ -331,7 +317,7 @@
                                             @enderror
                                         </div>
 
-                                        <div class="col-md-3">
+                                        <div class="col-md-3" hidden>
                                             <label class="form-label" for="formtabs-username">Opening Balance as At
                                                 Date</label>
                                             <input type="date"
