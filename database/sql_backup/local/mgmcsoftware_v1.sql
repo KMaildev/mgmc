@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: May 13, 2022 at 01:34 PM
+-- Generation Time: May 15, 2022 at 08:44 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 7.4.27
 
@@ -75,36 +75,18 @@ CREATE TABLE `activity_log` (
 --
 
 INSERT INTO `activity_log` (`id`, `log_name`, `description`, `subject_type`, `subject_id`, `causer_type`, `causer_id`, `properties`, `created_at`, `updated_at`) VALUES
-(1, 'products_log', 'deleted', 'App\\Models\\Products', 5, 'App\\User', 1, '{\"attributes\":{\"product\":\"Eclip\",\"brand_id\":null,\"brand_name\":\"Mitsubishi\",\"quantity\":\"1\",\"created_at\":\"2022-05-13T04:11:17.000000Z\",\"updated_at\":\"2022-05-13T04:11:17.000000Z\"}}', '2022-05-13 01:40:26', '2022-05-13 01:40:26'),
-(2, 'products_log', 'updated', 'App\\Models\\Products', 1, 'App\\User', 1, '{\"attributes\":{\"product\":\"Eclip\",\"brand_id\":null,\"brand_name\":\"Mitsubishi\",\"quantity\":\"2\",\"created_at\":\"2022-05-12T05:32:18.000000Z\",\"updated_at\":\"2022-05-13T09:10:31.000000Z\"},\"old\":{\"product\":\"Eclip\",\"brand_id\":null,\"brand_name\":\"Mitsubishi\",\"quantity\":\"1\",\"created_at\":\"2022-05-12T05:32:18.000000Z\",\"updated_at\":\"2022-05-12T05:32:18.000000Z\"}}', '2022-05-13 02:40:31', '2022-05-13 02:40:31'),
-(3, 'products_log', 'updated', 'App\\Models\\Products', 1, 'App\\User', 1, '{\"attributes\":{\"product\":\"Eclip\",\"brand_id\":null,\"brand_name\":\"Mitsubishi\",\"quantity\":\"1\",\"created_at\":\"2022-05-12T05:32:18.000000Z\",\"updated_at\":\"2022-05-13T09:12:35.000000Z\"},\"old\":{\"product\":\"Eclip\",\"brand_id\":null,\"brand_name\":\"Mitsubishi\",\"quantity\":\"2\",\"created_at\":\"2022-05-12T05:32:18.000000Z\",\"updated_at\":\"2022-05-13T09:10:31.000000Z\"}}', '2022-05-13 02:42:35', '2022-05-13 02:42:35'),
-(4, 'products_log', 'updated', 'App\\Models\\Products', 1, 'App\\User', 1, '{\"attributes\":{\"product\":\"Eclip\",\"brand_id\":null,\"brand_name\":\"Mitsubishi\",\"quantity\":\"2\",\"created_at\":\"2022-05-12T05:32:18.000000Z\",\"updated_at\":\"2022-05-13T09:12:52.000000Z\"},\"old\":{\"product\":\"Eclip\",\"brand_id\":null,\"brand_name\":\"Mitsubishi\",\"quantity\":\"1\",\"created_at\":\"2022-05-12T05:32:18.000000Z\",\"updated_at\":\"2022-05-13T09:12:35.000000Z\"}}', '2022-05-13 02:42:52', '2022-05-13 02:42:52'),
-(5, 'products_log', 'updated', 'App\\Models\\Products', 1, 'App\\User', 1, '{\"attributes\":{\"product\":\"Eclip\",\"brand_id\":null,\"brand_name\":\"Mitsubishi\",\"quantity\":\"1\",\"created_at\":\"2022-05-12T05:32:18.000000Z\",\"updated_at\":\"2022-05-13T09:12:55.000000Z\"},\"old\":{\"product\":\"Eclip\",\"brand_id\":null,\"brand_name\":\"Mitsubishi\",\"quantity\":\"2\",\"created_at\":\"2022-05-12T05:32:18.000000Z\",\"updated_at\":\"2022-05-13T09:12:52.000000Z\"}}', '2022-05-13 02:42:55', '2022-05-13 02:42:55'),
-(6, 'products_log', 'updated', 'App\\Models\\Products', 1, 'App\\User', 1, '{\"attributes\":{\"product\":\"Eclip\",\"brand_id\":null,\"brand_name\":\"Mitsubishi\",\"quantity\":\"asdf\",\"created_at\":\"2022-05-12T05:32:18.000000Z\",\"updated_at\":\"2022-05-13T09:13:02.000000Z\"},\"old\":{\"product\":\"Eclip\",\"brand_id\":null,\"brand_name\":\"Mitsubishi\",\"quantity\":\"1\",\"created_at\":\"2022-05-12T05:32:18.000000Z\",\"updated_at\":\"2022-05-13T09:12:55.000000Z\"}}', '2022-05-13 02:43:02', '2022-05-13 02:43:02'),
-(7, 'products_log', 'updated', 'App\\Models\\Products', 1, 'App\\User', 1, '{\"attributes\":{\"product\":\"Eclip\",\"brand_id\":null,\"brand_name\":\"Mitsubishi\",\"quantity\":\"2\",\"created_at\":\"2022-05-12T05:32:18.000000Z\",\"updated_at\":\"2022-05-13T09:13:59.000000Z\"},\"old\":{\"product\":\"Eclip\",\"brand_id\":null,\"brand_name\":\"Mitsubishi\",\"quantity\":\"1\",\"created_at\":\"2022-05-12T05:32:18.000000Z\",\"updated_at\":\"2022-05-13T09:13:02.000000Z\"}}', '2022-05-13 02:43:59', '2022-05-13 02:43:59'),
-(8, 'products_log', 'updated', 'App\\Models\\Products', 1, 'App\\User', 1, '{\"attributes\":{\"product\":\"Eclip\",\"brand_id\":null,\"brand_name\":\"Mitsubishi\",\"quantity\":\"1\",\"created_at\":\"2022-05-12T05:32:18.000000Z\",\"updated_at\":\"2022-05-13T09:14:08.000000Z\"},\"old\":{\"product\":\"Eclip\",\"brand_id\":null,\"brand_name\":\"Mitsubishi\",\"quantity\":\"2\",\"created_at\":\"2022-05-12T05:32:18.000000Z\",\"updated_at\":\"2022-05-13T09:13:59.000000Z\"}}', '2022-05-13 02:44:08', '2022-05-13 02:44:08'),
-(9, 'products_log', 'updated', 'App\\Models\\Products', 2, 'App\\User', 1, '{\"attributes\":{\"product\":\"Eclip\",\"brand_id\":null,\"brand_name\":\"Mitsubishi\",\"quantity\":\"2\",\"created_at\":\"2022-05-13T04:11:17.000000Z\",\"updated_at\":\"2022-05-13T09:14:16.000000Z\"},\"old\":{\"product\":\"Eclip\",\"brand_id\":null,\"brand_name\":\"Mitsubishi\",\"quantity\":\"1\",\"created_at\":\"2022-05-13T04:11:17.000000Z\",\"updated_at\":\"2022-05-13T04:11:17.000000Z\"}}', '2022-05-13 02:44:16', '2022-05-13 02:44:16'),
-(10, 'products_log', 'updated', 'App\\Models\\Products', 1, 'App\\User', 1, '{\"attributes\":{\"product\":\"Eclip\",\"brand_id\":null,\"brand_name\":\"Mitsubishi\",\"quantity\":\"1\",\"created_at\":\"2022-05-12T05:32:18.000000Z\",\"updated_at\":\"2022-05-13T09:14:45.000000Z\"},\"old\":{\"product\":\"Eclip\",\"brand_id\":null,\"brand_name\":\"Mitsubishi\",\"quantity\":\"1\",\"created_at\":\"2022-05-12T05:32:18.000000Z\",\"updated_at\":\"2022-05-13T09:14:08.000000Z\"}}', '2022-05-13 02:44:45', '2022-05-13 02:44:45'),
-(11, 'products_log', 'updated', 'App\\Models\\Products', 1, 'App\\User', 1, '{\"attributes\":{\"product\":\"Eclip\",\"brand_id\":null,\"brand_name\":\"Mitsubishi\",\"quantity\":\"1\",\"created_at\":\"2022-05-12T05:32:18.000000Z\",\"updated_at\":\"2022-05-13T09:15:36.000000Z\"},\"old\":{\"product\":\"Eclip\",\"brand_id\":null,\"brand_name\":\"Mitsubishi\",\"quantity\":\"1\",\"created_at\":\"2022-05-12T05:32:18.000000Z\",\"updated_at\":\"2022-05-13T09:14:45.000000Z\"}}', '2022-05-13 02:45:36', '2022-05-13 02:45:36'),
-(12, 'products_log', 'updated', 'App\\Models\\Products', 3, 'App\\User', 1, '{\"attributes\":{\"product\":\"Eclip\",\"brand_id\":null,\"brand_name\":\"Mitsubishi\",\"quantity\":\"1\",\"created_at\":\"2022-05-13T04:11:17.000000Z\",\"updated_at\":\"2022-05-13T09:17:21.000000Z\"},\"old\":{\"product\":\"Eclip\",\"brand_id\":null,\"brand_name\":\"Mitsubishi\",\"quantity\":\"1\",\"created_at\":\"2022-05-13T04:11:17.000000Z\",\"updated_at\":\"2022-05-13T04:11:17.000000Z\"}}', '2022-05-13 02:47:21', '2022-05-13 02:47:21'),
-(13, 'products_log', 'updated', 'App\\Models\\Products', 3, 'App\\User', 1, '{\"attributes\":{\"product\":\"Eclip\",\"brand_id\":null,\"brand_name\":\"Mitsubishi\",\"quantity\":\"asfd\",\"created_at\":\"2022-05-13T04:11:17.000000Z\",\"updated_at\":\"2022-05-13T09:21:34.000000Z\"},\"old\":{\"product\":\"Eclip\",\"brand_id\":null,\"brand_name\":\"Mitsubishi\",\"quantity\":\"1\",\"created_at\":\"2022-05-13T04:11:17.000000Z\",\"updated_at\":\"2022-05-13T09:17:21.000000Z\"}}', '2022-05-13 02:51:34', '2022-05-13 02:51:34'),
-(14, 'brands_log', 'created', 'App\\Models\\Brand', 1, 'App\\User', 1, '{\"attributes\":{\"name\":\"Q22D\",\"created_at\":\"2022-05-13T09:23:55.000000Z\",\"updated_at\":\"2022-05-13T09:23:55.000000Z\"}}', '2022-05-13 02:53:55', '2022-05-13 02:53:55'),
-(15, 'products_log', 'updated', 'App\\Models\\Products', 1, 'App\\User', 1, '{\"attributes\":{\"product\":\"Eclip\",\"brand_id\":\"1\",\"brand_name\":\"Mitsubishi\",\"quantity\":\"0\",\"created_at\":\"2022-05-12T05:32:18.000000Z\",\"updated_at\":\"2022-05-13T09:24:11.000000Z\"},\"old\":{\"product\":\"Eclip\",\"brand_id\":null,\"brand_name\":\"Mitsubishi\",\"quantity\":\"1\",\"created_at\":\"2022-05-12T05:32:18.000000Z\",\"updated_at\":\"2022-05-13T09:15:36.000000Z\"}}', '2022-05-13 02:54:11', '2022-05-13 02:54:11'),
-(16, 'products_log', 'created', 'App\\Models\\Products', 6, 'App\\User', 1, '{\"attributes\":{\"product\":\"10\",\"brand_id\":\"1\",\"brand_name\":\"10\",\"quantity\":\"10\",\"created_at\":\"2022-05-13T09:26:04.000000Z\",\"updated_at\":\"2022-05-13T09:26:04.000000Z\"}}', '2022-05-13 02:56:04', '2022-05-13 02:56:04'),
-(17, 'products_log', 'updated', 'App\\Models\\Products', 6, 'App\\User', 1, '{\"attributes\":{\"product\":\"10\",\"brand_id\":\"1\",\"brand_name\":\"10\",\"quantity\":\"0\",\"created_at\":\"2022-05-13T09:26:04.000000Z\",\"updated_at\":\"2022-05-13T09:28:34.000000Z\"},\"old\":{\"product\":\"10\",\"brand_id\":\"1\",\"brand_name\":\"10\",\"quantity\":\"10\",\"created_at\":\"2022-05-13T09:26:04.000000Z\",\"updated_at\":\"2022-05-13T09:26:04.000000Z\"}}', '2022-05-13 02:58:34', '2022-05-13 02:58:34'),
-(18, 'products_log', 'updated', 'App\\Models\\Products', 6, 'App\\User', 1, '{\"attributes\":{\"product\":\"20\",\"brand_id\":\"1\",\"brand_name\":\"20\",\"quantity\":\"20\",\"created_at\":\"2022-05-13T09:26:04.000000Z\",\"updated_at\":\"2022-05-13T09:28:59.000000Z\"},\"old\":{\"product\":\"10\",\"brand_id\":\"1\",\"brand_name\":\"10\",\"quantity\":\"0\",\"created_at\":\"2022-05-13T09:26:04.000000Z\",\"updated_at\":\"2022-05-13T09:28:34.000000Z\"}}', '2022-05-13 02:58:59', '2022-05-13 02:58:59'),
-(19, 'products_log', 'updated', 'App\\Models\\Products', 6, 'App\\User', 1, '{\"attributes\":{\"product\":\"20\",\"brand_id\":\"1\",\"brand_name\":\"20\",\"quantity\":\"10\",\"created_at\":\"2022-05-13T09:26:04.000000Z\",\"updated_at\":\"2022-05-13T09:30:14.000000Z\"},\"old\":{\"product\":\"20\",\"brand_id\":\"1\",\"brand_name\":\"20\",\"quantity\":\"20\",\"created_at\":\"2022-05-13T09:26:04.000000Z\",\"updated_at\":\"2022-05-13T09:28:59.000000Z\"}}', '2022-05-13 03:00:14', '2022-05-13 03:00:14'),
-(20, 'products_log', 'updated', 'App\\Models\\Products', 6, 'App\\User', 1, '{\"attributes\":{\"product\":\"20\",\"brand_id\":\"1\",\"brand_name\":\"20\",\"quantity\":\"30\",\"created_at\":\"2022-05-13T09:26:04.000000Z\",\"updated_at\":\"2022-05-13T09:30:37.000000Z\"},\"old\":{\"product\":\"20\",\"brand_id\":\"1\",\"brand_name\":\"20\",\"quantity\":\"10\",\"created_at\":\"2022-05-13T09:26:04.000000Z\",\"updated_at\":\"2022-05-13T09:30:14.000000Z\"}}', '2022-05-13 03:00:37', '2022-05-13 03:00:37'),
-(21, 'products_log', 'created', 'App\\Models\\Products', 7, 'App\\User', 1, '{\"attributes\":{\"product\":\"10\",\"brand_id\":\"1\",\"brand_name\":\"10\",\"quantity\":\"10\",\"created_at\":\"2022-05-13T09:31:15.000000Z\",\"updated_at\":\"2022-05-13T09:31:15.000000Z\"}}', '2022-05-13 03:01:15', '2022-05-13 03:01:15'),
-(22, 'products_log', 'updated', 'App\\Models\\Products', 6, 'App\\User', 1, '{\"attributes\":{\"product\":\"20\",\"brand_id\":\"1\",\"brand_name\":\"20\",\"quantity\":\"1\",\"created_at\":\"2022-05-13T09:26:04.000000Z\",\"updated_at\":\"2022-05-13T09:33:38.000000Z\"},\"old\":{\"product\":\"20\",\"brand_id\":\"1\",\"brand_name\":\"20\",\"quantity\":\"30\",\"created_at\":\"2022-05-13T09:26:04.000000Z\",\"updated_at\":\"2022-05-13T09:30:37.000000Z\"}}', '2022-05-13 03:03:38', '2022-05-13 03:03:38'),
-(23, 'products_log', 'updated', 'App\\Models\\Products', 7, 'App\\User', 1, '{\"attributes\":{\"product\":\"10\",\"brand_id\":\"1\",\"brand_name\":\"10\",\"quantity\":\"2\",\"created_at\":\"2022-05-13T09:31:15.000000Z\",\"updated_at\":\"2022-05-13T09:33:47.000000Z\"},\"old\":{\"product\":\"10\",\"brand_id\":\"1\",\"brand_name\":\"10\",\"quantity\":\"10\",\"created_at\":\"2022-05-13T09:31:15.000000Z\",\"updated_at\":\"2022-05-13T09:31:15.000000Z\"}}', '2022-05-13 03:03:47', '2022-05-13 03:03:47'),
-(24, 'products_log', 'updated', 'App\\Models\\Products', 7, 'App\\User', 1, '{\"attributes\":{\"product\":\"10\",\"brand_id\":\"1\",\"brand_name\":\"10\",\"quantity\":\"1\",\"created_at\":\"2022-05-13T09:31:15.000000Z\",\"updated_at\":\"2022-05-13T09:33:54.000000Z\"},\"old\":{\"product\":\"10\",\"brand_id\":\"1\",\"brand_name\":\"10\",\"quantity\":\"2\",\"created_at\":\"2022-05-13T09:31:15.000000Z\",\"updated_at\":\"2022-05-13T09:33:47.000000Z\"}}', '2022-05-13 03:03:54', '2022-05-13 03:03:54'),
-(25, 'products_log', 'created', 'App\\Models\\Products', 1, 'App\\User', 1, '{\"attributes\":{\"product\":\"Eclip\",\"brand_id\":null,\"brand_name\":\"Mitsubishi\",\"quantity\":\"1\",\"created_at\":\"2022-05-13T11:10:29.000000Z\",\"updated_at\":\"2022-05-13T11:10:29.000000Z\"}}', '2022-05-13 04:40:29', '2022-05-13 04:40:29'),
-(26, 'products_log', 'created', 'App\\Models\\Products', 2, 'App\\User', 1, '{\"attributes\":{\"product\":\"Eclip\",\"brand_id\":null,\"brand_name\":\"Mitsubishi\",\"quantity\":\"1\",\"created_at\":\"2022-05-13T11:11:32.000000Z\",\"updated_at\":\"2022-05-13T11:11:32.000000Z\"}}', '2022-05-13 04:41:32', '2022-05-13 04:41:32'),
-(27, 'products_log', 'created', 'App\\Models\\Products', 3, 'App\\User', 1, '{\"attributes\":{\"product\":\"Eclip\",\"brand_id\":null,\"brand_name\":\"Mitsubishi\",\"quantity\":\"1\",\"created_at\":\"2022-05-13T11:11:32.000000Z\",\"updated_at\":\"2022-05-13T11:11:32.000000Z\"}}', '2022-05-13 04:41:32', '2022-05-13 04:41:32'),
-(28, 'products_log', 'created', 'App\\Models\\Products', 4, 'App\\User', 1, '{\"attributes\":{\"product\":\"Eclip\",\"brand_id\":null,\"brand_name\":\"Mitsubishi\",\"quantity\":\"1\",\"created_at\":\"2022-05-13T11:11:32.000000Z\",\"updated_at\":\"2022-05-13T11:11:32.000000Z\"}}', '2022-05-13 04:41:32', '2022-05-13 04:41:32'),
-(29, 'products_log', 'created', 'App\\Models\\Products', 5, 'App\\User', 1, '{\"attributes\":{\"product\":\"Q22B\",\"brand_id\":null,\"brand_name\":\"Karry\",\"quantity\":\"1\",\"created_at\":\"2022-05-13T11:32:29.000000Z\",\"updated_at\":\"2022-05-13T11:32:29.000000Z\"}}', '2022-05-13 05:02:29', '2022-05-13 05:02:29'),
-(30, 'products_log', 'created', 'App\\Models\\Products', 6, 'App\\User', 1, '{\"attributes\":{\"product\":\"Q22B\",\"brand_id\":null,\"brand_name\":\"Karry\",\"quantity\":\"1\",\"created_at\":\"2022-05-13T11:32:29.000000Z\",\"updated_at\":\"2022-05-13T11:32:29.000000Z\"}}', '2022-05-13 05:02:30', '2022-05-13 05:02:30');
+(1, 'products_log', 'created', 'App\\Models\\Products', 1, 'App\\User', 1, '{\"attributes\":{\"product\":\"Q22B\",\"brand_id\":null,\"brand_name\":\"Karry\",\"quantity\":\"1\",\"created_at\":\"2022-05-15T05:18:50.000000Z\",\"updated_at\":\"2022-05-15T05:18:50.000000Z\"}}', '2022-05-14 22:48:50', '2022-05-14 22:48:50'),
+(2, 'products_log', 'created', 'App\\Models\\Products', 2, 'App\\User', 1, '{\"attributes\":{\"product\":\"Q22B\",\"brand_id\":null,\"brand_name\":\"Karry\",\"quantity\":\"1\",\"created_at\":\"2022-05-15T05:18:50.000000Z\",\"updated_at\":\"2022-05-15T05:18:50.000000Z\"}}', '2022-05-14 22:48:50', '2022-05-14 22:48:50'),
+(3, 'customers_log', 'created', 'App\\Models\\Customers', 1, 'App\\User', 1, '{\"attributes\":{\"name\":\"U Maung Maung Soe\",\"phone\":\"09123123123\",\"description\":null,\"opening_balance\":\"0\",\"opening_balance_date\":null,\"created_at\":\"2022-05-15T05:30:49.000000Z\",\"updated_at\":\"2022-05-15T05:30:49.000000Z\"}}', '2022-05-14 23:00:49', '2022-05-14 23:00:49'),
+(4, 'customers_log', 'created', 'App\\Models\\Customers', 2, 'App\\User', 1, '{\"attributes\":{\"name\":\"U Aung Zaw Win\",\"phone\":\"09123123123\",\"description\":null,\"opening_balance\":\"0\",\"opening_balance_date\":null,\"created_at\":\"2022-05-15T05:32:47.000000Z\",\"updated_at\":\"2022-05-15T05:32:47.000000Z\"}}', '2022-05-14 23:02:47', '2022-05-14 23:02:47'),
+(5, 'customers_log', 'updated', 'App\\Models\\Customers', 1, 'App\\User', 1, '{\"attributes\":{\"name\":\"U Maung Maung Soe\",\"phone\":\"09123123123\",\"description\":null,\"opening_balance\":\"0\",\"opening_balance_date\":null,\"created_at\":\"2022-05-15T05:30:49.000000Z\",\"updated_at\":\"2022-05-15T05:33:46.000000Z\"},\"old\":{\"name\":\"U Maung Maung Soe\",\"phone\":\"09123123123\",\"description\":null,\"opening_balance\":\"0\",\"opening_balance_date\":null,\"created_at\":\"2022-05-15T05:30:49.000000Z\",\"updated_at\":\"2022-05-15T05:30:49.000000Z\"}}', '2022-05-14 23:03:46', '2022-05-14 23:03:46'),
+(6, 'customers_log', 'updated', 'App\\Models\\Customers', 1, 'App\\User', 1, '{\"attributes\":{\"name\":\"U Maung Maung Soe\",\"phone\":\"09123123123\",\"description\":null,\"opening_balance\":\"0\",\"opening_balance_date\":null,\"created_at\":\"2022-05-15T05:30:49.000000Z\",\"updated_at\":\"2022-05-15T05:34:28.000000Z\"},\"old\":{\"name\":\"U Maung Maung Soe\",\"phone\":\"09123123123\",\"description\":null,\"opening_balance\":\"0\",\"opening_balance_date\":null,\"created_at\":\"2022-05-15T05:30:49.000000Z\",\"updated_at\":\"2022-05-15T05:33:46.000000Z\"}}', '2022-05-14 23:04:28', '2022-05-14 23:04:28'),
+(7, 'customers_log', 'updated', 'App\\Models\\Customers', 1, 'App\\User', 1, '{\"attributes\":{\"name\":\"U Maung Maung Soe\",\"phone\":\"09123123123\",\"description\":null,\"opening_balance\":\"0\",\"opening_balance_date\":null,\"created_at\":\"2022-05-15T05:30:49.000000Z\",\"updated_at\":\"2022-05-15T05:34:45.000000Z\"},\"old\":{\"name\":\"U Maung Maung Soe\",\"phone\":\"09123123123\",\"description\":null,\"opening_balance\":\"0\",\"opening_balance_date\":null,\"created_at\":\"2022-05-15T05:30:49.000000Z\",\"updated_at\":\"2022-05-15T05:34:28.000000Z\"}}', '2022-05-14 23:04:45', '2022-05-14 23:04:45'),
+(8, 'customers_log', 'updated', 'App\\Models\\Customers', 2, 'App\\User', 1, '{\"attributes\":{\"name\":\"U Aung Zaw Win\",\"phone\":\"09123123123\",\"description\":null,\"opening_balance\":\"0\",\"opening_balance_date\":null,\"created_at\":\"2022-05-15T05:32:47.000000Z\",\"updated_at\":\"2022-05-15T05:35:50.000000Z\"},\"old\":{\"name\":\"U Aung Zaw Win\",\"phone\":\"09123123123\",\"description\":null,\"opening_balance\":\"0\",\"opening_balance_date\":null,\"created_at\":\"2022-05-15T05:32:47.000000Z\",\"updated_at\":\"2022-05-15T05:32:47.000000Z\"}}', '2022-05-14 23:05:50', '2022-05-14 23:05:50'),
+(9, 'departments_log', 'created', 'App\\Models\\Department', 1, 'App\\User', 1, '{\"attributes\":{\"title\":\"Admin\",\"created_at\":\"2022-05-15T06:36:25.000000Z\",\"updated_at\":\"2022-05-15T06:36:25.000000Z\"}}', '2022-05-15 00:06:25', '2022-05-15 00:06:25'),
+(10, 'departments_log', 'created', 'App\\Models\\Department', 2, 'App\\User', 1, '{\"attributes\":{\"title\":\"Purchase\",\"created_at\":\"2022-05-15T06:36:31.000000Z\",\"updated_at\":\"2022-05-15T06:36:31.000000Z\"}}', '2022-05-15 00:06:31', '2022-05-15 00:06:31'),
+(11, 'departments_log', 'created', 'App\\Models\\Department', 3, 'App\\User', 1, '{\"attributes\":{\"title\":\"Sale\",\"created_at\":\"2022-05-15T06:36:34.000000Z\",\"updated_at\":\"2022-05-15T06:36:34.000000Z\"}}', '2022-05-15 00:06:34', '2022-05-15 00:06:34'),
+(12, 'users_log', 'created', 'App\\User', 3, 'App\\User', 1, '{\"attributes\":{\"name\":\"Ma May Myat Mon\",\"email\":\"mamaymyatmon@gmail.com\",\"employee_id\":\"EMP-00001\",\"phone\":\"0912312312\",\"nrc_number\":null,\"address\":\"YGN\",\"department_id\":3,\"created_at\":\"2022-05-15T06:38:07.000000Z\",\"updated_at\":\"2022-05-15T06:38:07.000000Z\"}}', '2022-05-15 00:08:07', '2022-05-15 00:08:07');
 
 -- --------------------------------------------------------
 
@@ -118,13 +100,6 @@ CREATE TABLE `brands` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `brands`
---
-
-INSERT INTO `brands` (`id`, `name`, `created_at`, `updated_at`) VALUES
-(1, 'Q22D', '2022-05-13 02:53:55', '2022-05-13 02:53:55');
 
 -- --------------------------------------------------------
 
@@ -182,7 +157,7 @@ CREATE TABLE `chartof_accounts` (
 CREATE TABLE `customers` (
   `id` int(10) UNSIGNED NOT NULL,
   `name` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `background` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `company_name` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `nrc_no` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `phone` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `email` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -199,6 +174,14 @@ CREATE TABLE `customers` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `customers`
+--
+
+INSERT INTO `customers` (`id`, `name`, `company_name`, `nrc_no`, `phone`, `email`, `address`, `country`, `city`, `state`, `description`, `dealer_customer_id`, `dealer_or_hp`, `opening_balance`, `opening_balance_date`, `created_at`, `updated_at`) VALUES
+(1, 'U Maung Maung Soe', NULL, NULL, '09123123123', NULL, 'Yangon', NULL, NULL, NULL, NULL, 0, 'dealer', '0', NULL, '2022-05-14 23:00:49', '2022-05-14 23:04:45'),
+(2, 'U Aung Zaw Win', 'ABC', NULL, '09123123123', NULL, 'YGN', NULL, NULL, NULL, NULL, 1, 'dealer', '0', NULL, '2022-05-14 23:02:47', '2022-05-14 23:05:50');
+
 -- --------------------------------------------------------
 
 --
@@ -211,6 +194,15 @@ CREATE TABLE `departments` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `departments`
+--
+
+INSERT INTO `departments` (`id`, `title`, `created_at`, `updated_at`) VALUES
+(1, 'Admin', '2022-05-15 00:06:25', '2022-05-15 00:06:25'),
+(2, 'Purchase', '2022-05-15 00:06:31', '2022-05-15 00:06:31'),
+(3, 'Sale', '2022-05-15 00:06:34', '2022-05-15 00:06:34');
 
 -- --------------------------------------------------------
 
@@ -319,12 +311,8 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`id`, `product`, `type`, `model_no`, `model_year`, `configuration`, `body_color`, `interior_color`, `engine_power`, `chessi_no`, `engine_no`, `weight`, `door`, `seater`, `vehicle_no`, `quantity`, `remark`, `user_id`, `brand_id`, `brand_name`, `commodity`, `id_no`, `unit`, `amount_usd`, `exchange_rate`, `adjustment_value_ad`, `import_duty_other_tax_percent`, `commercial_tax_percent`, `maccs_service_fee`, `security_fee`, `redemption_fine`, `advance_tax_percent`, `import_date`, `created_at`, `updated_at`) VALUES
-(1, 'Eclip', '-', '-', '-', '-', '-', '-', '-', '-', NULL, '-', '-', '-', '-', '1', NULL, '1', NULL, 'Mitsubishi', '-', '-', 'Unit', '0', '0', '0', '0', '0', '0', '0', '0', '0', '', '2022-05-13 04:40:29', '2022-05-13 04:40:29'),
-(2, 'Eclip', '-', '-', '-', '-', '-', '-', '-', '-', NULL, '-', '-', '-', '-', '1', NULL, '1', NULL, 'Mitsubishi', '-', '-', 'Unit', '1000', '1000', '1000', '1000', '1000', '1000', '1000', '1000', '1000', '', '2022-05-13 04:41:32', '2022-05-13 04:41:32'),
-(3, 'Eclip', '-', '-', '-', '-', '-', '-', '-', '-', NULL, '-', '-', '-', '-', '1', NULL, '1', NULL, 'Mitsubishi', '-', '-', 'Unit', '1000', '1000', '1000', '1000', '1000', '1000', '1000', '1000', '1000', '', '2022-05-13 04:41:32', '2022-05-13 04:41:32'),
-(4, 'Eclip', '-', '-', '-', '-', '-', '-', '-', '-', NULL, '-', '-', '-', '-', '1', NULL, '1', NULL, 'Mitsubishi', '-', '-', 'Unit', '1000', '1000', '1000', '1000', '1000', '1000', '1000', '1000', '1000', '', '2022-05-13 04:41:32', '2022-05-13 04:41:32'),
-(5, 'Q22B', 'Left Hand Drive', 'Model:2019; 1300 CC', '2019', '-', '-', '-', '1300 CC', 'LVMZ1A1A2KF143205', NULL, '-', '-', '-', '-', '1', NULL, '1', NULL, 'Karry', 'ILNS ILV192002891', '100141000000', 'Unit', '3800', '1422.52', '0', '10', '5', '15000', '10000', '100000', '2', '', '2022-05-13 05:02:29', '2022-05-13 05:02:29'),
-(6, 'Q22B', 'Left Hand Drive', 'Model:2019; 1300 CC', '2019', '-', '-', '-', '1300 CC', 'LVMZ1A1A8KF143211', NULL, '-', '-', '-', '-', '1', NULL, '1', NULL, 'Karry', 'ILNS ILV192002891', '100141000000', 'Unit', '3800', '1422.52', '0', '10', '5', '15000', '10000', '100000', '2', '', '2022-05-13 05:02:29', '2022-05-13 05:02:29');
+(1, 'Q22B', 'Left Hand Drive', 'Model:2019; 1300 CC', '2019', '-', '-', '-', '1300 CC', 'LVMZ1A1A2KF143205', NULL, '-', '-', '-', '-', '1', NULL, '1', NULL, 'Karry', 'ILNS ILV192002891', '100141000000', 'Unit', '3800', '1422.52', '0', '10', '5', '15000', '10000', '100000', '2', '', '2022-05-14 22:48:50', '2022-05-14 22:48:50'),
+(2, 'Q22B', 'Left Hand Drive', 'Model:2019; 1300 CC', '2019', '-', '-', '-', '1300 CC', 'LVMZ1A1A8KF143211', NULL, '-', '-', '-', '-', '1', NULL, '1', NULL, 'Karry', 'ILNS ILV192002891', '100141000000', 'Unit', '3800', '1422.52', '0', '10', '5', '15000', '10000', '100000', '2', '', '2022-05-14 22:48:50', '2022-05-14 22:48:50');
 
 -- --------------------------------------------------------
 
@@ -375,8 +363,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`, `employee_id`, `phone`, `nrc_number`, `gender`, `address`, `department_id`, `last_login_at`, `last_login_ip`, `agent`) VALUES
-(1, 'Dev Test', 'developer@gmail.com', NULL, '$2y$10$fCdZ6o33mm5ftnDrz63j4O1ssBWd1mrEaCfHLwaVpgr2ei7t3RURe', NULL, '2022-03-28 11:28:34', '2022-05-12 20:44:55', 'EMP-0001', '09444161997', NULL, 'male', 'YGN', 1, '2022-05-13 03:14:55', '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.54 Safari/537.36'),
-(2, 'U Aung Cho Tun', 'aungchotun@gmail.com', NULL, '$2y$10$tl7wt/VHxT8TX1cZwGzUhuT/RyFx.TU3kI/2gmAXywdc294eCHTra', 'KyAsL3PniXpQqZBoPCp50e8Pq9rw4IjSBsYgJD8eQJod5ICz3u8M4vcOKrdZ', '2022-03-28 19:41:13', '2022-03-31 08:39:12', 'EMP-00002', '09123123123', NULL, 'male', 'YGN', 1, '2022-03-31 15:39:12', '69.160.8.4', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:98.0) Gecko/20100101 Firefox/98.0');
+(1, 'Dev Test', 'developer@gmail.com', NULL, '$2y$10$fCdZ6o33mm5ftnDrz63j4O1ssBWd1mrEaCfHLwaVpgr2ei7t3RURe', NULL, '2022-03-28 11:28:34', '2022-05-12 10:11:42', 'EMP-0001', '09444161997', NULL, 'male', 'YGN', 1, '2022-05-12 16:41:42', '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.54 Safari/537.36'),
+(2, 'U Aung Cho Tun', 'aungchotun@gmail.com', NULL, '$2y$10$tl7wt/VHxT8TX1cZwGzUhuT/RyFx.TU3kI/2gmAXywdc294eCHTra', 'KyAsL3PniXpQqZBoPCp50e8Pq9rw4IjSBsYgJD8eQJod5ICz3u8M4vcOKrdZ', '2022-03-28 19:41:13', '2022-03-31 08:39:12', 'EMP-00002', '09123123123', NULL, 'male', 'YGN', 1, '2022-03-31 15:39:12', '69.160.8.4', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:98.0) Gecko/20100101 Firefox/98.0'),
+(3, 'Ma May Myat Mon', 'mamaymyatmon@gmail.com', NULL, '$2y$10$sSmcokRLRJBbuuOogCQamOWL4FCnsBgZkLQIcJn4MkRPhGWx6krDC', NULL, '2022-05-15 00:08:07', '2022-05-15 00:08:07', 'EMP-00001', '0912312312', NULL, 'male', 'YGN', 3, NULL, NULL, NULL);
 
 --
 -- Indexes for dumped tables
@@ -492,13 +481,13 @@ ALTER TABLE `account_types`
 -- AUTO_INCREMENT for table `activity_log`
 --
 ALTER TABLE `activity_log`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `brands`
 --
 ALTER TABLE `brands`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `cash_books`
@@ -516,13 +505,13 @@ ALTER TABLE `chartof_accounts`
 -- AUTO_INCREMENT for table `customers`
 --
 ALTER TABLE `customers`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `departments`
 --
 ALTER TABLE `departments`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -540,7 +529,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `suppliers`
@@ -552,7 +541,7 @@ ALTER TABLE `suppliers`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -57,4 +57,7 @@ Route::middleware('auth')->group(function () {
 
     Route::resource('changepassword', 'ChangePasswordController');
     Route::resource('activity', 'Activity\ActivityLogController');
+
+
+    Route::resource('sales_invoices', 'Accounting\SalesInvoicesController');
 });

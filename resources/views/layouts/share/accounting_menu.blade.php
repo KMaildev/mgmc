@@ -51,7 +51,7 @@
 
 
                     <li class="menu-item">
-                        <a href="{{ route('customer.index') }}" class="menu-link">
+                        <a href="{{ route('sales_invoices.index') }}" class="menu-link">
                             <div data-i2n="Without menu">
                                 Sales Invoices
                             </div>
