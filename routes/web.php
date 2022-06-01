@@ -40,6 +40,12 @@ Route::middleware('auth')->group(function () {
     Route::resource('bankform', 'Accounting\BankFormController');
 
     Route::resource('customer', 'CustomerController');
+    Route::post('dealer_customer_import', 'CustomerController@dealer_customer_import')->name('dealer_customer_import');
+    Route::get('dealer_customer_export', 'CustomerController@dealer_customer_export')->name('dealer_customer_export');
+
+    Route::resource('hp_customer', 'HpCustomerController');
+    Route::get('hp_customer_export', 'HpCustomerController@hp_customer_export')->name('hp_customer_export');
+
     Route::resource('supplier', 'SupplierController');
     Route::resource('brand', 'BrandController');
 

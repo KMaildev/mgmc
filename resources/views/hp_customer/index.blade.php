@@ -6,14 +6,15 @@
 
                 <div class="card-body">
                     <div class="card-title header-elements">
-                        <h5 class="m-0 me-2">List of Dealer Customers</h5>
+                        <h5 class="m-0 me-2">List of HP Customers</h5>
                         <div class="card-title-elements ms-auto">
-                            <a href="{{ route('dealer_customer_export') }}" class="btn btn-success btn-sm">
+                            <a href="{{ route('hp_customer_export') }}" class="btn btn-success btn-sm">
                                 <i class="fa fa-file-excel me-2"></i>
                                 Export
                             </a>
 
-                            <a href="{{ route('customer.create') }}" class="dt-button create-new btn btn-primary btn-sm">
+                            <a href="{{ route('hp_customer.create') }}"
+                                class="dt-button create-new btn btn-primary btn-sm">
                                 <span>
                                     <i class="bx bx-plus me-sm-2"></i>
                                     <span class="d-none d-sm-inline-block">Create</span>
@@ -28,6 +29,7 @@
                     <table class="table table-bordered main-table py-5" id="export_excel">
                         <thead class="tbbg">
                             <th style="color: white; text-align: center; width: 1%;">#</th>
+                            <th style="color: white; text-align: center;">Dealer Name</th>
                             <th style="color: white; text-align: center;">Owner Name</th>
                             <th style="color: white; text-align: center;">Company Name</th>
                             <th style="color: white; text-align: center;">Dealer Code</th>
@@ -44,9 +46,15 @@
                                     <td>
                                         {{ $key + 1 }}
                                     </td>
+
+                                    <td>
+                                        {{ $customer->customers_table->name ?? '' }}
+                                    </td>
+
                                     <td>
                                         {{ $customer->name }}
                                     </td>
+
                                     <td>
                                         {{ $customer->company_name }}
                                     </td>
@@ -81,7 +89,7 @@
 
                                                     <li>
                                                         <a class="dropdown-item"
-                                                            href="{{ route('customer.edit', $customer->id) }}">Edit</a>
+                                                            href="{{ route('hp_customer.edit', $customer->id) }}">Edit</a>
                                                     </li>
 
                                                     <li>

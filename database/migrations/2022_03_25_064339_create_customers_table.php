@@ -17,18 +17,15 @@ class CreateCustomersTable extends Migration
             $table->increments('id');
             $table->text('name')->nullable();
             $table->text('company_name')->nullable();
-            $table->text('nrc_no')->nullable();
+            $table->text('dealer_code')->nullable();
+            $table->text('city')->nullable();
+            $table->text('address')->nullable();
             $table->text('phone')->nullable();
             $table->text('email')->nullable();
-            $table->text('address')->nullable();
-            $table->text('country')->nullable();
-            $table->text('city')->nullable();
-            $table->text('state')->nullable();
             $table->text('description')->nullable();
-            $table->integer('dealer_customer_id')->nullable();
+
             $table->text('dealer_or_hp')->nullable();
-            $table->text('opening_balance')->nullable();
-            $table->text('opening_balance_date')->nullable();
+            $table->integer('dealer_customer_id')->nullable();
             $table->timestamps();
         });
     }

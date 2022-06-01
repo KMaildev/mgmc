@@ -38,17 +38,32 @@
 
             <li class="menu-item">
                 <a href="javascript:void(0)" class="menu-link menu-toggle">
-                    <div data-i2n="Layouts">Sales</div>
+                    <div data-i2n="Layouts">Customers</div>
                 </a>
 
                 <ul class="menu-sub">
 
                     <li class="menu-item">
                         <a href="{{ route('customer.index') }}" class="menu-link">
-                            <div data-i2n="Without menu"> Customers</div>
+                            <div data-i2n="Without menu"> Dealer Customers</div>
                         </a>
                     </li>
 
+                    <li class="menu-item">
+                        <a href="{{ route('hp_customer.index') }}" class="menu-link">
+                            <div data-i2n="Without menu"> HP Customers</div>
+                        </a>
+                    </li>
+
+                </ul>
+            </li>
+
+            <li class="menu-item">
+                <a href="javascript:void(0)" class="menu-link menu-toggle">
+                    <div data-i2n="Layouts">Sales</div>
+                </a>
+
+                <ul class="menu-sub">
 
                     <li class="menu-item">
                         <a href="{{ route('sales_invoices.index') }}" class="menu-link">
