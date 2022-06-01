@@ -4242,7 +4242,7 @@ textarea.form-control-lg {
   float: left;
   padding-right: .5rem;
   color: #939eaa;
-  content: var(--bs-breadcrumb-divider, "https://pixinvent.com/")
+  content: var(--bs-breadcrumb-divider, "/")
     /* rtl: var(--bs-breadcrumb-divider, "\\") */
 }
 

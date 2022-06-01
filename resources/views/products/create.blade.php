@@ -35,8 +35,7 @@
                             <p style="color: red;">
                                 Only insert up to 50 records at a time.
                             </p>
-                            <a href="{{ asset('data/product_import.csv') }}" class="btn btn-primary text-white"
-                                download="">
+                            <a href="{{ asset('data/car_import.xlsx') }}" class="btn btn-primary text-white" download="">
                                 <i class="fa fa-download"></i>
                                 Simple File Download
                             </a>
@@ -264,7 +263,8 @@
 
                                 <div class="col-md-6">
                                     <label class="form-label">Adjustment Value AD</label>
-                                    <input type="text" class="form-control @error('adjustment_value_ad') is-invalid @enderror"
+                                    <input type="text"
+                                        class="form-control @error('adjustment_value_ad') is-invalid @enderror"
                                         name="adjustment_value_ad" value="0" />
                                     @error('adjustment_value_ad')
                                         <div class="invalid-feedback"> {{ $message }} </div>
@@ -273,7 +273,8 @@
 
                                 <div class="col-md-6">
                                     <label class="form-label">Import Duty And Other Tax Percent</label>
-                                    <input type="text" class="form-control @error('import_duty_other_tax_percent') is-invalid @enderror"
+                                    <input type="text"
+                                        class="form-control @error('import_duty_other_tax_percent') is-invalid @enderror"
                                         name="import_duty_other_tax_percent" value="0" />
                                     @error('import_duty_other_tax_percent')
                                         <div class="invalid-feedback"> {{ $message }} </div>
@@ -282,7 +283,8 @@
 
                                 <div class="col-md-6">
                                     <label class="form-label">Commercial Tax Percent</label>
-                                    <input type="text" class="form-control @error('commercial_tax_percent') is-invalid @enderror"
+                                    <input type="text"
+                                        class="form-control @error('commercial_tax_percent') is-invalid @enderror"
                                         name="commercial_tax_percent" value="0" />
                                     @error('commercial_tax_percent')
                                         <div class="invalid-feedback"> {{ $message }} </div>
@@ -291,7 +293,8 @@
 
                                 <div class="col-md-6">
                                     <label class="form-label">Maccs Service Fee</label>
-                                    <input type="text" class="form-control @error('maccs_service_fee') is-invalid @enderror"
+                                    <input type="text"
+                                        class="form-control @error('maccs_service_fee') is-invalid @enderror"
                                         name="maccs_service_fee" value="0" />
                                     @error('maccs_service_fee')
                                         <div class="invalid-feedback"> {{ $message }} </div>
@@ -319,7 +322,8 @@
 
                                 <div class="col-md-6">
                                     <label class="form-label">Advance Tax Percent</label>
-                                    <input type="text" class="form-control @error('advance_tax_percent') is-invalid @enderror"
+                                    <input type="text"
+                                        class="form-control @error('advance_tax_percent') is-invalid @enderror"
                                         name="advance_tax_percent" value="0" />
                                     @error('advance_tax_percent')
                                         <div class="invalid-feedback"> {{ $message }} </div>

@@ -16,12 +16,14 @@ use Spatie\Activitylog\Models\Activity;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
 Auth::routes(['register' => false]);
 
 Route::middleware('auth')->group(function () {
+    Route::view('/file_manager', 'file_manager.index')->name('file_manager.index');
+
     Route::get('/home', 'HomeController@index')->name('home');
     Route::resource('accountingdashboard', 'AccountingDashboardController');
 

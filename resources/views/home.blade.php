@@ -95,17 +95,6 @@
                     </a>
                 </div>
 
-                <div class="col-xl-2 col-lg-2 col-md-4 col-sm-4 col-6 mb-4" hidden>
-                    <div class="card">
-                        <div class="card-body text-center">
-                            <div class="avatar avatar-md mx-auto mb-3">
-                                <span class="avatar-initial rounded-circle bg-label-warning"><i
-                                        class='bx bx-dock-top fs-3'></i></span>
-                            </div>
-                            <span class="d-block mb-1 text-nowrap">Documents</span>
-                        </div>
-                    </div>
-                </div>
 
                 <div class="col-xl-2 col-lg-2 col-md-4 col-sm-4 col-6 mb-4" hidden>
                     <div class="card">
@@ -144,6 +133,22 @@
                             <span class="d-block mb-1 text-nowrap">Setting</span>
                         </div>
                     </div>
+                </div>
+
+
+                <div class="col-xl-2 col-lg-2 col-md-4 col-sm-4 col-6 mb-4">
+                    <a href="{{ route('file_manager.index') }}">
+                        <div class="card">
+                            <div class="card-body text-center">
+                                <div class="avatar avatar-md mx-auto mb-3">
+                                    <span class="avatar-initial rounded-circle bg-label-warning">
+                                        <i class='bx bx-dock-top fs-3'></i>
+                                    </span>
+                                </div>
+                                <span class="d-block mb-1 text-nowrap">File Manager</span>
+                            </div>
+                        </div>
+                    </a>
                 </div>
 
                 <div class="col-xl-2 col-lg-2 col-md-4 col-sm-4 col-6 mb-4">
