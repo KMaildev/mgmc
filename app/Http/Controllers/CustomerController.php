@@ -142,4 +142,16 @@ class CustomerController extends Controller
         $customers = Customers::where('dealer_or_hp', 'dealer')->get();
         return Excel::download(new CustomersExport($customers), 'dealer_customers' . date("Y-m-d H:i:s") . '.xlsx');
     }
+
+
+    /**
+     * Get Ajax Request and restun Data
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function get_customer_ajax($id)
+    {
+        $customers_data = Customers::findOrFail($id);
+        return json_encode($customers_data);
+    }
 }

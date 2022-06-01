@@ -40,6 +40,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('bankform', 'Accounting\BankFormController');
 
     Route::resource('customer', 'CustomerController');
+    Route::get('get_customer_ajax/{id}', array('as' => 'get_customer_ajax', 'uses' => 'CustomerController@get_customer_ajax'));
     Route::post('dealer_customer_import', 'CustomerController@dealer_customer_import')->name('dealer_customer_import');
     Route::get('dealer_customer_export', 'CustomerController@dealer_customer_export')->name('dealer_customer_export');
 
@@ -52,6 +53,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('brand', 'BrandController');
 
     Route::resource('products', 'ProductsController');
+    Route::get('get_products_ajax/{id}', array('as' => 'get_products_ajax', 'uses' => 'ProductsController@get_products_ajax'));
     Route::post('product_import', 'ProductsController@product_import')->name('product_import');
 
     Route::resource('import_car', 'Accounting\ImportCarController');

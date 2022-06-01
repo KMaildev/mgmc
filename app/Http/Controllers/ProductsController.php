@@ -176,4 +176,16 @@ class ProductsController extends Controller
         Excel::import(new ProductsImport, request()->file('file'));
         return redirect()->back()->with('success', 'Your processing has been completed.');
     }
+
+
+    /**
+     * Get Ajax Request and restun Data
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function get_products_ajax($id)
+    {
+        $product_data = Products::findOrFail($id);
+        return json_encode($product_data);
+    }
 }

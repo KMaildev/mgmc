@@ -8,15 +8,6 @@
                         <div class="col-md-6">
                             <dl class="row mb-2">
                                 <dt class="col-sm-6 mb-2 mb-sm-0">
-                                    <span class="h4 text-capitalize mb-0 text-nowrap">Invoice #</span>
-                                </dt>
-                                <dd class="col-sm-6 d-flex">
-                                    <div class="w-px-150">
-                                        <input type="text" class="form-control" disabled placeholder="3905" value="3905"
-                                            id="invoiceId" />
-                                    </div>
-                                </dd>
-                                <dt class="col-sm-6 mb-2 mb-sm-0">
                                     <span class="fw-normal">Date:</span>
                                 </dt>
                                 <dd class="col-sm-6 d-flex">

@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: May 15, 2022 at 08:44 AM
+-- Generation Time: Jun 01, 2022 at 09:21 PM
 -- Server version: 10.4.21-MariaDB
--- PHP Version: 7.4.27
+-- PHP Version: 7.4.29
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -86,7 +86,29 @@ INSERT INTO `activity_log` (`id`, `log_name`, `description`, `subject_type`, `su
 (9, 'departments_log', 'created', 'App\\Models\\Department', 1, 'App\\User', 1, '{\"attributes\":{\"title\":\"Admin\",\"created_at\":\"2022-05-15T06:36:25.000000Z\",\"updated_at\":\"2022-05-15T06:36:25.000000Z\"}}', '2022-05-15 00:06:25', '2022-05-15 00:06:25'),
 (10, 'departments_log', 'created', 'App\\Models\\Department', 2, 'App\\User', 1, '{\"attributes\":{\"title\":\"Purchase\",\"created_at\":\"2022-05-15T06:36:31.000000Z\",\"updated_at\":\"2022-05-15T06:36:31.000000Z\"}}', '2022-05-15 00:06:31', '2022-05-15 00:06:31'),
 (11, 'departments_log', 'created', 'App\\Models\\Department', 3, 'App\\User', 1, '{\"attributes\":{\"title\":\"Sale\",\"created_at\":\"2022-05-15T06:36:34.000000Z\",\"updated_at\":\"2022-05-15T06:36:34.000000Z\"}}', '2022-05-15 00:06:34', '2022-05-15 00:06:34'),
-(12, 'users_log', 'created', 'App\\User', 3, 'App\\User', 1, '{\"attributes\":{\"name\":\"Ma May Myat Mon\",\"email\":\"mamaymyatmon@gmail.com\",\"employee_id\":\"EMP-00001\",\"phone\":\"0912312312\",\"nrc_number\":null,\"address\":\"YGN\",\"department_id\":3,\"created_at\":\"2022-05-15T06:38:07.000000Z\",\"updated_at\":\"2022-05-15T06:38:07.000000Z\"}}', '2022-05-15 00:08:07', '2022-05-15 00:08:07');
+(12, 'users_log', 'created', 'App\\User', 3, 'App\\User', 1, '{\"attributes\":{\"name\":\"Ma May Myat Mon\",\"email\":\"mamaymyatmon@gmail.com\",\"employee_id\":\"EMP-00001\",\"phone\":\"0912312312\",\"nrc_number\":null,\"address\":\"YGN\",\"department_id\":3,\"created_at\":\"2022-05-15T06:38:07.000000Z\",\"updated_at\":\"2022-05-15T06:38:07.000000Z\"}}', '2022-05-15 00:08:07', '2022-05-15 00:08:07'),
+(13, 'users_log', 'updated', 'App\\User', 1, 'App\\User', 1, '{\"attributes\":{\"name\":\"Dev Test\",\"email\":\"developer@gmail.com\",\"employee_id\":\"EMP-0001\",\"phone\":\"09444161997\",\"nrc_number\":null,\"address\":\"YGN\",\"department_id\":1,\"created_at\":\"2022-03-28T17:58:34.000000Z\",\"updated_at\":\"2022-06-01T02:17:14.000000Z\"},\"old\":{\"name\":\"Dev Test\",\"email\":\"developer@gmail.com\",\"employee_id\":\"EMP-0001\",\"phone\":\"09444161997\",\"nrc_number\":null,\"address\":\"YGN\",\"department_id\":1,\"created_at\":\"2022-03-28T17:58:34.000000Z\",\"updated_at\":\"2022-05-12T16:41:42.000000Z\"}}', '2022-05-31 19:47:14', '2022-05-31 19:47:14'),
+(14, 'products_log', 'created', 'App\\Models\\Products', 3, 'App\\User', 1, '{\"attributes\":{\"product\":\"Q22B\",\"brand_id\":null,\"brand_name\":\"Karry\",\"quantity\":\"1\",\"created_at\":\"2022-06-01T02:19:12.000000Z\",\"updated_at\":\"2022-06-01T02:19:12.000000Z\"}}', '2022-05-31 19:49:12', '2022-05-31 19:49:12'),
+(15, 'products_log', 'created', 'App\\Models\\Products', 4, 'App\\User', 1, '{\"attributes\":{\"product\":\"Q22B\",\"brand_id\":null,\"brand_name\":\"Karry\",\"quantity\":\"1\",\"created_at\":\"2022-06-01T02:19:12.000000Z\",\"updated_at\":\"2022-06-01T02:19:12.000000Z\"}}', '2022-05-31 19:49:12', '2022-05-31 19:49:12'),
+(16, 'products_log', 'created', 'App\\Models\\Products', 5, 'App\\User', 1, '{\"attributes\":{\"product\":\"Car\",\"brand_id\":null,\"brand_name\":\"Karry\",\"quantity\":\"1\",\"created_at\":\"2022-06-01T02:24:31.000000Z\",\"updated_at\":\"2022-06-01T02:24:31.000000Z\"}}', '2022-05-31 19:54:31', '2022-05-31 19:54:31'),
+(17, 'products_log', 'created', 'App\\Models\\Products', 6, 'App\\User', 1, '{\"attributes\":{\"product\":\"Car\",\"brand_id\":null,\"brand_name\":\"Karry\",\"quantity\":\"1\",\"created_at\":\"2022-06-01T02:26:06.000000Z\",\"updated_at\":\"2022-06-01T02:26:06.000000Z\"}}', '2022-05-31 19:56:06', '2022-05-31 19:56:06'),
+(18, 'products_log', 'deleted', 'App\\Models\\Products', 6, 'App\\User', 1, '{\"attributes\":{\"product\":\"Car\",\"brand_id\":null,\"brand_name\":\"Karry\",\"quantity\":\"1\",\"created_at\":\"2022-06-01T02:26:06.000000Z\",\"updated_at\":\"2022-06-01T02:26:06.000000Z\"}}', '2022-05-31 19:56:19', '2022-05-31 19:56:19'),
+(19, 'products_log', 'deleted', 'App\\Models\\Products', 5, 'App\\User', 1, '{\"attributes\":{\"product\":\"Car\",\"brand_id\":null,\"brand_name\":\"Karry\",\"quantity\":\"1\",\"created_at\":\"2022-06-01T02:24:31.000000Z\",\"updated_at\":\"2022-06-01T02:24:31.000000Z\"}}', '2022-05-31 19:56:30', '2022-05-31 19:56:30'),
+(20, 'users_log', 'updated', 'App\\User', 1, 'App\\User', 1, '{\"attributes\":{\"name\":\"Dev Test\",\"email\":\"developer@gmail.com\",\"employee_id\":\"EMP-0001\",\"phone\":\"09444161997\",\"nrc_number\":null,\"address\":\"YGN\",\"department_id\":1,\"created_at\":\"2022-03-28T17:58:34.000000Z\",\"updated_at\":\"2022-06-01T13:44:46.000000Z\"},\"old\":{\"name\":\"Dev Test\",\"email\":\"developer@gmail.com\",\"employee_id\":\"EMP-0001\",\"phone\":\"09444161997\",\"nrc_number\":null,\"address\":\"YGN\",\"department_id\":1,\"created_at\":\"2022-03-28T17:58:34.000000Z\",\"updated_at\":\"2022-06-01T02:17:14.000000Z\"}}', '2022-06-01 07:14:47', '2022-06-01 07:14:47'),
+(21, 'users_log', 'updated', 'App\\User', 1, 'App\\User', 1, '{\"attributes\":{\"name\":\"Dev Test\",\"email\":\"developer@gmail.com\",\"employee_id\":\"EMP-0001\",\"phone\":\"09444161997\",\"nrc_number\":null,\"address\":\"YGN\",\"department_id\":1,\"created_at\":\"2022-03-28T17:58:34.000000Z\",\"updated_at\":\"2022-06-01T14:47:44.000000Z\"},\"old\":{\"name\":\"Dev Test\",\"email\":\"developer@gmail.com\",\"employee_id\":\"EMP-0001\",\"phone\":\"09444161997\",\"nrc_number\":null,\"address\":\"YGN\",\"department_id\":1,\"created_at\":\"2022-03-28T17:58:34.000000Z\",\"updated_at\":\"2022-06-01T13:44:46.000000Z\"}}', '2022-06-01 08:17:44', '2022-06-01 08:17:44'),
+(22, 'customers_log', 'created', 'App\\Models\\Customers', 1, 'App\\User', 1, '{\"attributes\":{\"name\":\"MGM\",\"phone\":\"09\",\"description\":null,\"opening_balance\":null,\"opening_balance_date\":null,\"created_at\":\"2022-06-01T15:12:28.000000Z\",\"updated_at\":\"2022-06-01T15:12:28.000000Z\"}}', '2022-06-01 08:42:28', '2022-06-01 08:42:28'),
+(23, 'customers_log', 'updated', 'App\\Models\\Customers', 1, 'App\\User', 1, '{\"attributes\":{\"name\":\"MGM\",\"phone\":\"09\",\"description\":\"Ok\",\"opening_balance\":null,\"opening_balance_date\":null,\"created_at\":\"2022-06-01T15:12:28.000000Z\",\"updated_at\":\"2022-06-01T15:23:03.000000Z\"},\"old\":{\"name\":\"MGM\",\"phone\":\"09\",\"description\":null,\"opening_balance\":null,\"opening_balance_date\":null,\"created_at\":\"2022-06-01T15:12:28.000000Z\",\"updated_at\":\"2022-06-01T15:12:28.000000Z\"}}', '2022-06-01 08:53:03', '2022-06-01 08:53:03'),
+(24, 'customers_log', 'updated', 'App\\Models\\Customers', 1, 'App\\User', 1, '{\"attributes\":{\"name\":\"MGM\",\"phone\":\"09\",\"description\":\"Ok\",\"opening_balance\":null,\"opening_balance_date\":null,\"created_at\":\"2022-06-01T15:12:28.000000Z\",\"updated_at\":\"2022-06-01T15:23:07.000000Z\"},\"old\":{\"name\":\"MGM\",\"phone\":\"09\",\"description\":\"Ok\",\"opening_balance\":null,\"opening_balance_date\":null,\"created_at\":\"2022-06-01T15:12:28.000000Z\",\"updated_at\":\"2022-06-01T15:23:03.000000Z\"}}', '2022-06-01 08:53:07', '2022-06-01 08:53:07'),
+(25, 'customers_log', 'created', 'App\\Models\\Customers', 3, 'App\\User', 1, '{\"attributes\":{\"name\":\"Mg Mg\",\"phone\":\"09444161554\",\"description\":\"Ok\",\"opening_balance\":null,\"opening_balance_date\":null,\"created_at\":\"2022-06-01T15:41:30.000000Z\",\"updated_at\":\"2022-06-01T15:41:30.000000Z\"}}', '2022-06-01 09:11:30', '2022-06-01 09:11:30'),
+(26, 'customers_log', 'created', 'App\\Models\\Customers', 4, 'App\\User', 1, '{\"attributes\":{\"name\":\"U Soe\",\"phone\":\"091231311\",\"description\":\"Hello\",\"opening_balance\":null,\"opening_balance_date\":null,\"created_at\":\"2022-06-01T15:42:39.000000Z\",\"updated_at\":\"2022-06-01T15:42:39.000000Z\"}}', '2022-06-01 09:12:39', '2022-06-01 09:12:39'),
+(27, 'customers_log', 'created', 'App\\Models\\Customers', 5, 'App\\User', 1, '{\"attributes\":{\"name\":\"Mg Mg\",\"phone\":\"askf\",\"description\":\"as\",\"opening_balance\":null,\"opening_balance_date\":null,\"created_at\":\"2022-06-01T15:43:55.000000Z\",\"updated_at\":\"2022-06-01T15:43:55.000000Z\"}}', '2022-06-01 09:13:55', '2022-06-01 09:13:55'),
+(28, 'customers_log', 'updated', 'App\\Models\\Customers', 2, 'App\\User', 1, '{\"attributes\":{\"name\":\"HP\",\"phone\":\"09\",\"description\":\"Ok\",\"opening_balance\":null,\"opening_balance_date\":null,\"created_at\":\"2022-06-01T15:12:28.000000Z\",\"updated_at\":\"2022-06-01T15:51:30.000000Z\"},\"old\":{\"name\":\"HP\",\"phone\":\"09\",\"description\":\"Ok\",\"opening_balance\":null,\"opening_balance_date\":null,\"created_at\":\"2022-06-01T15:12:28.000000Z\",\"updated_at\":\"2022-06-01T15:23:07.000000Z\"}}', '2022-06-01 09:21:30', '2022-06-01 09:21:30'),
+(29, 'customers_log', 'updated', 'App\\Models\\Customers', 2, 'App\\User', 1, '{\"attributes\":{\"name\":\"HP Customer\",\"phone\":\"09\",\"description\":\"Ok\",\"opening_balance\":null,\"opening_balance_date\":null,\"created_at\":\"2022-06-01T15:12:28.000000Z\",\"updated_at\":\"2022-06-01T15:51:39.000000Z\"},\"old\":{\"name\":\"HP\",\"phone\":\"09\",\"description\":\"Ok\",\"opening_balance\":null,\"opening_balance_date\":null,\"created_at\":\"2022-06-01T15:12:28.000000Z\",\"updated_at\":\"2022-06-01T15:51:30.000000Z\"}}', '2022-06-01 09:21:39', '2022-06-01 09:21:39'),
+(30, 'customers_log', 'updated', 'App\\Models\\Customers', 5, 'App\\User', 1, '{\"attributes\":{\"name\":\"Mg Mg\",\"phone\":\"askf\",\"description\":\"as\",\"opening_balance\":null,\"opening_balance_date\":null,\"created_at\":\"2022-06-01T15:43:55.000000Z\",\"updated_at\":\"2022-06-01T15:56:32.000000Z\"},\"old\":{\"name\":\"Mg Mg\",\"phone\":\"askf\",\"description\":\"as\",\"opening_balance\":null,\"opening_balance_date\":null,\"created_at\":\"2022-06-01T15:43:55.000000Z\",\"updated_at\":\"2022-06-01T15:43:55.000000Z\"}}', '2022-06-01 09:26:32', '2022-06-01 09:26:32'),
+(31, 'customers_log', 'updated', 'App\\Models\\Customers', 5, 'App\\User', 1, '{\"attributes\":{\"name\":\"Mg Mg\",\"company_name\":\"Mg Mg\",\"dealer_code\":null,\"city\":\"YGN\",\"address\":\"kasdf\",\"phone\":\"askf\",\"description\":\"as\",\"created_at\":\"2022-06-01T15:43:55.000000Z\",\"updated_at\":\"2022-06-01T15:58:08.000000Z\"},\"old\":{\"name\":\"Mg Mg\",\"company_name\":\"Mg Mg\",\"dealer_code\":null,\"city\":\"YGN\",\"address\":\"kasdf\",\"phone\":\"askf\",\"description\":\"as\",\"created_at\":\"2022-06-01T15:43:55.000000Z\",\"updated_at\":\"2022-06-01T15:56:32.000000Z\"}}', '2022-06-01 09:28:08', '2022-06-01 09:28:08'),
+(32, 'customers_log', 'updated', 'App\\Models\\Customers', 1, 'App\\User', 1, '{\"attributes\":{\"name\":\"MGM SOE\",\"company_name\":\"Karry Show room (ASE)\",\"dealer_code\":\"MGM-001-YGN-Karry1\",\"city\":\"Yangon\",\"address\":\"Yangon City\",\"phone\":\"09\",\"description\":\"Ok\",\"created_at\":\"2022-06-01T15:12:28.000000Z\",\"updated_at\":\"2022-06-01T15:59:52.000000Z\"},\"old\":{\"name\":\"MGM\",\"company_name\":\"Karry Show room (ASE)\",\"dealer_code\":\"MGM-001-YGN-Karry1\",\"city\":\"Yangon\",\"address\":\"Yangon City\",\"phone\":\"09\",\"description\":\"Ok\",\"created_at\":\"2022-06-01T15:12:28.000000Z\",\"updated_at\":\"2022-06-01T15:23:07.000000Z\"}}', '2022-06-01 09:29:52', '2022-06-01 09:29:52'),
+(33, 'customers_log', 'created', 'App\\Models\\Customers', 6, 'App\\User', 1, '{\"attributes\":{\"name\":\"MGM\",\"company_name\":\"Karry Show room (Head Office)\",\"dealer_code\":\"MGM-002-YGN-MGM\",\"city\":\"Yangon\",\"address\":null,\"phone\":null,\"description\":null,\"created_at\":\"2022-06-01T04:15:44.000000Z\",\"updated_at\":\"2022-06-01T04:15:44.000000Z\"}}', '2022-06-01 09:45:44', '2022-06-01 09:45:44'),
+(34, 'suppliers_log', 'created', 'App\\Models\\Supplier', 1, 'App\\User', 1, '{\"attributes\":{\"name\":\"Chery Commercial Vehicle(Anhui) Company Limited\",\"company\":null,\"phone\":\"959\",\"description\":null,\"created_at\":\"2022-06-01T04:48:19.000000Z\",\"updated_at\":\"2022-06-01T04:48:19.000000Z\"}}', '2022-06-01 10:18:19', '2022-06-01 10:18:19');
 
 -- --------------------------------------------------------
 
@@ -158,18 +180,14 @@ CREATE TABLE `customers` (
   `id` int(10) UNSIGNED NOT NULL,
   `name` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `company_name` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `nrc_no` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `dealer_code` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `city` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `address` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `phone` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `email` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `address` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `country` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `city` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `state` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `description` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `dealer_customer_id` int(11) DEFAULT NULL,
   `dealer_or_hp` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `opening_balance` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `opening_balance_date` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `dealer_customer_id` int(11) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -178,9 +196,13 @@ CREATE TABLE `customers` (
 -- Dumping data for table `customers`
 --
 
-INSERT INTO `customers` (`id`, `name`, `company_name`, `nrc_no`, `phone`, `email`, `address`, `country`, `city`, `state`, `description`, `dealer_customer_id`, `dealer_or_hp`, `opening_balance`, `opening_balance_date`, `created_at`, `updated_at`) VALUES
-(1, 'U Maung Maung Soe', NULL, NULL, '09123123123', NULL, 'Yangon', NULL, NULL, NULL, NULL, 0, 'dealer', '0', NULL, '2022-05-14 23:00:49', '2022-05-14 23:04:45'),
-(2, 'U Aung Zaw Win', 'ABC', NULL, '09123123123', NULL, 'YGN', NULL, NULL, NULL, NULL, 1, 'dealer', '0', NULL, '2022-05-14 23:02:47', '2022-05-14 23:05:50');
+INSERT INTO `customers` (`id`, `name`, `company_name`, `dealer_code`, `city`, `address`, `phone`, `email`, `description`, `dealer_or_hp`, `dealer_customer_id`, `created_at`, `updated_at`) VALUES
+(1, 'MGM SOE', 'Karry Show room (ASE)', 'MGM-001-YGN-Karry1', 'Yangon', 'Yangon City', '09', 'bnaauto.902@gmail.com', 'Ok', 'dealer', 0, '2022-06-01 08:42:28', '2022-06-01 09:29:52'),
+(2, 'HP Customer', 'Karry Show room (ASE)', 'MGM-001-YGN-Karry1', 'Yangon', 'Yangon City', '09', 'bnaauto.902@gmail.com', 'Ok', 'hp', 1, '2022-06-01 08:42:28', '2022-06-01 09:21:39'),
+(3, 'Mg Mg', 'OK Company', NULL, 'Yangon', 'YGN', '09444161554', 'mgmg@gmail.com', 'Ok', 'dealer', 2, '2022-06-01 09:11:30', '2022-06-01 09:11:30'),
+(4, 'U Soe', 'S Company', NULL, 'YGN', 'YGN', '091231311', 'mgmg@gmail.com', 'Hello', 'hp', 1, '2022-06-01 09:12:39', '2022-06-01 09:12:39'),
+(5, 'Mg Mg', 'Mg Mg', NULL, 'YGN', 'kasdf', 'askf', 'aksdf@gmail.com', 'as', 'hp', 3, '2022-06-01 09:13:55', '2022-06-01 09:28:08'),
+(6, 'MGM', 'Karry Show room (Head Office)', 'MGM-002-YGN-MGM', 'Yangon', NULL, NULL, NULL, NULL, 'dealer', 0, '2022-05-31 21:45:44', '2022-05-31 21:45:44');
 
 -- --------------------------------------------------------
 
@@ -243,12 +265,15 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (5, '2022_02_10_173302_create_account_types_table', 1),
 (6, '2022_02_11_065406_create_chartof_accounts_table', 1),
 (7, '2022_03_24_192125_create_cash_books_table', 1),
-(8, '2022_03_25_064339_create_customers_table', 1),
 (9, '2022_03_25_073157_create_suppliers_table', 1),
 (10, '2022_03_25_093621_create_products_table', 1),
 (11, '2022_03_28_065307_create_activity_log_table', 1),
 (12, '2022_04_25_152320_create_brands_table', 1),
-(13, '2022_04_25_154422_create_departments_table', 1);
+(13, '2022_04_25_154422_create_departments_table', 1),
+(14, '2022_03_25_064339_create_customers_table', 2),
+(15, '2022_06_01_184253_create_sales_invoices_table', 3),
+(17, '2022_06_01_184854_create_sales_invoices_payments_table', 3),
+(18, '2022_06_01_184553_create_sales_items_table', 4);
 
 -- --------------------------------------------------------
 
@@ -312,7 +337,79 @@ CREATE TABLE `products` (
 
 INSERT INTO `products` (`id`, `product`, `type`, `model_no`, `model_year`, `configuration`, `body_color`, `interior_color`, `engine_power`, `chessi_no`, `engine_no`, `weight`, `door`, `seater`, `vehicle_no`, `quantity`, `remark`, `user_id`, `brand_id`, `brand_name`, `commodity`, `id_no`, `unit`, `amount_usd`, `exchange_rate`, `adjustment_value_ad`, `import_duty_other_tax_percent`, `commercial_tax_percent`, `maccs_service_fee`, `security_fee`, `redemption_fine`, `advance_tax_percent`, `import_date`, `created_at`, `updated_at`) VALUES
 (1, 'Q22B', 'Left Hand Drive', 'Model:2019; 1300 CC', '2019', '-', '-', '-', '1300 CC', 'LVMZ1A1A2KF143205', NULL, '-', '-', '-', '-', '1', NULL, '1', NULL, 'Karry', 'ILNS ILV192002891', '100141000000', 'Unit', '3800', '1422.52', '0', '10', '5', '15000', '10000', '100000', '2', '', '2022-05-14 22:48:50', '2022-05-14 22:48:50'),
-(2, 'Q22B', 'Left Hand Drive', 'Model:2019; 1300 CC', '2019', '-', '-', '-', '1300 CC', 'LVMZ1A1A8KF143211', NULL, '-', '-', '-', '-', '1', NULL, '1', NULL, 'Karry', 'ILNS ILV192002891', '100141000000', 'Unit', '3800', '1422.52', '0', '10', '5', '15000', '10000', '100000', '2', '', '2022-05-14 22:48:50', '2022-05-14 22:48:50');
+(2, 'Q22B', 'Left Hand Drive', 'Model:2019; 1300 CC', '2019', '-', '-', '-', '1300 CC', 'LVMZ1A1A8KF143211', NULL, '-', '-', '-', '-', '1', NULL, '1', NULL, 'Karry', 'ILNS ILV192002891', '100141000000', 'Unit', '3800', '1422.52', '0', '10', '5', '15000', '10000', '100000', '2', '', '2022-05-14 22:48:50', '2022-05-14 22:48:50'),
+(3, 'Q22B', 'Left Hand Drive', 'Model:2019; 1300 CC', '2019', '-', '-', '-', '1300 CC', 'LVMZ1A1A2KF143205', NULL, '-', '-', '-', '-', '1', NULL, '1', NULL, 'Karry', 'ILNS ILV192002891', '100000000000', 'Unit', '3800', '1422.52', '0', '10', '5', '15000', '10000', '100000', '2', '', '2022-05-31 19:49:12', '2022-05-31 19:49:12'),
+(4, 'Q22B', 'Left Hand Drive', 'Model:2019; 1300 CC', '2019', '-', '-', '-', '1300 CC', 'LVMZ1A1A8KF143211', NULL, '-', '-', '-', '-', '1', NULL, '1', NULL, 'Karry', 'ILNS ILV192002891', '100000000000', 'Unit', '3800', '1422.52', '0', '10', '5', '15000', '10000', '100000', '2', '', '2022-05-31 19:49:12', '2022-05-31 19:49:12');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `sales_invoices`
+--
+
+CREATE TABLE `sales_invoices` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `invoice_no` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `invoice_date` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `customer_id` int(11) DEFAULT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `sales_invoices`
+--
+
+INSERT INTO `sales_invoices` (`id`, `invoice_no`, `invoice_date`, `customer_id`, `user_id`, `created_at`, `updated_at`) VALUES
+(1, 'IV-00001', '2022-06-02', 1, 1, '2022-06-01 12:48:57', '2022-06-01 12:48:57'),
+(2, 'IV-00001', '2022-06-02', 1, 1, '2022-06-01 12:50:53', '2022-06-01 12:50:53');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `sales_invoices_payments`
+--
+
+CREATE TABLE `sales_invoices_payments` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `down_payment` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `discount` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `dealer_ercentage` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `sales_invoice_id` int(11) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `sales_invoices_payments`
+--
+
+INSERT INTO `sales_invoices_payments` (`id`, `down_payment`, `discount`, `dealer_ercentage`, `sales_invoice_id`, `created_at`, `updated_at`) VALUES
+(1, '1000', '0', NULL, 2, '2022-06-01 12:50:53', '2022-06-01 12:50:53');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `sales_items`
+--
+
+CREATE TABLE `sales_items` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `product_id` int(11) DEFAULT NULL,
+  `qty` int(11) DEFAULT NULL,
+  `unit_price` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `sales_invoice_id` int(11) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `sales_items`
+--
+
+INSERT INTO `sales_items` (`id`, `product_id`, `qty`, `unit_price`, `sales_invoice_id`, `created_at`, `updated_at`) VALUES
+(1, 1, 1, '1000', 2, '2022-06-01 12:50:53', '2022-06-01 12:50:53');
 
 -- --------------------------------------------------------
 
@@ -331,6 +428,13 @@ CREATE TABLE `suppliers` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `suppliers`
+--
+
+INSERT INTO `suppliers` (`id`, `name`, `company`, `phone`, `email`, `address`, `description`, `created_at`, `updated_at`) VALUES
+(1, 'Chery Commercial Vehicle(Anhui) Company Limited', NULL, '959', 'Xurupeng@mychery.com', 'No-8 Building 717 South Zhongshan Road,Science and Technology Industrial Park,Yijiang District,Wuhu,Anhui,China', NULL, '2022-05-31 22:18:19', '2022-05-31 22:18:19');
 
 -- --------------------------------------------------------
 
@@ -363,7 +467,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`, `employee_id`, `phone`, `nrc_number`, `gender`, `address`, `department_id`, `last_login_at`, `last_login_ip`, `agent`) VALUES
-(1, 'Dev Test', 'developer@gmail.com', NULL, '$2y$10$fCdZ6o33mm5ftnDrz63j4O1ssBWd1mrEaCfHLwaVpgr2ei7t3RURe', NULL, '2022-03-28 11:28:34', '2022-05-12 10:11:42', 'EMP-0001', '09444161997', NULL, 'male', 'YGN', 1, '2022-05-12 16:41:42', '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.54 Safari/537.36'),
+(1, 'Dev Test', 'developer@gmail.com', NULL, '$2y$10$fCdZ6o33mm5ftnDrz63j4O1ssBWd1mrEaCfHLwaVpgr2ei7t3RURe', NULL, '2022-03-28 11:28:34', '2022-06-01 08:17:44', 'EMP-0001', '09444161997', NULL, 'male', 'YGN', 1, '2022-06-01 14:47:44', '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.5005.61 Safari/537.36'),
 (2, 'U Aung Cho Tun', 'aungchotun@gmail.com', NULL, '$2y$10$tl7wt/VHxT8TX1cZwGzUhuT/RyFx.TU3kI/2gmAXywdc294eCHTra', 'KyAsL3PniXpQqZBoPCp50e8Pq9rw4IjSBsYgJD8eQJod5ICz3u8M4vcOKrdZ', '2022-03-28 19:41:13', '2022-03-31 08:39:12', 'EMP-00002', '09123123123', NULL, 'male', 'YGN', 1, '2022-03-31 15:39:12', '69.160.8.4', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:98.0) Gecko/20100101 Firefox/98.0'),
 (3, 'Ma May Myat Mon', 'mamaymyatmon@gmail.com', NULL, '$2y$10$sSmcokRLRJBbuuOogCQamOWL4FCnsBgZkLQIcJn4MkRPhGWx6krDC', NULL, '2022-05-15 00:08:07', '2022-05-15 00:08:07', 'EMP-00001', '0912312312', NULL, 'male', 'YGN', 3, NULL, NULL, NULL);
 
@@ -450,6 +554,24 @@ ALTER TABLE `products`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `sales_invoices`
+--
+ALTER TABLE `sales_invoices`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `sales_invoices_payments`
+--
+ALTER TABLE `sales_invoices_payments`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `sales_items`
+--
+ALTER TABLE `sales_items`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `suppliers`
 --
 ALTER TABLE `suppliers`
@@ -481,7 +603,7 @@ ALTER TABLE `account_types`
 -- AUTO_INCREMENT for table `activity_log`
 --
 ALTER TABLE `activity_log`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT for table `brands`
@@ -505,7 +627,7 @@ ALTER TABLE `chartof_accounts`
 -- AUTO_INCREMENT for table `customers`
 --
 ALTER TABLE `customers`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `departments`
@@ -523,19 +645,37 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `sales_invoices`
+--
+ALTER TABLE `sales_invoices`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `sales_invoices_payments`
+--
+ALTER TABLE `sales_invoices_payments`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `sales_items`
+--
+ALTER TABLE `sales_items`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `suppliers`
 --
 ALTER TABLE `suppliers`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `users`

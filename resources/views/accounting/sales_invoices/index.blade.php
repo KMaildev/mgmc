@@ -10,7 +10,8 @@
                             Sales Invoices
                         </h5>
                         <div class="card-title-elements ms-auto">
-                            <a href="{{ route('sales_invoices.create') }}" class="dt-button create-new btn btn-primary btn-sm">
+                            <a href="{{ route('sales_invoices.create') }}"
+                                class="dt-button create-new btn btn-primary btn-sm">
                                 <span>
                                     <i class="bx bx-plus me-sm-2"></i>
                                     <span class="d-none d-sm-inline-block">Create</span>
@@ -27,8 +28,8 @@
                             <th style="color: white; text-align: center; width: 1%;">Sr.No</th>
                             <th style="color: white; text-align: center; width: 10%;">Invoice No.</th>
                             <th style="color: white; text-align: center; width: 10%;">Date</th>
-                            <th style="color: white; text-align: center; width: 10%;">Dealer Name</th>
                             <th style="color: white; text-align: center; width: 10%;">Company Name</th>
+                            <th style="color: white; text-align: center; width: 10%;">Dealer Name</th>
                             <th style="color: white; text-align: center; width: 10%;">Brand Name</th>
                             <th style="color: white; text-align: center; width: 10%;">Type</th>
                             <th style="color: white; text-align: center; width: 10%;">Model</th>
@@ -46,7 +47,9 @@
                             <th style="color: white; text-align: center; width: 10%;">Action</th>
                         </thead>
                         <tbody class="table-border-bottom-0 row_position" id="tablecontents">
-
+                            @if ($form_status == 'is_create')
+                                @include('accounting.sales_invoices.form.create_form')
+                            @endif
                         </tbody>
                     </table>
                 </div>
