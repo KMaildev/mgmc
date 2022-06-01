@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreSupplier;
 use App\Http\Requests\UpdateSupplier;
+use App\Imports\SupplierImport;
 use App\Models\Supplier;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class SupplierController extends Controller
 {
@@ -107,5 +109,14 @@ class SupplierController extends Controller
         $supplier = Supplier::findOrFail($id);
         $supplier->delete();
         return redirect()->back()->with('success', 'Deleted successfully.');
+    }
+
+    /**
+     * @return \Illuminate\Support\Collection
+     */
+    public function supplier_import()
+    {
+        Excel::import(new SupplierImport, request()->file('file'));
+        return redirect()->back()->with('success', 'Your processing has been completed.');
     }
 }

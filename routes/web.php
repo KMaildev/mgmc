@@ -47,6 +47,8 @@ Route::middleware('auth')->group(function () {
     Route::get('hp_customer_export', 'HpCustomerController@hp_customer_export')->name('hp_customer_export');
 
     Route::resource('supplier', 'SupplierController');
+    Route::post('supplier_import', 'SupplierController@supplier_import')->name('supplier_import');
+
     Route::resource('brand', 'BrandController');
 
     Route::resource('products', 'ProductsController');
