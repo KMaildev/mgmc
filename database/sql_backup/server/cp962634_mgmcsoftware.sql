@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jun 02, 2022 at 08:55 AM
+-- Generation Time: Jun 02, 2022 at 08:52 AM
 -- Server version: 5.6.51
 -- PHP Version: 7.3.32
 
@@ -1417,8 +1417,7 @@ INSERT INTO `activity_log` (`id`, `log_name`, `description`, `subject_type`, `su
 (1273, 'users_log', 'updated', 'App\\User', 1, 'App\\User', 1, '{\"attributes\":{\"name\":\"Dev Test\",\"email\":\"developer@gmail.com\",\"employee_id\":\"EMP-0001\",\"phone\":\"09444161997\",\"nrc_number\":null,\"address\":\"YGN\",\"department_id\":\"1\",\"created_at\":\"2022-03-28T18:28:34.000000Z\",\"updated_at\":\"2022-05-30T16:07:27.000000Z\"},\"old\":{\"name\":\"Dev Test\",\"email\":\"developer@gmail.com\",\"employee_id\":\"EMP-0001\",\"phone\":\"09444161997\",\"nrc_number\":null,\"address\":\"YGN\",\"department_id\":\"1\",\"created_at\":\"2022-03-28T18:28:34.000000Z\",\"updated_at\":\"2022-05-30T15:41:41.000000Z\"}}', '2022-05-30 09:07:27', '2022-05-30 09:07:27'),
 (1274, 'users_log', 'updated', 'App\\User', 1, 'App\\User', 1, '{\"attributes\":{\"name\":\"Dev Test\",\"email\":\"developer@gmail.com\",\"employee_id\":\"EMP-0001\",\"phone\":\"09444161997\",\"nrc_number\":null,\"address\":\"YGN\",\"department_id\":\"1\",\"created_at\":\"2022-03-28T18:28:34.000000Z\",\"updated_at\":\"2022-06-01T02:39:15.000000Z\"},\"old\":{\"name\":\"Dev Test\",\"email\":\"developer@gmail.com\",\"employee_id\":\"EMP-0001\",\"phone\":\"09444161997\",\"nrc_number\":null,\"address\":\"YGN\",\"department_id\":\"1\",\"created_at\":\"2022-03-28T18:28:34.000000Z\",\"updated_at\":\"2022-05-30T16:07:27.000000Z\"}}', '2022-05-31 19:39:15', '2022-05-31 19:39:15'),
 (1275, 'users_log', 'updated', 'App\\User', 1, 'App\\User', 1, '{\"attributes\":{\"name\":\"Dev Test\",\"email\":\"developer@gmail.com\",\"employee_id\":\"EMP-0001\",\"phone\":\"09444161997\",\"nrc_number\":null,\"address\":\"YGN\",\"department_id\":\"1\",\"created_at\":\"2022-03-28T18:28:34.000000Z\",\"updated_at\":\"2022-06-01T02:46:41.000000Z\"},\"old\":{\"name\":\"Dev Test\",\"email\":\"developer@gmail.com\",\"employee_id\":\"EMP-0001\",\"phone\":\"09444161997\",\"nrc_number\":null,\"address\":\"YGN\",\"department_id\":\"1\",\"created_at\":\"2022-03-28T18:28:34.000000Z\",\"updated_at\":\"2022-06-01T02:39:15.000000Z\"}}', '2022-05-31 19:46:41', '2022-05-31 19:46:41'),
-(1276, 'users_log', 'updated', 'App\\User', 1, 'App\\User', 1, '{\"attributes\":{\"name\":\"Dev Test\",\"email\":\"developer@gmail.com\",\"employee_id\":\"EMP-0001\",\"phone\":\"09444161997\",\"nrc_number\":null,\"address\":\"YGN\",\"department_id\":\"1\",\"created_at\":\"2022-03-28T18:28:34.000000Z\",\"updated_at\":\"2022-06-01T17:56:04.000000Z\"},\"old\":{\"name\":\"Dev Test\",\"email\":\"developer@gmail.com\",\"employee_id\":\"EMP-0001\",\"phone\":\"09444161997\",\"nrc_number\":null,\"address\":\"YGN\",\"department_id\":\"1\",\"created_at\":\"2022-03-28T18:28:34.000000Z\",\"updated_at\":\"2022-06-01T02:46:41.000000Z\"}}', '2022-06-01 10:56:04', '2022-06-01 10:56:04'),
-(1277, 'users_log', 'updated', 'App\\User', 1, 'App\\User', 1, '{\"attributes\":{\"name\":\"Dev Test\",\"email\":\"developer@gmail.com\",\"employee_id\":\"EMP-0001\",\"phone\":\"09444161997\",\"nrc_number\":null,\"address\":\"YGN\",\"department_id\":\"1\",\"created_at\":\"2022-03-28T18:28:34.000000Z\",\"updated_at\":\"2022-06-02T01:52:13.000000Z\"},\"old\":{\"name\":\"Dev Test\",\"email\":\"developer@gmail.com\",\"employee_id\":\"EMP-0001\",\"phone\":\"09444161997\",\"nrc_number\":null,\"address\":\"YGN\",\"department_id\":\"1\",\"created_at\":\"2022-03-28T18:28:34.000000Z\",\"updated_at\":\"2022-06-01T17:56:04.000000Z\"}}', '2022-06-01 18:52:13', '2022-06-01 18:52:13');
+(1276, 'users_log', 'updated', 'App\\User', 1, 'App\\User', 1, '{\"attributes\":{\"name\":\"Dev Test\",\"email\":\"developer@gmail.com\",\"employee_id\":\"EMP-0001\",\"phone\":\"09444161997\",\"nrc_number\":null,\"address\":\"YGN\",\"department_id\":\"1\",\"created_at\":\"2022-03-28T18:28:34.000000Z\",\"updated_at\":\"2022-06-01T17:56:04.000000Z\"},\"old\":{\"name\":\"Dev Test\",\"email\":\"developer@gmail.com\",\"employee_id\":\"EMP-0001\",\"phone\":\"09444161997\",\"nrc_number\":null,\"address\":\"YGN\",\"department_id\":\"1\",\"created_at\":\"2022-03-28T18:28:34.000000Z\",\"updated_at\":\"2022-06-01T02:46:41.000000Z\"}}', '2022-06-01 10:56:04', '2022-06-01 10:56:04');
 
 -- --------------------------------------------------------
 
@@ -2714,7 +2713,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`, `employee_id`, `phone`, `nrc_number`, `gender`, `address`, `department_id`, `last_login_at`, `last_login_ip`, `agent`) VALUES
-(1, 'Dev Test', 'developer@gmail.com', NULL, '$2y$10$fCdZ6o33mm5ftnDrz63j4O1ssBWd1mrEaCfHLwaVpgr2ei7t3RURe', NULL, '2022-03-28 11:28:34', '2022-06-01 18:52:13', 'EMP-0001', '09444161997', NULL, 'male', 'YGN', 1, '2022-06-02 01:52:13', '45.125.4.243', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.5005.61 Safari/537.36'),
+(1, 'Dev Test', 'developer@gmail.com', NULL, '$2y$10$fCdZ6o33mm5ftnDrz63j4O1ssBWd1mrEaCfHLwaVpgr2ei7t3RURe', NULL, '2022-03-28 11:28:34', '2022-06-01 10:56:04', 'EMP-0001', '09444161997', NULL, 'male', 'YGN', 1, '2022-06-01 17:56:04', '45.125.4.243', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.5005.61 Safari/537.36'),
 (2, 'U Aung Cho Tun', 'aungchotun@gmail.com', NULL, '$2y$10$tl7wt/VHxT8TX1cZwGzUhuT/RyFx.TU3kI/2gmAXywdc294eCHTra', 'KyAsL3PniXpQqZBoPCp50e8Pq9rw4IjSBsYgJD8eQJod5ICz3u8M4vcOKrdZ', '2022-03-28 19:41:13', '2022-05-23 02:42:32', 'EMP-00002', '09123123123', NULL, 'male', 'YGN', 1, '2022-05-23 09:42:32', '103.215.192.77', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.67 Safari/537.36');
 
 --
@@ -2810,7 +2809,7 @@ ALTER TABLE `account_types`
 -- AUTO_INCREMENT for table `activity_log`
 --
 ALTER TABLE `activity_log`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1278;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1277;
 
 --
 -- AUTO_INCREMENT for table `brands`

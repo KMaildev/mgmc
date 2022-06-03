@@ -23,20 +23,19 @@
                     </div>
                 </div>
 
-                <div class="table-responsive text-nowrap rowheaders table-scroll" role="region" aria-labelledby="HeadersCol"
-                    tabindex="0">
+                <div class="table-responsive text-nowrap rowheaders table-scroll outer-wrapper">
                     <table class="table table-bordered main-table py-5" id="export_excel">
                         <thead class="tbbg">
-                            <th style="color: white; text-align: center; width: 1%;">#</th>
-                            <th style="color: white; text-align: center;">Owner Name</th>
-                            <th style="color: white; text-align: center;">Company Name</th>
-                            <th style="color: white; text-align: center;">Dealer Code</th>
-                            <th style="color: white; text-align: center;">City</th>
-                            <th style="color: white; text-align: center;">Address</th>
-                            <th style="color: white; text-align: center;">Phone</th>
-                            <th style="color: white; text-align: center;">Email</th>
-                            <th style="color: white; text-align: center;">Description</th>
-                            <th style="color: white; text-align: center;">Action</th>
+                            <th style="color: white; background-color: #2e696e; text-align: center; width: 1%;">#</th>
+                            <th style="color: white; background-color: #2e696e; text-align: center;">Owner Name</th>
+                            <th style="color: white; background-color: #2e696e; text-align: center;">Company Name</th>
+                            <th style="color: white; background-color: #2e696e; text-align: center;">Dealer Code</th>
+                            <th style="color: white; background-color: #2e696e; text-align: center;">City</th>
+                            <th style="color: white; background-color: #2e696e; text-align: center;">Address</th>
+                            <th style="color: white; background-color: #2e696e; text-align: center;">Phone</th>
+                            <th style="color: white; background-color: #2e696e; text-align: center;">Email</th>
+                            <th style="color: white; background-color: #2e696e; text-align: center;">Description</th>
+                            <th style="color: white; background-color: #2e696e; text-align: center;">Action</th>
                         </thead>
                         <tbody class="table-border-bottom-0">
                             @foreach ($customers as $key => $customer)
@@ -102,6 +101,7 @@
                         </tbody>
                     </table>
                 </div>
+                <div class="pseduo-track"></div>
 
             </div>
         </div>

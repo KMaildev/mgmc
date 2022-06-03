@@ -17,9 +17,10 @@ class ImportCarController extends Controller
     public function index()
     {
         $products = Products::orderBy('id')->get()->groupBy(function ($data) {
-            return $data->id_no . 'explode_id_commodity' . $data->commodity;
+            return  $data->commodity . 'explode_id_commodity' . $data->id_no;
         });
         $form_status = 'is_create';
+        // return $products;
         return view('accounting.import_car.index', compact('products', 'form_status'));
     }
 

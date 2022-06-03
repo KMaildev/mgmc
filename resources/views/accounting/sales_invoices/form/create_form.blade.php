@@ -22,7 +22,6 @@
             @enderror
         </td>
 
-
         {{-- Company Name --}}
         <td>
             <select class="select2 form-select form-select-sm" data-allow-clear="false" id="CustomerID">
@@ -158,8 +157,8 @@
 
     </tr>
 
-    <input type="text" id="setCustomerId" required name="customer_id">
-    <input type="text" id="setChessiNo" required name="chessi_no">
+    <input type="hidden" id="setCustomerId" required name="customer_id">
+    <input type="hidden" id="setChessiNo" required name="chessi_no">
 </form>
 
 @section('script')
@@ -214,16 +213,6 @@
                     });
                 }
             });
-
-
-
-            $('select[id="CustomerID"]').on('change', function() {
-                CashAccount.value = $(this).val();
-            });
-
-
-
-
         });
     </script>
     {!! JsValidator::formRequest('App\Http\Requests\StoreSalesInvoices', '#create-form') !!}

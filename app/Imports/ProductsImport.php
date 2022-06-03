@@ -56,9 +56,9 @@ class ProductsImport implements ToCollection, WithHeadingRow
                 'updated_at'    => date('Y-m-d h:i:s'),
 
                 'brand_name'    => $row['brand_name'],
-                'commodity'    => $row['commodity'],
-                'id_no'    => $row['id_no'],
-                'unit'    => $row['unit'],
+                'commodity'    => strval($row['commodity']),
+                'id_no'    => strval($row['id_no']),
+                'unit'    => strval($row['unit']),
 
                 'amount_usd'    => $row['amount_usd'],
                 'exchange_rate'    => $row['exchange_rate'],
@@ -69,7 +69,7 @@ class ProductsImport implements ToCollection, WithHeadingRow
                 'security_fee'    => $row['security_fee'],
                 'redemption_fine'    => $row['redemption_fine'],
                 'advance_tax_percent'    => $row['advance_tax_percent'],
-                'import_date'    => '',
+                'import_date'    => date('Y-m-d h:i:s'),
             ]);
         }
     }

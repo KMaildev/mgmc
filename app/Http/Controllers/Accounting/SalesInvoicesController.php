@@ -21,10 +21,14 @@ class SalesInvoicesController extends Controller
      */
     public function index()
     {
+        // For Create
         $form_status = 'is_create';
         $customers = Customers::all();
         $products = Products::all();
-        return view('accounting.sales_invoices.index', compact('form_status', 'customers', 'products'));
+
+        // For List 
+        $sales_invoices = SalesInvoices::all();
+        return view('accounting.sales_invoices.index', compact('form_status', 'customers', 'products', 'sales_invoices'));
     }
 
     /**

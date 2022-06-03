@@ -174,7 +174,7 @@ class ProductsController extends Controller
     public function product_import()
     {
         Excel::import(new ProductsImport, request()->file('file'));
-        return redirect()->back()->with('success', 'Your processing has been completed.');
+        // return redirect()->back()->with('success', 'Your processing has been completed.');
     }
 
 
