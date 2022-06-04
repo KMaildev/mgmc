@@ -1,5 +1,14 @@
 @extends('layouts.menus.accounting')
 @section('content')
+    <style>
+        table,
+        th,
+        td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+
+    </style>
     <div class="row justify-content-center">
         <div class="col-md-12 col-sm-12 col-lg-12">
             <div class="card">
@@ -21,9 +30,8 @@
                     </div>
                 </div>
 
-                <div class="table-responsive text-nowrap rowheaders table-scroll outer-wrapper" role="region"
-                    aria-labelledby="HeadersCol">
-                    <table class="table table-bordered main-table" id="export_excel">
+                <div class="second_table outer-wrapper">
+                    <table class="">
                         <thead class="tbbg">
                             <th style="color: white; text-align: center; width: 1%;">Sr.No</th>
                             <th style="color: white; text-align: center; width: 10%;">Invoice No.</th>
@@ -52,85 +60,163 @@
                             @endif
 
                             @foreach ($sales_invoices as $key => $sales_invoice)
-                                <tr>
-                                    <td rowspan="3">
+                                <tr style="background-color: white;">
+                                    <td>
                                         {{ $key + 1 }}
                                     </td>
 
-                                    <td rowspan="3">
+                                    <td>
                                         {{ $sales_invoice->invoice_no }}
                                     </td>
 
-                                    <td rowspan="3">
+                                    <td>
                                         {{ $sales_invoice->invoice_date }}
                                     </td>
 
-                                    <td rowspan="3">
+                                    <td>
                                         {{ $sales_invoice->customers_table->company_name ?? '' }}
                                     </td>
 
-                                    <td rowspan="3">
+                                    <td>
                                         {{ $sales_invoice->customers_table->name ?? '' }}
                                     </td>
 
-                                    @foreach ($sales_invoice->sales_items_table as $sales_items)
-                                        {{-- sales_items --}}
-                                        <td>
-                                            {{ $sales_items->products_table->brand_name ?? '' }}
-                                        </td>
+                                    {{-- Brand Name --}}
+                                    <td>
+                                        @foreach ($sales_invoice->sales_items_table as $sales_items)
+                                            <table style="width: 100%;">
+                                                <tr>
+                                                    <td>
+                                                        {{ $sales_items->products_table->brand_name ?? '' }}
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        @endforeach
+                                    </td>
 
-                                        <td>
-                                            {{ $sales_items->products_table->type ?? '' }}
-                                        </td>
+                                    {{-- Type --}}
+                                    <td>
+                                        @foreach ($sales_invoice->sales_items_table as $sales_items)
+                                            <table style="width: 100%;">
+                                                <tr>
+                                                    <td>
+                                                        {{ $sales_items->products_table->type ?? '' }}
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        @endforeach
+                                    </td>
 
-                                        <td>
-                                            {{ $sales_items->products_table->model_no ?? '' }}
-                                        </td>
+                                    {{-- Model --}}
+                                    <td>
+                                        @foreach ($sales_invoice->sales_items_table as $sales_items)
+                                            <table style="width: 100%;">
+                                                <tr>
+                                                    <td>
+                                                        {{ $sales_items->products_table->model_no ?? '' }}
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        @endforeach
+                                    </td>
 
-                                        <td>
-                                            {{ $sales_items->products_table->body_color ?? '' }}
-                                        </td>
+                                    {{-- Color --}}
+                                    <td>
+                                        @foreach ($sales_invoice->sales_items_table as $sales_items)
+                                            <table style="width: 100%;">
+                                                <tr>
+                                                    <td>
+                                                        {{ $sales_items->products_table->body_color ?? '' }}
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        @endforeach
+                                    </td>
 
-                                        <td>
-                                            {{ $sales_items->products_table->chessi_no ?? '' }}
-                                        </td>
+                                    {{-- Chassis No --}}
+                                    <td>
+                                        @foreach ($sales_invoice->sales_items_table as $sales_items)
+                                            <table style="width: 100%;">
+                                                <tr>
+                                                    <td>
+                                                        {{ $sales_items->products_table->chessi_no ?? '' }}
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        @endforeach
+                                    </td>
 
-                                        <td>
-                                            {{ $sales_items->products_table->vehicle_no ?? '' }}
-                                        </td>
+                                    {{-- Vehicle No. --}}
+                                    <td>
+                                        @foreach ($sales_invoice->sales_items_table as $sales_items)
+                                            <table style="width: 100%;">
+                                                <tr>
+                                                    <td>
+                                                        {{ $sales_items->products_table->vehicle_no ?? '' }}
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        @endforeach
+                                    </td>
 
-                                        <td>
-                                            {{ $sales_items->qty ?? 0 }}
-                                        </td>
+                                    {{-- Qty --}}
+                                    <td>
+                                        @foreach ($sales_invoice->sales_items_table as $sales_items)
+                                            <table style="width: 100%;">
+                                                <tr>
+                                                    <td>
+                                                        {{ $sales_items->qty ?? 0 }}
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        @endforeach
+                                    </td>
 
-                                        <td>
-                                            {{ $sales_items->unit_price ?? 0 }}
-                                        </td>
+                                    {{-- Unit Price --}}
+                                    <td>
+                                        @foreach ($sales_invoice->sales_items_table as $sales_items)
+                                            <table style="width: 100%;">
+                                                <tr>
+                                                    <td>
+                                                        {{ $sales_items->unit_price ?? 0 }}
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        @endforeach
+                                    </td>
 
+                                    {{-- Sales Value --}}
+                                    <td>
+                                        @php
+                                            $total_amount = [];
+                                        @endphp
+                                        @foreach ($sales_invoice->sales_items_table as $sales_items)
+                                            <table style="width: 100%;">
+                                                <tr>
+                                                    <td>
+                                                        @php
+                                                            $qty = $sales_items->qty;
+                                                            $unit_price = $sales_items->unit_price;
+                                                            $sale_value = $qty * $unit_price;
+                                                            echo $sale_value;
+                                                            $total_amount[] = $sale_value;
+                                                        @endphp
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        @endforeach
+                                    </td>
 
-                                        {{-- Sales Value --}}
-                                        <td>
-                                            @php
-                                                $qty = $sales_items->qty;
-                                                $unit_price = $sales_items->unit_price;
-                                                $sale_value = $qty * $unit_price;
-                                                echo $sale_value;
-                                            @endphp
-                                        </td>
-
-                                        {{-- Total Amount --}}
-                                        <td>
-                                            @php
-                                                $qty = $sales_items->qty;
-                                                $unit_price = $sales_items->unit_price;
-                                                $sale_value = $qty * $unit_price;
-                                                echo $sale_value;
-                                            @endphp
-                                        </td>
-                                    @endforeach
+                                    {{-- Total Amount --}}
+                                    <td>
+                                        @php
+                                            $amount_total = array_sum($total_amount);
+                                            echo $amount_total;
+                                        @endphp
+                                    </td>
 
                                     {{-- Down Payment --}}
-                                    <td rowspan="3">
+                                    <td>
                                         @php
                                             $down_payment = $sales_invoice->sales_invoices_payments_table->down_payment ?? 0;
                                             echo $down_payment;
@@ -138,123 +224,41 @@
                                     </td>
 
                                     {{-- Discount --}}
-                                    <td rowspan="3">
+                                    <td>
                                         @php
-                                            $discount = $sales_invoice->sales_invoices_payments_table->discount;
+                                            $discount = $sales_invoice->sales_invoices_payments_table->discount ?? 0;
                                             echo $discount;
                                         @endphp
                                     </td>
 
                                     {{-- dealer_ercentage --}}
-                                    <td rowspan="3">
+                                    <td>
                                         @php
-                                            $dealer_ercentage = $sales_invoice->sales_invoices_payments_table->dealer_ercentage;
-                                            echo $dealer_ercentage;
-                                            echo '%';
+                                            $amount_total = array_sum($total_amount);
+                                            $dealer_ercentage = $sales_invoice->sales_invoices_payments_table->dealer_ercentage ?? 0;
+                                            $dealer_ercentage_total = $amount_total * ($dealer_ercentage / 100);
+                                            echo $dealer_ercentage_total;
                                         @endphp
                                     </td>
 
+                                    {{-- Balance to Pay --}}
+                                    <td>
+                                        @php
+                                            $amount_total = array_sum($total_amount);
+                                            $down_payment = $sales_invoice->sales_invoices_payments_table->down_payment ?? 0;
+                                            $discount = $sales_invoice->sales_invoices_payments_table->discount ?? 0;
+                                            $dealer_ercentage_total = $dealer_ercentage_total;
+                                            $balance_to_pay = $amount_total - $down_payment - $discount - $dealer_ercentage_total;
+                                            echo $balance_to_pay;
+                                        @endphp
+                                    </td>
+
+                                    <td>Edit</td>
                                 </tr>
                             @endforeach
                         </tbody>
-
-
-
-                        @foreach ($sales_invoices as $key => $sales_invoice)
-                            <tr>
-                                <td rowspan="{{ count($sales_invoice->sales_items_table) }}">
-                                    {{ $key + 1 }}
-                                </td>
-                                <td rowspan="{{ count($sales_invoice->sales_items_table) }}">
-                                    {{ $sales_invoice->invoice_no }}
-                                </td>
-                                <td rowspan="{{ count($sales_invoice->sales_items_table) }}">
-                                    {{ $sales_invoice->invoice_date }}
-                                </td>
-                            </tr>
-                            @foreach ($sales_invoice->sales_items_table as $sales_items)
-                                <tr>
-                                    <td>
-                                        {{ $sales_items->products_table->brand_name ?? '' }}
-                                    </td>
-
-                                    <td>
-                                        {{ $sales_items->products_table->type ?? '' }}
-                                    </td>
-
-                                    <td>
-                                        {{ $sales_items->products_table->model_no ?? '' }}
-                                    </td>
-                                </tr>
-                            @endforeach
-                        @endforeach
                     </table>
                 </div>
-
-
-                <table>
-                    @foreach ($sales_invoices as $key => $sales_invoice)
-                        <tr>
-                            <td rowspan="3">
-                                {{ $key + 1 }}
-                            </td>
-                            <td rowspan="3">
-                                {{ $sales_invoice->invoice_no }}
-                            </td>
-                            <td rowspan="3">
-                                {{ $sales_invoice->invoice_date }}
-                            </td>
-                        </tr>
-                        @foreach ($sales_invoice->sales_items_table as $sales_items)
-                            <tr>
-                                <td>
-                                    {{ $sales_items->products_table->brand_name ?? '' }}
-                                </td>
-
-                                <td>
-                                    {{ $sales_items->products_table->type ?? '' }}
-                                </td>
-
-                                <td>
-                                    {{ $sales_items->products_table->model_no ?? '' }}
-                                </td>
-                            </tr>
-                        @endforeach
-                    @endforeach
-                </table>
-
-
-
-
-
-
-
-                <table>
-                    <tr>
-                        <td>IV-0001/20</td>
-                        <td>16-May-20</td>
-                        <td>Karry</td>
-                        <td>Q22D</td>
-                        <td>#REF!</td>
-                    </tr>
-
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td>Karry</td>
-                        <td>asdf</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td>Karry</td>
-                        <td>asdf</td>
-                        <td></td>
-                    </tr>
-                </table>
-
-
             </div>
         </div>
     </div>
