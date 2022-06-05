@@ -118,4 +118,31 @@ class SalesInvoicesController extends Controller
     {
         //
     }
+
+
+    /**
+     * Get Ajax Request and restun Data
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function get_sales_invoices($id)
+    {
+        $sales_invoice_data = SalesInvoices::findOrFail($id);
+        return json_encode($sales_invoice_data);
+    }
+
+
+    /**
+     * @return \Illuminate\Support\Collection
+     */
+    public function get_sales_items($id)
+    {
+        $sales_items_data = SalesItems::where('sales_invoice_id', $id)->get();
+        $total_amount = [];
+        foreach ($sales_items_data as $key => $value) {
+            $total_amount[] = $value->qty * $value->unit_price;
+        }
+        $total_amount_value = array_sum($total_amount);
+        return json_encode($total_amount_value);
+    }
 }

@@ -73,6 +73,38 @@
                         </a>
                     </li>
 
+                    <li class="menu-item">
+                        <a href="{{ route('sales_journal.index') }}" class="menu-link">
+                            <div data-i2n="Without menu">
+                                Sales Journal
+                            </div>
+                        </a>
+                    </li>
+
+                    <li class="menu-item">
+                        <a href="{{ route('cash_collection.index') }}" class="menu-link">
+                            <div data-i2n="Without menu">
+                                Cash Collection
+                            </div>
+                        </a>
+                    </li>
+
+                    <li class="menu-item">
+                        <a href="{{ route('sales_ledger.index') }}" class="menu-link">
+                            <div data-i2n="Without menu">
+                                Sales Ledger
+                            </div>
+                        </a>
+                    </li>
+
+                    <li class="menu-item">
+                        <a href="{{ route('account_receivables.index') }}" class="menu-link">
+                            <div data-i2n="Without menu">
+                                Account Receivales
+                            </div>
+                        </a>
+                    </li>
+
                 </ul>
             </li>
 

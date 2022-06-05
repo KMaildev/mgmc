@@ -70,6 +70,16 @@ Route::middleware('auth')->group(function () {
     Route::resource('changepassword', 'ChangePasswordController');
     Route::resource('activity', 'Activity\ActivityLogController');
 
-
+    // Sales 
     Route::resource('sales_invoices', 'Accounting\SalesInvoicesController');
+    Route::get('get_sales_invoices/{id}', array('as' => 'get_sales_invoices', 'uses' => 'Accounting\SalesInvoicesController@get_sales_invoices'));
+    Route::get('get_sales_items/{id}', array('as' => 'get_sales_items', 'uses' => 'Accounting\SalesInvoicesController@get_sales_items'));
+
+
+    Route::resource('sales_journal', 'Accounting\SalesJournalController');
+    Route::get('get_sales_journals/{id}', array('as' => 'get_sales_journals', 'uses' => 'Accounting\SalesJournalController@get_sales_journals'));
+
+    Route::resource('cash_collection', 'Accounting\CashCollectionController');
+    Route::resource('sales_ledger', 'Accounting\SalesLedgerController');
+    Route::resource('account_receivables', 'Accounting\AccountReceivablesController');
 });
