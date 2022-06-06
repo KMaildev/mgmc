@@ -7,7 +7,6 @@
             border: 1px solid black;
             border-collapse: collapse;
         }
-
     </style>
     <div class="row justify-content-center">
         <div class="col-md-12 col-sm-12 col-lg-12">
@@ -55,10 +54,6 @@
                             <th style="color: white; text-align: center; width: 10%;">Action</th>
                         </thead>
                         <tbody class="table-border-bottom-0 row_position" id="tablecontents">
-                            @if ($form_status == 'is_create')
-                                @include('accounting.sales_invoices.form.create_form')
-                            @endif
-
                             @foreach ($sales_invoices as $key => $sales_invoice)
                                 <tr style="background-color: white;">
                                     <td>
@@ -164,7 +159,7 @@
                                         @foreach ($sales_invoice->sales_items_table as $sales_items)
                                             <table style="width: 100%;">
                                                 <tr>
-                                                    <td>
+                                                    <td style="text-align: right; font-weight: bold;">
                                                         {{ $sales_items->qty ?? 0 }}
                                                     </td>
                                                 </tr>
@@ -177,8 +172,10 @@
                                         @foreach ($sales_invoice->sales_items_table as $sales_items)
                                             <table style="width: 100%;">
                                                 <tr>
-                                                    <td>
-                                                        {{ $sales_items->unit_price ?? 0 }}
+                                                    <td style="text-align: right; font-weight: bold;">
+                                                        @php
+                                                            echo number_format($sales_items->unit_price, 2);
+                                                        @endphp
                                                     </td>
                                                 </tr>
                                             </table>
@@ -193,12 +190,12 @@
                                         @foreach ($sales_invoice->sales_items_table as $sales_items)
                                             <table style="width: 100%;">
                                                 <tr>
-                                                    <td>
+                                                    <td style="text-align: right; font-weight: bold;">
                                                         @php
                                                             $qty = $sales_items->qty;
                                                             $unit_price = $sales_items->unit_price;
                                                             $sale_value = $qty * $unit_price;
-                                                            echo $sale_value;
+                                                            echo number_format($sale_value, 2);
                                                             $total_amount[] = $sale_value;
                                                         @endphp
                                                     </td>
@@ -208,52 +205,79 @@
                                     </td>
 
                                     {{-- Total Amount --}}
-                                    <td>
+                                    <td style="text-align: right; font-weight: bold;">
                                         @php
                                             $amount_total = array_sum($total_amount);
-                                            echo $amount_total;
+                                            echo number_format($amount_total, 2);
                                         @endphp
                                     </td>
 
                                     {{-- Down Payment --}}
-                                    <td>
+                                    <td style="text-align: right; font-weight: bold;">
                                         @php
                                             $down_payment = $sales_invoice->sales_invoices_payments_table->down_payment ?? 0;
-                                            echo $down_payment;
+                                            echo number_format($down_payment, 2);
                                         @endphp
                                     </td>
 
                                     {{-- Discount --}}
-                                    <td>
+                                    <td style="text-align: right; font-weight: bold;">
                                         @php
                                             $discount = $sales_invoice->sales_invoices_payments_table->discount ?? 0;
-                                            echo $discount;
+                                            echo number_format($discount, 2);
                                         @endphp
                                     </td>
 
                                     {{-- dealer_ercentage --}}
-                                    <td>
+                                    <td style="text-align: right; font-weight: bold;">
                                         @php
                                             $amount_total = array_sum($total_amount);
                                             $dealer_ercentage = $sales_invoice->sales_invoices_payments_table->dealer_ercentage ?? 0;
                                             $dealer_ercentage_total = $amount_total * ($dealer_ercentage / 100);
-                                            echo $dealer_ercentage_total;
+                                            echo number_format($dealer_ercentage_total, 2);
                                         @endphp
                                     </td>
 
                                     {{-- Balance to Pay --}}
-                                    <td>
+                                    <td style="text-align: right; font-weight: bold;">
                                         @php
                                             $amount_total = array_sum($total_amount);
                                             $down_payment = $sales_invoice->sales_invoices_payments_table->down_payment ?? 0;
                                             $discount = $sales_invoice->sales_invoices_payments_table->discount ?? 0;
                                             $dealer_ercentage_total = $dealer_ercentage_total;
                                             $balance_to_pay = $amount_total - $down_payment - $discount - $dealer_ercentage_total;
-                                            echo $balance_to_pay;
+                                            echo number_format($balance_to_pay, 2);
                                         @endphp
                                     </td>
 
-                                    <td>Edit</td>
+                                    <td style="text-align: center;">
+                                        <div class="demo-inline-spacing">
+                                            <div class="btn-group">
+                                                <button class="btn btn-primary btn-sm dropdown-toggle" type="button"
+                                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                                    Action
+                                                </button>
+                                                <ul class="dropdown-menu">
+                                                    <li>
+                                                        <a class="dropdown-item" href="#">Edit</a>
+                                                    </li>
+
+                                                    <li>
+                                                        <a class="dropdown-item" href="#">Delete</a>
+                                                    </li>
+
+                                                    <li hidden>
+                                                        <form action="#" method="POST">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            <button type="button" class="dropdown-item del_confirm"
+                                                                id="confirm-text" data-toggle="tooltip">Delete</button>
+                                                        </form>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>

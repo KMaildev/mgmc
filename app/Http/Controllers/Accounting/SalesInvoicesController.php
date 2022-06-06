@@ -9,6 +9,7 @@ use App\Models\Products;
 use App\Models\SalesInvoices;
 use App\Models\SalesInvoicesPayments;
 use App\Models\SalesItems;
+use App\Models\TemporarySalesItem;
 use App\User;
 use Illuminate\Http\Request;
 
@@ -21,14 +22,9 @@ class SalesInvoicesController extends Controller
      */
     public function index()
     {
-        // For Create
-        $form_status = 'is_create';
-        $customers = Customers::all();
-        $products = Products::all();
-
         // For List 
         $sales_invoices = SalesInvoices::all();
-        return view('accounting.sales_invoices.index', compact('form_status', 'customers', 'products', 'sales_invoices'));
+        return view('accounting.sales_invoices.index', compact('sales_invoices'));
     }
 
     /**
@@ -38,6 +34,13 @@ class SalesInvoicesController extends Controller
      */
     public function create()
     {
+        $session_id = session()->getId();
+
+        $customers = Customers::all();
+        $products = Products::all();
+        $sales_persons = User::orderBy('id')->where('department_id', 3)->get();
+        $temporary_sales_items = TemporarySalesItem::orderBy('id')->where('session_id', $session_id)->get();
+        return view('accounting.sales_invoices.create', compact('customers', 'products', 'temporary_sales_items', 'sales_persons'));
     }
 
     /**
@@ -49,29 +52,41 @@ class SalesInvoicesController extends Controller
     public function store(StoreSalesInvoices $request)
     {
         $sale_invoice = new SalesInvoices();
+        $sale_invoice->customer_id = $request->customer_id;
         $sale_invoice->invoice_no = $request->invoice_no;
         $sale_invoice->invoice_date = $request->invoice_date;
-        $sale_invoice->customer_id = $request->customer_id;
+        $sale_invoice->id_no = $request->id_no;
+        $sale_invoice->showroom_name = $request->showroom_name;
+        $sale_invoice->sales_type = $request->sales_type;
+        $sale_invoice->payment_team = $request->payment_team;
+        $sale_invoice->sales_persons_id = $request->sales_persons_id;
+        $sale_invoice->delivery_date = $request->delivery_date;
         $sale_invoice->user_id = auth()->user()->id ?? 0;
         $sale_invoice->save();
-
         $sale_invoice_id = $sale_invoice->id;
 
-        $sale_item = new SalesItems();
-        $sale_item->product_id = $request->chessi_no;
-        $sale_item->qty = $request->qty;
-        $sale_item->unit_price = $request->unit_price;
-        $sale_item->sales_invoice_id = $sale_invoice_id;
-        $sale_item->save();
+
+        foreach ($request->productFields as $key => $value) {
+            $insert[$key]['product_id'] = $value['product_id'];
+            $insert[$key]['qty'] = $value['qty'];
+            $insert[$key]['unit_price'] = $value['price'];
+            $insert[$key]['sales_invoice_id'] = $sale_invoice_id;
+            $insert[$key]['created_at'] =  date('Y-m-d H:i:s');
+            $insert[$key]['updated_at'] =  date('Y-m-d H:i:s');
+        }
+        SalesItems::insert($insert);
 
 
         $sale_inv_payment = new SalesInvoicesPayments();
+        $sale_inv_payment->total_amount = $request->total_amount;
         $sale_inv_payment->down_payment = $request->down_payment;
         $sale_inv_payment->discount = $request->discount;
         $sale_inv_payment->dealer_ercentage = $request->dealer_ercentage;
+        $sale_inv_payment->balance_to_be_pay = $request->balance_to_be_pay;
+        $sale_inv_payment->balance_to_pay_be_date = $request->balance_to_pay_be_date;
         $sale_inv_payment->sales_invoice_id = $sale_invoice_id;
         $sale_inv_payment->save();
-        return redirect()->back()->with('success', 'Created successfully.');
+        return redirect()->back()->with('success', 'Your processing has been completed.');
     }
 
     /**

@@ -177,6 +177,8 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        Darryldecode\Cart\CartServiceProvider::class
+
     ],
 
     /*
@@ -230,6 +232,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
 
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
+        'Cart' => Darryldecode\Cart\Facades\CartFacade::class,
 
     ],
 

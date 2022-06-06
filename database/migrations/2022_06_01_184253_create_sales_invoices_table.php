@@ -15,9 +15,15 @@ class CreateSalesInvoicesTable extends Migration
     {
         Schema::create('sales_invoices', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('customer_id')->nullable();
+            $table->text('id_no')->nullable();
             $table->text('invoice_no')->nullable();
             $table->text('invoice_date')->nullable();
-            $table->integer('customer_id')->nullable();
+            $table->text('showroom_name')->nullable();
+            $table->text('sales_type')->nullable();
+            $table->text('payment_team')->nullable();
+            $table->integer('sales_persons_id')->nullable();
+            $table->text('delivery_date')->nullable();
             $table->integer('user_id')->nullable();
             $table->timestamps();
         });

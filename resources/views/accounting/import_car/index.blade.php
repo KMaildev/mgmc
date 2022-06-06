@@ -307,7 +307,7 @@
                                         {{-- Custom Duty --}}
                                         <td style="text-align: right;">
                                             @php
-                                                $custom_duty_value = $import_duty_other_tax_value + $commercial_tax_value + $av_value_tax_percent_value;
+                                                $custom_duty_value = $import_duty_other_tax_value + $commercial_tax_value + $av_value_tax_percent_value + $maccs_service_fee_value;
                                                 echo number_format($custom_duty_value, 2);
                                                 $custom_duty_value_total[] = $custom_duty_value;
                                             @endphp
@@ -431,7 +431,7 @@
                                     {{-- Total Expenses --}}
                                     <td style="text-align: right; font-weight: bold">
                                         @php
-                                            $total_expense_value_balance = array_sum($total_expense_value_total) - array_sum($av_value_tax_percent_value_total);
+                                            $total_expense_value_balance = array_sum($total_expense_value_total);
                                             echo number_format($total_expense_value_balance, 2);
                                         @endphp
                                     </td>
@@ -439,7 +439,7 @@
                                     {{-- Custom Duty --}}
                                     <td style="text-align: right; font-weight: bold">
                                         @php
-                                            $custom_duty_value_balance = array_sum($custom_duty_value_total) - array_sum($av_value_tax_percent_value_total);
+                                            $custom_duty_value_balance = array_sum($custom_duty_value_total);
                                             echo number_format($custom_duty_value_balance, 2);
                                         @endphp
                                     </td>

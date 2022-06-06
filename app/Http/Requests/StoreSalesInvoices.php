@@ -24,15 +24,25 @@ class StoreSalesInvoices extends FormRequest
     public function rules()
     {
         return [
+            'customer_id' => 'required',
+            'id_no' => 'required',
             'invoice_no' => 'required',
             'invoice_date' => 'required',
-            'customer_id' => 'required',
-            'chessi_no' => 'required',
-            'qty' => "numeric",
-            'unit_price' => "numeric",
+            'showroom_name' => 'required',
+            'sales_type' => 'required',
+            'payment_team' => 'required',
+
+            'productFields.*.product_id' => 'required',
+            'productFields.*.qty' => 'required|numeric',
+            'productFields.*.price' => 'required|numeric',
+
+            'sales_persons_id' => 'required',
+            'delivery_date' => 'required',
+
             'down_payment' => "numeric",
-            'discount' => "numeric",
             'dealer_percentage' => "numeric",
+            'balance_to_pay' => "numeric",
+            'balance_to_pay_date' => "required",
         ];
     }
 }

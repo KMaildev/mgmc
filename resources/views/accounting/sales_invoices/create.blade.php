@@ -2,206 +2,502 @@
 @section('content')
     <div class="row invoice-add justify-content-center">
         <div class="col-lg-9 col-12 mb-lg-0 mb-4">
-            <div class="card invoice-preview-card">
-                <div class="card-body">
-                    <div class="row p-sm-3 p-0">
-                        <div class="col-md-6">
-                            <dl class="row mb-2">
-                                <dt class="col-sm-6 mb-2 mb-sm-0">
-                                    <span class="fw-normal">Date:</span>
-                                </dt>
-                                <dd class="col-sm-6 d-flex">
-                                    <div class="w-px-150">
-                                        <input type="text" class="form-control date-picker" placeholder="YYYY-MM-DD" />
-                                    </div>
-                                </dd>
-                                <dt class="col-sm-6 mb-2 mb-sm-0">
-                                    <span class="fw-normal">Due Date:</span>
-                                </dt>
-                                <dd class="col-sm-6 d-flex">
-                                    <div class="w-px-150">
-                                        <input type="text" class="form-control date-picker" placeholder="YYYY-MM-DD" />
-                                    </div>
-                                </dd>
-                            </dl>
-                        </div>
+            <form action="{{ route('sales_invoices.store') }}" method="POST" autocomplete="off" id="create-form">
+                @csrf
+                <div class="card invoice-preview-card">
+                    <div class="card-body">
 
-                        <div class="col-md-6">
-                            <dl class="row mb-2">
-                                <dt class="col-sm-6 mb-2 mb-sm-0 text-md-end">
-                                    <span class="h4 text-capitalize mb-0 text-nowrap">Invoice #</span>
-                                </dt>
-                                <dd class="col-sm-6 d-flex justify-content-md-end">
-                                    <div class="w-px-150">
-                                        <input type="text" class="form-control" disabled placeholder="3905" value="3905"
-                                            id="invoiceId" />
-                                    </div>
-                                </dd>
-                                <dt class="col-sm-6 mb-2 mb-sm-0 text-md-end">
-                                    <span class="fw-normal">Date:</span>
-                                </dt>
-                                <dd class="col-sm-6 d-flex justify-content-md-end">
-                                    <div class="w-px-150">
-                                        <input type="text" class="form-control date-picker" placeholder="YYYY-MM-DD" />
-                                    </div>
-                                </dd>
-                                <dt class="col-sm-6 mb-2 mb-sm-0 text-md-end">
-                                    <span class="fw-normal">Due Date:</span>
-                                </dt>
-                                <dd class="col-sm-6 d-flex justify-content-md-end">
-                                    <div class="w-px-150">
-                                        <input type="text" class="form-control date-picker" placeholder="YYYY-MM-DD" />
-                                    </div>
-                                </dd>
-                            </dl>
-                        </div>
-                    </div>
-                    <hr class="mx-n4" />
+                        <div class="row p-sm-3 p-0">
+                            <div class="col-md-6">
+                                <dl class="row mb-2">
 
-                    <form class="source-item py-sm-3">
-                        <div class="mb-3" data-repeater-list="group-a">
-                            <div class="repeater-wrapper pt-0 pt-md-4" data-repeater-item>
-                                <div class="d-flex border rounded position-relative pe-0">
-                                    <div class="row w-100 m-0 p-3">
-                                        <div class="col-md-6 col-12 mb-md-0 mb-3 ps-md-0">
-                                            <p class="mb-2 repeater-title">Item</p>
-                                            <select class="form-select item-details mb-2">
-                                                <option selected disabled>Select Item</option>
-                                                <option value="App Design">App Design</option>
-                                                <option value="App Customization">App Customization</option>
-                                                <option value="ABC Template">ABC Template</option>
-                                                <option value="App Development">App Development</option>
+                                    <div class="row mb-1">
+                                        <label class="col-sm-3 col-form-label">Name</label>
+                                        <div class="col-sm-9">
+                                            <select class="select2 form-select form-select-sm" data-allow-clear="false"
+                                                id="CustomerID" name="customer_id">
+                                                <option value="">--Please Select Customer --</option>
+                                                @foreach ($customers as $customer)
+                                                    <option value="{{ $customer->id }}">
+                                                        {{ $customer->company_name }}
+                                                    </option>
+                                                @endforeach
                                             </select>
-                                            <textarea class="form-control" rows="2" placeholder="Item Information"></textarea>
-                                        </div>
-                                        <div class="col-md-3 col-12 mb-md-0 mb-3">
-                                            <p class="mb-2 repeater-title">Cost</p>
-                                            <input type="number" class="form-control invoice-item-price mb-2"
-                                                placeholder="00" min="12" />
-                                            <div>
-                                                <span>Discount:</span>
-                                                <span class="discount me-2">0%</span>
-                                                <span class="tax-1 me-2" data-bs-toggle="tooltip"
-                                                    data-bs-placement="top" title="Tax 1">0%</span>
-                                                <span class="tax-2" data-bs-toggle="tooltip"
-                                                    data-bs-placement="top" title="Tax 2">0%</span>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-2 col-12 mb-md-0 mb-3">
-                                            <p class="mb-2 repeater-title">Qty</p>
-                                            <input type="number" class="form-control invoice-item-qty" placeholder="1"
-                                                min="1" max="50" />
-                                        </div>
-                                        <div class="col-md-1 col-12 pe-0">
-                                            <p class="mb-2 repeater-title">Price</p>
-                                            <p class="mb-0">$24.00</p>
+                                            @error('customer_id')
+                                                <div class="invalid-feedback"> {{ $message }} </div>
+                                            @enderror
                                         </div>
                                     </div>
-                                    <div
-                                        class="d-flex flex-column align-items-center justify-content-between border-start p-2">
-                                        <i class="bx bx-x fs-4 text-muted cursor-pointer" data-repeater-delete></i>
-                                        <div class="dropdown">
-                                            <i class="bx bx-cog bx-xs text-muted cursor-pointer more-options-dropdown"
-                                                role="button" id="dropdownMenuButton" data-bs-toggle="dropdown"
-                                                data-bs-auto-close="outside" aria-expanded="false">
-                                            </i>
-                                            <div class="dropdown-menu dropdown-menu-end w-px-300 p-3"
-                                                aria-labelledby="dropdownMenuButton">
 
-                                                <div class="row g-3">
-                                                    <div class="col-12">
-                                                        <label for="discountInput"
-                                                            class="form-label">Discount(%)</label>
-                                                        <input type="number" class="form-control" id="discountInput"
-                                                            min="0" max="100" />
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <label for="taxInput1" class="form-label">Tax 1</label>
-                                                        <select name="tax-1-input" id="taxInput1"
-                                                            class="form-select tax-select">
-                                                            <option value="0%" selected>0%</option>
-                                                            <option value="1%">1%</option>
-                                                            <option value="10%">10%</option>
-                                                            <option value="18%">18%</option>
-                                                            <option value="40%">40%</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <label for="taxInput2" class="form-label">Tax 2</label>
-                                                        <select name="tax-2-input" id="taxInput2"
-                                                            class="form-select tax-select">
-                                                            <option value="0%" selected>0%</option>
-                                                            <option value="1%">1%</option>
-                                                            <option value="10%">10%</option>
-                                                            <option value="18%">18%</option>
-                                                            <option value="40%">40%</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="dropdown-divider my-3"></div>
-                                                <button type="button"
-                                                    class="btn btn-label-primary btn-apply-changes">Apply</button>
-                                            </div>
+                                    <div class="row mb-1">
+                                        <label class="col-sm-3 col-form-label" for="basic-default-name">ID NO</label>
+                                        <div class="col-sm-9">
+                                            <input type="text"
+                                                class="form-control form-control-sm @error('id_no') is-invalid @enderror"
+                                                value="{{ old('id_no') }}" name="id_no">
+                                            @error('id_no')
+                                                <div class="invalid-feedback"> {{ $message }} </div>
+                                            @enderror
                                         </div>
                                     </div>
-                                </div>
+
+                                    <div class="row mb-1">
+                                        <label class="col-sm-3 col-form-label" for="basic-default-name">Address</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" class="form-control form-control-sm" id="Address">
+                                        </div>
+                                    </div>
+
+                                    <div class="row mb-1">
+                                        <label class="col-sm-3 col-form-label" for="basic-default-name">PH</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" class="form-control form-control-sm" id="Ph">
+                                        </div>
+                                    </div>
+
+                                    <div class="row mb-1">
+                                        <label class="col-sm-3 col-form-label" for="basic-default-name">E-Mail
+                                            Address</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" class="form-control form-control-sm" id="Email">
+                                        </div>
+                                    </div>
+                                </dl>
+                            </div>
+
+                            <div class="col-md-6">
+                                <dl class="row mb-2">
+                                    <div class="row mb-1">
+                                        <label class="col-sm-3 col-form-label">Invoice No</label>
+                                        <div class="col-sm-9">
+                                            <input type="text"
+                                                class="form-control form-control-sm @error('invoice_no') is-invalid @enderror"
+                                                value="{{ old('invoice_no') }}" name="invoice_no">
+                                            @error('invoice_no')
+                                                <div class="invalid-feedback"> {{ $message }} </div>
+                                            @enderror
+                                        </div>
+                                    </div>
+
+                                    <div class="row mb-1">
+                                        <label class="col-sm-3 col-form-label">Date</label>
+                                        <div class="col-sm-9">
+                                            <input type="text"
+                                                class="date_picker form-control form-control-sm @error('invoice_date') is-invalid @enderror"
+                                                value="{{ old('invoice_date') }}" name="invoice_date">
+                                            @error('invoice_date')
+                                                <div class="invalid-feedback"> {{ $message }} </div>
+                                            @enderror
+                                        </div>
+                                    </div>
+
+                                    <div class="row mb-1">
+                                        <label class="col-sm-3 col-form-label">
+                                            Showroom Name
+                                        </label>
+                                        <div class="col-sm-9">
+                                            <input type="text"
+                                                class="form-control form-control-sm @error('showroom_name') is-invalid @enderror"
+                                                value="{{ old('showroom_name') }}" name="showroom_name">
+                                            @error('showroom_name')
+                                                <div class="invalid-feedback"> {{ $message }} </div>
+                                            @enderror
+                                        </div>
+                                    </div>
+
+                                    <div class="row mb-1">
+                                        <label class="col-sm-3 col-form-label">Dealer Code</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" class="form-control form-control-sm" id="DealerCode">
+                                        </div>
+                                    </div>
+
+                                    <div class="row mb-1">
+                                        <label class="col-sm-3 col-form-label">Sales Type</label>
+                                        <div class="col-sm-9">
+                                            <input type="text"
+                                                class="form-control form-control-sm @error('sales_type') is-invalid @enderror"
+                                                value="{{ old('sales_type') }}" name="sales_type">
+                                            @error('sales_type')
+                                                <div class="invalid-feedback"> {{ $message }} </div>
+                                            @enderror
+                                        </div>
+                                    </div>
+
+                                    <div class="row mb-1">
+                                        <label class="col-sm-3 col-form-label">Payment Team</label>
+                                        <div class="col-sm-9">
+                                            <input type="text"
+                                                class="form-control form-control-sm @error('payment_team') is-invalid @enderror"
+                                                value="{{ old('payment_team') }}" name="payment_team">
+                                            @error('payment_team')
+                                                <div class="invalid-feedback"> {{ $message }} </div>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                </dl>
                             </div>
                         </div>
+                        <hr class="mx-n4" />
+
                         <div class="row">
-                            <div class="col-12">
-                                <button type="button" class="btn btn-primary" data-repeater-create>Add Item</button>
+                            <table class="table table-bordered table-sm">
+                                <thead class="tbbg">
+                                    <tr>
+                                        <th style="color: white; text-align: center; width: 1%;">Sr.No</th>
+                                        <th style="color: white; text-align: center;">Model</th>
+                                        <th style="color: white; text-align: center;">Chassis No.& Vehicle No.</th>
+                                        <th style="color: white; text-align: center;">Description</th>
+                                        <th style="color: white; text-align: center;">Qty</th>
+                                        <th style="color: white; text-align: center;">Price</th>
+                                        <th style="color: white; text-align: center;">Amount (MMK)</th>
+                                        <th style="color: white; text-align: center;">Action</th>
+                                    </tr>
+                                </thead>
+                                <tr>
+
+                                    <td></td>
+
+                                    {{-- Model --}}
+                                    <td>
+                                        <input type="text" class="form-control" id="Model">
+                                    </td>
+
+                                    {{-- Chassis No.& Vehicle No --}}
+                                    <td>
+                                        <select class="select2 form-select form-select-sm" data-allow-clear="false"
+                                            id="ChessiNO">
+                                            <option value="">--Please Select Chessi No --</option>
+                                            @foreach ($products as $product)
+                                                <option value="{{ $product->id }}">
+                                                    {{ $product->chessi_no }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                        @error('chessi_no')
+                                            <div class="invalid-feedback"> {{ $message }} </div>
+                                        @enderror
+                                    </td>
+
+                                    {{-- Description --}}
+                                    <td>
+                                        <input type="text" class="form-control" id="Description">
+                                    </td>
+
+                                    {{-- Qty --}}
+                                    <td>
+                                        <input type="text" class="form-control" required id="Qty"
+                                            oninput="SetCalculator()" />
+                                    </td>
+
+                                    {{-- Price --}}
+                                    <td>
+                                        <input type="text" class="form-control" id="UnitPrice" oninput="SetCalculator()">
+                                    </td>
+
+                                    {{-- Amount --}}
+                                    <td>
+                                        <input type="text" class="form-control" id="TotalAmount">
+                                    </td>
+
+                                    <td>
+                                        <input type="button" value="Add" class="btn btn-sm btn-primary"
+                                            onclick="setSaleInvoiceCart()">
+                                    </td>
+                                </tr>
+                                <tbody>
+                                    @php
+                                        $amount_total = [];
+                                    @endphp
+                                    @foreach ($temporary_sales_items as $key => $temporary_sales_item)
+                                        <tr>
+                                            <td>
+                                                {{ $key + 1 }}
+                                            </td>
+
+                                            <td>
+                                                {{ $temporary_sales_item->products_table->model_no ?? '' }}
+                                            </td>
+
+                                            <td>
+                                                {{ $temporary_sales_item->products_table->chessi_no ?? '' }}
+                                                <input type="hidden" name="productFields[{{ $key + 1 }}][product_id]"
+                                                    value="{{ $temporary_sales_item->products_table->id ?? '0' }}"
+                                                    required />
+                                            </td>
+
+                                            <td>
+                                                {{ $temporary_sales_item->description ?? '' }}
+                                            </td>
+
+                                            <td style="text-align: right; font-weight: bold;">
+                                                {{ $temporary_sales_item->qty ?? 0 }}
+                                                <input type="hidden" name="productFields[{{ $key + 1 }}][qty]"
+                                                    value="{{ $temporary_sales_item->qty ?? '0' }}" required />
+                                            </td>
+
+                                            <td style="text-align: right; font-weight: bold;">
+                                                {{ $temporary_sales_item->price ?? 0 }}
+                                                <input type="hidden" name="productFields[{{ $key + 1 }}][price]"
+                                                    value="{{ $temporary_sales_item->price ?? '0' }}" required />
+                                            </td>
+
+                                            <td style="text-align: right; font-weight: bold;">
+                                                @php
+                                                    $total_amount = $temporary_sales_item->qty * $temporary_sales_item->price ?? 0;
+                                                    echo number_format($total_amount, 2);
+                                                    $amount_total[] = $total_amount;
+                                                @endphp
+                                            </td>
+
+                                            <td>
+                                                <a href="{{ route('temporary_sales_items_remove', $temporary_sales_item->id) }}"
+                                                    class="btn btn-danger btn-sm">
+                                                    Remove
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+
+
+                        <div class="row p-sm-3 p-0">
+                            <div class="col-md-6">
+                                <dl class="row mb-2">
+
+                                    <div class="row mb-1">
+                                        <label class="col-sm-3 col-form-label">Sales Person</label>
+                                        <div class="col-sm-9">
+                                            <select class="select2 form-select form-select-sm" data-allow-clear="false"
+                                                name="sales_persons_id">
+                                                <option value="">--Please Select Customer --</option>
+                                                @foreach ($sales_persons as $sales_person)
+                                                    <option value="{{ $sales_person->id }}">
+                                                        {{ $sales_person->name }}
+                                                    </option>
+                                                @endforeach
+                                            </select>
+                                            @error('sales_persons_id')
+                                                <div class="invalid-feedback"> {{ $message }} </div>
+                                            @enderror
+                                        </div>
+                                    </div>
+
+                                    <div class="row mb-1">
+                                        <label class="col-sm-3 col-form-label" for="basic-default-name">
+                                            Delivery Date
+                                        </label>
+                                        <div class="col-sm-9">
+                                            <input type="text"
+                                                class="date_picker form-control form-control-sm @error('delivery_date') is-invalid @enderror"
+                                                value="{{ old('delivery_date') }}" name="delivery_date">
+                                            @error('delivery_date')
+                                                <div class="invalid-feedback"> {{ $message }} </div>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                </dl>
+                            </div>
+
+                            <div class="col-md-6">
+                                <dl class="row mb-2">
+                                    <div class="row mb-1">
+                                        <label class="col-sm-4 col-form-label">
+                                            Total Amount
+                                        </label>
+                                        <div class="col-sm-8">
+                                            @php
+                                                $total_amount = array_sum($amount_total);
+                                            @endphp
+                                            <input type="text" class="form-control form-control-sm"
+                                                value="{{ number_format($total_amount, 2) }}" style="text-align:right;">
+                                            <input type="hidden" value="{{ $total_amount }}" name="total_amount">
+                                        </div>
+                                    </div>
+
+                                    <div class="row mb-1">
+                                        <label class="col-sm-4 col-form-label">
+                                            DOWN PAYMENT
+                                        </label>
+                                        <div class="col-sm-8">
+                                            <input type="text"
+                                                class="form-control form-control-sm @error('down_payment') is-invalid @enderror"
+                                                name="down_payment" id="DownPayment" style="text-align:right;"
+                                                oninput="SetCalculateDownPayment()" />
+                                            @error('down_payment')
+                                                <div class="invalid-feedback"> {{ $message }} </div>
+                                            @enderror
+                                        </div>
+                                    </div>
+
+                                    <div class="row mb-1">
+                                        <label class="col-sm-4 col-form-label">
+                                            Dealer %
+                                        </label>
+                                        <div class="col-sm-8">
+                                            <div class="input-group input-group-sm">
+                                                <input type="text"
+                                                    class="form-control form-control-sm @error('dealer_percentage') is-invalid @enderror"
+                                                    name="dealer_percentage" id="DealerPercentage" style="text-align:right;"
+                                                    oninput="SetCalculateDownPayment()" />
+                                                <span class="input-group-text sm">%</span>
+                                            </div>
+                                            @error('dealer_percentage')
+                                                <div class="invalid-feedback"> {{ $message }} </div>
+                                            @enderror
+                                        </div>
+                                    </div>
+
+                                    <div class="row mb-1" hidden>
+                                        <label class="col-sm-4 col-form-label">
+                                            Discount
+                                        </label>
+                                        <div class="col-sm-8">
+                                            <div class="input-group input-group-sm">
+                                                <input type="text"
+                                                    class="form-control form-control-sm @error('discount') is-invalid @enderror"
+                                                    name="discount" style="text-align:right;" value="0" />
+                                            </div>
+                                            @error('discount')
+                                                <div class="invalid-feedback"> {{ $message }} </div>
+                                            @enderror
+                                        </div>
+                                    </div>
+
+
+                                    <div class="row mb-1">
+                                        <label class="col-sm-4 col-form-label">
+                                            BALANCE TO BE PAY
+                                        </label>
+                                        <div class="col-sm-8">
+                                            <input type="text"
+                                                class="form-control form-control-sm @error('balance_to_be_pay') is-invalid @enderror"
+                                                name="balance_to_be_pay" id="BalanceToPay" style="text-align:right;" />
+                                            @error('balance_to_be_pay')
+                                                <div class="invalid-feedback"> {{ $message }} </div>
+                                            @enderror
+                                        </div>
+                                    </div>
+
+                                    <div class="row mb-1">
+                                        <label class="col-sm-4 col-form-label">
+                                            TOTAL BALANCE TO BE PAY DATE
+                                        </label>
+                                        <div class="col-sm-8">
+                                            <input type="text"
+                                                class="date_picker form-control form-control-sm @error('balance_to_pay_date') is-invalid @enderror"
+                                                name="balance_to_pay_date" id="BalanceToPayDate"
+                                                style="text-align:right;" />
+                                            @error('balance_to_pay_date')
+                                                <div class="invalid-feedback"> {{ $message }} </div>
+                                            @enderror
+                                        </div>
+                                    </div>
+
+                                    <div class="row mb-1">
+                                        <div class="col-sm-12">
+                                            <button type="submit" class="btn btn-primary" style='float: right;'>
+                                                Save
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                </dl>
                             </div>
                         </div>
-                    </form>
 
-                    <hr class="my-4 mx-n4" />
-
-                    <div class="row py-sm-3">
-                        <div class="col-md-6 mb-md-0 mb-3">
-                            <div class="d-flex align-items-center mb-3">
-                                <label for="salesperson" class="form-label me-5 fw-semibold">Salesperson:</label>
-                                <input type="text" class="form-control" id="salesperson" placeholder="Edward Crowley" />
-                            </div>
-                            <input type="text" class="form-control" id="invoiceMsg"
-                                placeholder="Thanks for your business" />
-                        </div>
-                        <div class="col-md-6 d-flex justify-content-end">
-                            <div class="invoice-calculations">
-                                <div class="d-flex justify-content-between mb-2">
-                                    <span class="w-px-100">Subtotal:</span>
-                                    <span class="fw-semibold">$00.00</span>
-                                </div>
-                                <div class="d-flex justify-content-between mb-2">
-                                    <span class="w-px-100">Discount:</span>
-                                    <span class="fw-semibold">$00.00</span>
-                                </div>
-                                <div class="d-flex justify-content-between mb-2">
-                                    <span class="w-px-100">Tax:</span>
-                                    <span class="fw-semibold">$00.00</span>
-                                </div>
-                                <hr />
-                                <div class="d-flex justify-content-between">
-                                    <span class="w-px-100">Total:</span>
-                                    <span class="fw-semibold">$00.00</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <hr class="my-4" />
-
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="mb-3">
-                                <label for="note" class="form-label fw-semibold">Note:</label>
-                                <textarea class="form-control" rows="2" id="note" placeholder="Invoice note"></textarea>
-                            </div>
-                        </div>
                     </div>
                 </div>
-            </div>
+            </form>
         </div>
     </div>
 @endsection
 @section('script')
+    <script>
+        function SetCalculator() {
+            var Qty = document.getElementById("Qty").value;
+            var UnitPrice = document.getElementById("UnitPrice").value;
+            var AmountTotal = Qty * UnitPrice;
+            TotalAmount.value = AmountTotal;
+        }
+
+        function SetCalculateDownPayment() {
+            var TotalAmountValue = {{ $total_amount }};
+            var DownPayment = document.getElementById("DownPayment").value;
+            var DealerPercentage = document.getElementById("DealerPercentage").value;
+            var DealerPercentageValue = TotalAmountValue / 100 * DealerPercentage;
+            BalanceToPay.value = TotalAmountValue - DownPayment - DealerPercentageValue;
+        }
+
+        function setSaleInvoiceCart() {
+            var ChessiNO = document.getElementById("ChessiNO").value;
+            var Qty = document.getElementById("Qty").value;
+            var UnitPrice = document.getElementById("UnitPrice").value;
+            var Description = document.getElementById("Description").value;
+            var url = '{{ url('add_cart_temporary') }}';
+
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+
+            $.ajax({
+                method: 'POST',
+                url: url,
+                data: {
+                    ChessiNO: ChessiNO,
+                    Qty: Qty,
+                    Price: UnitPrice,
+                    Description: Description,
+                },
+                success: function(data) {
+                    location.reload();
+                },
+                error: function(data) {
+                    location.reload();
+                }
+            });
+        }
+
+        $(document).ready(function() {
+
+            $('select[id="CustomerID"]').on('change', function() {
+                var customerID = $(this).val();
+                if (customerID) {
+                    $.ajax({
+                        url: '/get_customer_ajax/' + customerID,
+                        type: "GET",
+                        dataType: "json",
+                        success: function(data) {
+                            Address.value = data.address;
+                            Ph.value = data.phone;
+                            Email.value = data.email;
+                            DealerCode.value = data.dealer_code;
+                        }
+                    });
+                }
+            });
+
+            $('select[id="ChessiNO"]').on('change', function() {
+                var ChessiNO = $(this).val();
+                if (ChessiNO) {
+                    $.ajax({
+                        url: '/get_products_ajax/' + ChessiNO,
+                        type: "GET",
+                        dataType: "json",
+                        success: function(data) {
+                            Model.value = data.model_no;
+                        }
+                    });
+                }
+            });
+
+
+
+        });
+    </script>
+    {!! JsValidator::formRequest('App\Http\Requests\StoreSalesInvoices', '#create-form') !!}
 @endsection

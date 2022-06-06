@@ -82,4 +82,9 @@ Route::middleware('auth')->group(function () {
     Route::resource('cash_collection', 'Accounting\CashCollectionController');
     Route::resource('sales_ledger', 'Accounting\SalesLedgerController');
     Route::resource('account_receivables', 'Accounting\AccountReceivablesController');
+
+    // Cart System
+    Route::resource('sale_invoice_cart', 'Cart\SaleInvoiceCartController');
+    Route::post('add_cart_temporary', 'Cart\SaleInvoiceCartController@store');
+    Route::get('temporary_sales_items_remove/{id}', array('as' => 'temporary_sales_items_remove', 'uses' => 'Cart\SaleInvoiceCartController@temporary_sales_items_remove'));
 });

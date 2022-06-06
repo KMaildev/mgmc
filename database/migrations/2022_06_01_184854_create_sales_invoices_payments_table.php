@@ -15,9 +15,12 @@ class CreateSalesInvoicesPaymentsTable extends Migration
     {
         Schema::create('sales_invoices_payments', function (Blueprint $table) {
             $table->increments('id');
+            $table->text('total_amount')->nullable();
             $table->text('down_payment')->nullable();
             $table->text('discount')->nullable();
             $table->text('dealer_ercentage')->nullable();
+            $table->text('balance_to_be_pay')->nullable();
+            $table->text('balance_to_pay_be_date')->nullable();
             $table->integer('sales_invoice_id')->nullable();
             $table->timestamps();
         });
