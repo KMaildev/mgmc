@@ -2,8 +2,10 @@
 @section('content')
     <div class="row invoice-add justify-content-center">
         <div class="col-lg-9 col-12 mb-lg-0 mb-4">
-            <form action="{{ route('sales_invoices.store') }}" method="POST" autocomplete="off" id="create-form">
+            <form action="{{ route('sales_invoices.update', $sales_invoice_edit->id) }}" method="POST" autocomplete="off"
+                id="create-form">
                 @csrf
+                @method('PUT')
                 <div class="card invoice-preview-card">
                     <div class="card-body">
 
@@ -18,7 +20,8 @@
                                                 id="CustomerID" name="customer_id">
                                                 <option value="">--Please Select Customer --</option>
                                                 @foreach ($customers as $customer)
-                                                    <option value="{{ $customer->id }}">
+                                                    <option value="{{ $customer->id }}"
+                                                        @if ($customer->id == $sales_invoice_edit->customer_id) selected @endif>
                                                         {{ $customer->company_name }}
                                                     </option>
                                                 @endforeach
@@ -34,7 +37,7 @@
                                         <div class="col-sm-9">
                                             <input type="text"
                                                 class="form-control form-control-sm @error('id_no') is-invalid @enderror"
-                                                value="{{ old('id_no') }}" name="id_no">
+                                                name="id_no" value="{{ $sales_invoice_edit->id_no }}">
                                             @error('id_no')
                                                 <div class="invalid-feedback"> {{ $message }} </div>
                                             @enderror
@@ -72,7 +75,7 @@
                                         <div class="col-sm-9">
                                             <input type="text"
                                                 class="form-control form-control-sm @error('invoice_no') is-invalid @enderror"
-                                                value="{{ old('invoice_no') }}" name="invoice_no">
+                                                value="{{ $sales_invoice_edit->invoice_no }}" name="invoice_no">
                                             @error('invoice_no')
                                                 <div class="invalid-feedback"> {{ $message }} </div>
                                             @enderror
@@ -84,7 +87,7 @@
                                         <div class="col-sm-9">
                                             <input type="text"
                                                 class="date_picker form-control form-control-sm @error('invoice_date') is-invalid @enderror"
-                                                value="{{ old('invoice_date') }}" name="invoice_date">
+                                                value="{{ $sales_invoice_edit->invoice_date }}" name="invoice_date">
                                             @error('invoice_date')
                                                 <div class="invalid-feedback"> {{ $message }} </div>
                                             @enderror
@@ -98,7 +101,7 @@
                                         <div class="col-sm-9">
                                             <input type="text"
                                                 class="form-control form-control-sm @error('showroom_name') is-invalid @enderror"
-                                                value="{{ old('showroom_name') }}" name="showroom_name">
+                                                value="{{ $sales_invoice_edit->showroom_name }}" name="showroom_name">
                                             @error('showroom_name')
                                                 <div class="invalid-feedback"> {{ $message }} </div>
                                             @enderror
@@ -117,7 +120,7 @@
                                         <div class="col-sm-9">
                                             <input type="text"
                                                 class="form-control form-control-sm @error('sales_type') is-invalid @enderror"
-                                                value="{{ old('sales_type') }}" name="sales_type">
+                                                value="{{ $sales_invoice_edit->sales_type }}" name="sales_type">
                                             @error('sales_type')
                                                 <div class="invalid-feedback"> {{ $message }} </div>
                                             @enderror
@@ -129,7 +132,7 @@
                                         <div class="col-sm-9">
                                             <input type="text"
                                                 class="form-control form-control-sm @error('payment_team') is-invalid @enderror"
-                                                value="{{ old('payment_team') }}" name="payment_team">
+                                                value="{{ $sales_invoice_edit->payment_team }}" name="payment_team">
                                             @error('payment_team')
                                                 <div class="invalid-feedback"> {{ $message }} </div>
                                             @enderror
@@ -206,6 +209,7 @@
                                     </td>
                                 </tr>
                                 <tbody>
+                                    {{-- temporary_sales_item --}}
                                     @php
                                         $amount_total = [];
                                     @endphp
@@ -239,7 +243,7 @@
                                             </td>
 
                                             <td style="text-align: right; font-weight: bold;">
-                                                {{ $temporary_sales_item->price ?? 0 }}
+                                                {{ number_format($temporary_sales_item->price, 2) }}
                                                 <input type="hidden" name="productFields[{{ $key + 1 }}][price]"
                                                     value="{{ $temporary_sales_item->price ?? '0' }}" required />
                                             </td>
@@ -260,6 +264,46 @@
                                             </td>
                                         </tr>
                                     @endforeach
+
+
+                                    @foreach ($sales_items_edits as $item => $sales_items_edit)
+                                        <tr>
+                                            <td>
+                                                {{ $item + 1 }}
+                                            </td>
+                                            <td>
+                                                {{ $sales_items_edit->products_table->model_no ?? '' }}
+                                            </td>
+                                            <td>
+                                                {{ $sales_items_edit->products_table->chessi_no ?? '' }}
+                                            </td>
+                                            <td>
+                                                {{ $sales_items_edit->description ?? '' }}
+                                            </td>
+                                            <td style="text-align: right; font-weight: bold;">
+                                                {{ $sales_items_edit->qty ?? 0 }}
+                                            </td>
+                                            <td style="text-align: right; font-weight: bold;">
+                                                {{ number_format($sales_items_edit->unit_price, 2) }}
+                                            </td>
+                                            <td style="text-align: right; font-weight: bold;">
+                                                @php
+                                                    $item_total_amount = $sales_items_edit->qty * $sales_items_edit->unit_price ?? 0;
+                                                    echo number_format($item_total_amount, 2);
+                                                    $amount_total[] = $item_total_amount;
+                                                @endphp
+                                            </td>
+
+                                            <td>
+                                                <a href="{{ route('sales_items_remove', $sales_items_edit->id) }}"
+                                                    class="btn btn-danger btn-sm">
+                                                    Remove
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+
+
                                 </tbody>
                             </table>
                         </div>
@@ -276,7 +320,8 @@
                                                 name="sales_persons_id">
                                                 <option value="">--Please Select Sales Person --</option>
                                                 @foreach ($sales_persons as $sales_person)
-                                                    <option value="{{ $sales_person->id }}">
+                                                    <option value="{{ $sales_person->id }}"
+                                                        @if ($sales_person->id == $sales_invoice_edit->sales_persons_id) selected @endif>
                                                         {{ $sales_person->name }}
                                                     </option>
                                                 @endforeach
@@ -294,7 +339,7 @@
                                         <div class="col-sm-9">
                                             <input type="text"
                                                 class="date_picker form-control form-control-sm @error('delivery_date') is-invalid @enderror"
-                                                value="{{ old('delivery_date') }}" name="delivery_date">
+                                                value="{{ $sales_invoice_edit->delivery_date }}" name="delivery_date">
                                             @error('delivery_date')
                                                 <div class="invalid-feedback"> {{ $message }} </div>
                                             @enderror
@@ -324,10 +369,13 @@
                                             DOWN PAYMENT
                                         </label>
                                         <div class="col-sm-8">
+                                            <input type="hidden" value="{{ $sales_invoices_payments_edit->id }}"
+                                                name="sales_invoices_payments_id">
                                             <input type="text"
                                                 class="form-control form-control-sm @error('down_payment') is-invalid @enderror"
                                                 name="down_payment" id="DownPayment" style="text-align:right;"
-                                                oninput="SetCalculateDownPayment()" />
+                                                oninput="SetCalculateDownPayment()"
+                                                value="{{ $sales_invoices_payments_edit->down_payment ?? 0 }}" />
                                             @error('down_payment')
                                                 <div class="invalid-feedback"> {{ $message }} </div>
                                             @enderror
@@ -343,7 +391,8 @@
                                                 <input type="text"
                                                     class="form-control form-control-sm @error('dealer_percentage') is-invalid @enderror"
                                                     name="dealer_percentage" id="DealerPercentage" style="text-align:right;"
-                                                    oninput="SetCalculateDownPayment()" />
+                                                    oninput="SetCalculateDownPayment()"
+                                                    value="{{ $sales_invoices_payments_edit->dealer_percentage ?? 0 }}" />
                                                 <span class="input-group-text sm">%</span>
                                             </div>
                                             @error('dealer_percentage')
@@ -483,6 +532,21 @@
                 }
             });
 
+            function getCustomerAjaxAuto() {
+                var customerID = '{{ $sales_invoice_edit->customer_id }}'
+                $.ajax({
+                    url: '/get_customer_ajax/' + customerID,
+                    type: "GET",
+                    dataType: "json",
+                    success: function(data) {
+                        Address.value = data.address;
+                        Ph.value = data.phone;
+                        Email.value = data.email;
+                        DealerCode.value = data.dealer_code;
+                    }
+                });
+            }
+
             $('select[id="ChessiNO"]').on('change', function() {
                 var ChessiNO = $(this).val();
                 if (ChessiNO) {
@@ -499,6 +563,7 @@
 
 
 
+            getCustomerAjaxAuto();
         });
     </script>
     {!! JsValidator::formRequest('App\Http\Requests\StoreSalesInvoices', '#create-form') !!}

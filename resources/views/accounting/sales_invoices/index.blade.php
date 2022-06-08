@@ -1,13 +1,5 @@
 @extends('layouts.menus.accounting')
 @section('content')
-    <style>
-        table,
-        th,
-        td {
-            border: 1px solid black;
-            border-collapse: collapse;
-        }
-    </style>
     <div class="row justify-content-center">
         <div class="col-md-12 col-sm-12 col-lg-12">
             <div class="card">
@@ -29,38 +21,52 @@
                     </div>
                 </div>
 
-                <div class="second_table outer-wrapper">
-                    <table class="">
+                <div class="table-responsive text-nowrap rowheaders table-scroll outer-wrapper">
+                    <table class="table table-bordered main-table py-5" style="margin-bottom: 1px !important;"
+                        id="tbl_exporttable_to_xls">
                         <thead class="tbbg">
-                            <th style="color: white; text-align: center; width: 1%;">Sr.No</th>
-                            <th style="color: white; text-align: center; width: 10%;">Invoice No.</th>
-                            <th style="color: white; text-align: center; width: 10%;">Date</th>
-                            <th style="color: white; text-align: center; width: 10%;">Company Name</th>
-                            <th style="color: white; text-align: center; width: 10%;">Dealer Name</th>
-                            <th style="color: white; text-align: center; width: 10%;">Brand Name</th>
-                            <th style="color: white; text-align: center; width: 10%;">Type</th>
-                            <th style="color: white; text-align: center; width: 10%;">Model</th>
-                            <th style="color: white; text-align: center; width: 10%;">Color</th>
-                            <th style="color: white; text-align: center; width: 10%;">Chassis No.</th>
-                            <th style="color: white; text-align: center; width: 10%;">Vehicle No. </th>
-                            <th style="color: white; text-align: center; width: 10%;">Qty</th>
-                            <th style="color: white; text-align: center; width: 10%;">Unit Price</th>
-                            <th style="color: white; text-align: center; width: 10%;">Sales Value</th>
-                            <th style="color: white; text-align: center; width: 10%;">Total Amount</th>
-                            <th style="color: white; text-align: center; width: 10%;">Down Payment</th>
-                            <th style="color: white; text-align: center; width: 10%;">Discount</th>
-                            <th style="color: white; text-align: center; width: 10%;">Dealer Percentage</th>
-                            <th style="color: white; text-align: center; width: 10%;">Balance to Pay</th>
-                            <th style="color: white; text-align: center; width: 10%;">Action</th>
+                            <th style="background-color: #296166; color: white; text-align: center; width: 1%;">Sr.No</th>
+                            <th style="background-color: #296166; color: white; text-align: center; width: 10%;">Invoice No.
+                            </th>
+                            <th style="background-color: #296166; color: white; text-align: center; width: 10%;">Date</th>
+                            <th style="background-color: #296166; color: white; text-align: center; width: 10%;">Company
+                                Name</th>
+                            <th style="background-color: #296166; color: white; text-align: center; width: 10%;">Dealer Name
+                            </th>
+                            <th style="background-color: #296166; color: white; text-align: center; width: 10%;">Brand Name
+                            </th>
+                            <th style="background-color: #296166; color: white; text-align: center; width: 10%;">Type</th>
+                            <th style="background-color: #296166; color: white; text-align: center; width: 10%;">Model</th>
+                            <th style="background-color: #296166; color: white; text-align: center; width: 10%;">Color</th>
+                            <th style="background-color: #296166; color: white; text-align: center; width: 10%;">Chassis No.
+                            </th>
+                            <th style="background-color: #296166; color: white; text-align: center; width: 10%;">Vehicle No.
+                            </th>
+                            <th style="background-color: #296166; color: white; text-align: center; width: 10%;">Qty</th>
+                            <th style="background-color: #296166; color: white; text-align: center; width: 10%;">Unit Price
+                            </th>
+                            <th style="background-color: #296166; color: white; text-align: center; width: 10%;">Sales Value
+                            </th>
+                            <th style="background-color: #296166; color: white; text-align: center; width: 10%;">Total
+                                Amount</th>
+                            <th style="background-color: #296166; color: white; text-align: center; width: 10%;">Down
+                                Payment</th>
+                            <th style="background-color: #296166; color: white; text-align: center; width: 10%;">Discount
+                            </th>
+                            <th style="background-color: #296166; color: white; text-align: center; width: 10%;">Dealer
+                                Percentage</th>
+                            <th style="background-color: #296166; color: white; text-align: center; width: 10%;">Balance to
+                                Pay</th>
+                            <th style="background-color: #296166; color: white; text-align: center; width: 10%;">Action</th>
                         </thead>
                         <tbody class="table-border-bottom-0 row_position" id="tablecontents">
                             @foreach ($sales_invoices as $key => $sales_invoice)
                                 <tr style="background-color: white;">
-                                    <td>
+                                    <td class="sticky-col first-col">
                                         {{ $key + 1 }}
                                     </td>
 
-                                    <td>
+                                    <td class="sticky-col second-col">
                                         {{ $sales_invoice->invoice_no }}
                                     </td>
 
@@ -258,22 +264,22 @@
                                                     Action
                                                 </button>
                                                 <ul class="dropdown-menu">
+
                                                     <li>
-                                                        <a class="dropdown-item" href="#">Edit</a>
+                                                        <a class="dropdown-item"
+                                                            href="{{ route('sales_invoices.edit', $sales_invoice->id) }}">
+                                                            Edit
+                                                        </a>
                                                     </li>
 
                                                     <li>
-                                                        <a class="dropdown-item" href="#">Delete</a>
+                                                        <a class="dropdown-item"
+                                                            href="{{ route('sales_invoices.show', $sales_invoice->id) }}"
+                                                            target="_blank">
+                                                            View Invoice
+                                                        </a>
                                                     </li>
 
-                                                    <li hidden>
-                                                        <form action="#" method="POST">
-                                                            @csrf
-                                                            @method('DELETE')
-                                                            <button type="button" class="dropdown-item del_confirm"
-                                                                id="confirm-text" data-toggle="tooltip">Delete</button>
-                                                        </form>
-                                                    </li>
                                                 </ul>
                                             </div>
                                         </div>

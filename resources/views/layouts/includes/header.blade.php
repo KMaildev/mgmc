@@ -35,13 +35,13 @@
 
     <link rel="stylesheet" type="text/css" href="{{ asset('css/daterangepicker.css') }}" />
     <link rel="stylesheet" href="{{ asset('css/table.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/scrollbar.css') }}" />
 </head>
 
 <style>
     .tbbg {
         background-color: #236166;
     }
-
 </style>
 
 <body>
