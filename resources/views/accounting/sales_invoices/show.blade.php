@@ -1,7 +1,27 @@
 @extends('layouts.menus.invoice')
 @section('content')
     <link rel="stylesheet" href="{{ asset('invoice/invoice.css') }}" />
-    <div class="row invoice-add justify-content-center">
+    <div class="row invoice-add justify-content-center" style="background-color: white;">
+        <div class="col-lg-12 col-12 mb-lg-0 py-5">
+            <div class="row gy-3">
+                <center>
+                    <div class="col-lg-12">
+                        <div class="demo-inline-spacing">
+                            <a href="{{ route('sales_invoices.index') }}" class="btn btn-primary">
+                                <span class="tf-icons fa fa-arrow-left"></span>
+                                Back
+                            </a>
+                            <a href="{{ route('sale_invoice_pdf_download', $sales_invoice->id) }}"
+                                class="btn btn-secondary">
+                                <span class="tf-icons fa fa-download"></span>
+                                Download
+                            </a>
+                        </div>
+                    </div>
+                </center>
+            </div>
+        </div>
+
         <div class="col-lg-12 col-12 mb-lg-0">
             <center>
 
@@ -74,7 +94,8 @@
                             </td>
                         </tr>
                         <tr height='20' style='mso-height-source:userset;height:15pt'>
-                            <td colspan='7' height='20' class='x29' style='mso-ignore:colspan;height:15pt;'></td>
+                            <td colspan='7' height='20' class='x29' style='mso-ignore:colspan;height:15pt;'>
+                            </td>
                         </tr>
                         <tr height='20' style='mso-height-source:userset;height:15pt'>
                             <td colspan='3' rowspan='2' height='39' class='x57'
@@ -322,6 +343,7 @@
                         </tr>
                     </table>
                 </body>
+
             </center>
             <br><br><br>
         </div>

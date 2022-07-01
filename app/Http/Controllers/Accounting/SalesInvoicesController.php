@@ -12,6 +12,7 @@ use App\Models\SalesItems;
 use App\Models\TemporarySalesItem;
 use App\User;
 use Illuminate\Http\Request;
+use PDF;
 
 class SalesInvoicesController extends Controller
 {
@@ -212,5 +213,28 @@ class SalesInvoicesController extends Controller
         }
         $total_amount_value = array_sum($total_amount);
         return json_encode($total_amount_value);
+    }
+
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function sale_invoice_pdf_download($id)
+    {
+        $sales_invoice = SalesInvoices::findOrFail($id);
+        $sales_items = SalesItems::orderBy('id')->where('sales_invoice_id', $id)->get();
+        $sales_invoices_payment = SalesInvoicesPayments::where('sales_invoice_id', $id)->first();
+
+        $data = [
+            'sales_invoice' => $sales_invoice,
+            'sales_items' => $sales_items,
+            'sales_invoices_payment' => $sales_invoices_payment,
+        ];
+
+        $pdf = PDF::loadView('accounting.sales_invoices.export.pdf.show_invoice', $data);
+        return $pdf->download('sale_invoice' . date("Y-m-d H:i:s") . '.pdf');
     }
 }

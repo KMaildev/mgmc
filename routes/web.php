@@ -74,6 +74,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('sales_invoices', 'Accounting\SalesInvoicesController');
     Route::get('get_sales_invoices/{id}', array('as' => 'get_sales_invoices', 'uses' => 'Accounting\SalesInvoicesController@get_sales_invoices'));
     Route::get('get_sales_items/{id}', array('as' => 'get_sales_items', 'uses' => 'Accounting\SalesInvoicesController@get_sales_items'));
+    Route::get('sale_invoice_pdf_download/{id}', array('as' => 'sale_invoice_pdf_download', 'uses' => 'Accounting\SalesInvoicesController@sale_invoice_pdf_download'));
 
 
     Route::resource('sales_journal', 'Accounting\SalesJournalController');
