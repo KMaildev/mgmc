@@ -10,6 +10,16 @@
                             Sales Invoices
                         </h5>
                         <div class="card-title-elements ms-auto">
+                            <a href="#" class="dt-button create-new btn btn-success btn-sm"
+                                onclick="alert('Build in progress')">
+                                <span>
+                                    <i class="bx bx-file me-sm-2"></i>
+                                    <span class="d-none d-sm-inline-block">
+                                        Excel
+                                    </span>
+                                </span>
+                            </a>
+
                             <a href="{{ route('sales_invoices.create') }}"
                                 class="dt-button create-new btn btn-primary btn-sm">
                                 <span>
@@ -25,39 +35,87 @@
                     <table class="table table-bordered main-table py-5" style="margin-bottom: 1px !important;"
                         id="tbl_exporttable_to_xls">
                         <thead class="tbbg">
-                            <th style="background-color: #296166; color: white; text-align: center; width: 1%;">Sr.No</th>
-                            <th style="background-color: #296166; color: white; text-align: center; width: 10%;">Invoice No.
+                            <th style="background-color: #296166; color: white; text-align: center; width: 1%;">
+                                Sr.No
                             </th>
-                            <th style="background-color: #296166; color: white; text-align: center; width: 10%;">Date</th>
-                            <th style="background-color: #296166; color: white; text-align: center; width: 10%;">Company
-                                Name</th>
-                            <th style="background-color: #296166; color: white; text-align: center; width: 10%;">Dealer Name
+                            <th style="background-color: #296166; color: white; text-align: center; width: 10%;">
+                                Invoice No.
                             </th>
-                            <th style="background-color: #296166; color: white; text-align: center; width: 10%;">Brand Name
+                            <th style="background-color: #296166; color: white; text-align: center; width: 10%;">
+                                Date
                             </th>
-                            <th style="background-color: #296166; color: white; text-align: center; width: 10%;">Type</th>
-                            <th style="background-color: #296166; color: white; text-align: center; width: 10%;">Model</th>
-                            <th style="background-color: #296166; color: white; text-align: center; width: 10%;">Color</th>
-                            <th style="background-color: #296166; color: white; text-align: center; width: 10%;">Chassis No.
+                            <th style="background-color: #296166; color: white; text-align: center; width: 10%;">
+                                Company
+                                Name
                             </th>
-                            <th style="background-color: #296166; color: white; text-align: center; width: 10%;">Vehicle No.
+                            <th style="background-color: #296166; color: white; text-align: center; width: 10%;">
+                                Dealer Name
                             </th>
-                            <th style="background-color: #296166; color: white; text-align: center; width: 10%;">Qty</th>
-                            <th style="background-color: #296166; color: white; text-align: center; width: 10%;">Unit Price
+                            <th style="background-color: #296166; color: white; text-align: center; width: 10%;">
+                                Brand Name
                             </th>
-                            <th style="background-color: #296166; color: white; text-align: center; width: 10%;">Sales Value
+                            <th style="background-color: #296166; color: white; text-align: center; width: 10%;">
+                                Type
                             </th>
-                            <th style="background-color: #296166; color: white; text-align: center; width: 10%;">Total
-                                Amount</th>
-                            <th style="background-color: #296166; color: white; text-align: center; width: 10%;">Down
-                                Payment</th>
-                            <th style="background-color: #296166; color: white; text-align: center; width: 10%;">Discount
+                            <th style="background-color: #296166; color: white; text-align: center; width: 10%;">
+                                Model
                             </th>
-                            <th style="background-color: #296166; color: white; text-align: center; width: 10%;">Dealer
-                                Percentage</th>
-                            <th style="background-color: #296166; color: white; text-align: center; width: 10%;">Balance to
-                                Pay</th>
-                            <th style="background-color: #296166; color: white; text-align: center; width: 10%;">Action</th>
+                            <th style="background-color: #296166; color: white; text-align: center; width: 10%;">
+                                Color
+                            </th>
+                            <th style="background-color: #296166; color: white; text-align: center; width: 10%;">
+                                Chassis No.
+                            </th>
+                            <th style="background-color: #296166; color: white; text-align: center; width: 10%;">
+                                Vehicle No.
+                            </th>
+                            <th style="background-color: #296166; color: white; text-align: center; width: 10%;">
+                                Qty
+                            </th>
+                            <th style="background-color: #296166; color: white; text-align: center; width: 10%;">
+                                Unit Price
+                            </th>
+                            <th style="background-color: #296166; color: white; text-align: center; width: 10%;">
+                                Sales Value
+                            </th>
+                            <th style="background-color: #296166; color: white; text-align: center; width: 10%;">
+                                Total Amount
+                            </th>
+                            <th style="background-color: #296166; color: white; text-align: center; width: 10%;">
+                                Down
+                                Payment
+                            </th>
+                            <th style="background-color: #296166; color: white; text-align: center; width: 10%;">
+                                Discount
+                            </th>
+                            <th style="background-color: #296166; color: white; text-align: center; width: 10%;">
+                                Dealer Percentage
+                            </th>
+
+                            <th style="background-color: #296166; color: white; text-align: center; width: 10%;">
+                                Balance to Pay
+                            </th>
+
+                            <th style="background-color: #296166; color: white; text-align: center; width: 10%;">
+                                Dealer Percentage
+                            </th>
+
+                            <th style="background-color: #296166; color: white; text-align: center; width: 10%;">
+                                Amount
+                            </th>
+
+                            <th style="background-color: #296166; color: white; text-align: center; width: 10%;">
+                                Status
+                            </th>
+
+                            <th style="background-color: #296166; color: white; text-align: center; width: 10%;">
+                                Date
+                            </th>
+
+                            <th style="background-color: #296166; color: white; text-align: center; width: 10%;">
+                                Action
+                            </th>
+
                         </thead>
                         <tbody class="table-border-bottom-0 row_position" id="tablecontents">
                             @foreach ($sales_invoices as $key => $sales_invoice)
@@ -256,6 +314,50 @@
                                         @endphp
                                     </td>
 
+                                    <td style="text-align: right; font-weight: bold;">
+                                        @php
+                                            $dealer_percentage_percent = $sales_invoice->sales_invoices_payments_table->dealer_ercentage ?? 0;
+                                            echo number_format($dealer_percentage_percent);
+                                            echo '%';
+                                        @endphp
+                                    </td>
+
+                                    <td style="text-align: right; font-weight: bold;">
+                                        @php
+                                            $total_pay_amount = [];
+                                        @endphp
+                                        @foreach ($sales_invoice->sale_pay_nows_table as $sale_pay_now)
+                                            @php
+                                                $pay_amount = $sale_pay_now->pay_amount ?? 0;
+                                                $total_pay_amount[] = $pay_amount;
+                                            @endphp
+                                        @endforeach
+                                        @php
+                                            $total_pay_amount = array_sum($total_pay_amount);
+                                            echo number_format($total_pay_amount, 2);
+                                        @endphp
+                                    </td>
+
+                                    <td style="text-align: center;">
+                                        @php
+                                            $payment_status = $sales_invoice->another_sale_pay_nows_table->payment_status ?? '';
+                                        @endphp
+                                        @if ($payment_status == 'Paid')
+                                            <span class="badge bg-success">
+                                                Paid
+                                            </span>
+                                        @elseif ($payment_status == 'In_Payment')
+                                            <span class="badge bg-primary">
+                                                In Payment
+                                            </span>
+                                        @else
+                                        @endif
+                                    </td>
+
+                                    <td style="text-align: right; font-weight: bold;">
+                                        {{ $payment_status = $sales_invoice->another_sale_pay_nows_table->received_date ?? '' }}
+                                    </td>
+
                                     <td style="text-align: center;">
                                         <div class="demo-inline-spacing">
                                             <div class="btn-group">
@@ -267,8 +369,15 @@
 
                                                     <li>
                                                         <a class="dropdown-item"
-                                                            href="{{ route('sales_invoices.edit', $sales_invoice->id) }}">
-                                                            Edit
+                                                            href="{{ route('sales_inv_paynow_create', $sales_invoice->id) }}">
+                                                            Pay Now
+                                                        </a>
+                                                    </li>
+
+                                                    <li>
+                                                        <a class="dropdown-item"
+                                                            href="{{ route('sale_pay_now.show', $sales_invoice->id) }}">
+                                                            Payment History
                                                         </a>
                                                     </li>
 
@@ -277,6 +386,13 @@
                                                             href="{{ route('sales_invoices.show', $sales_invoice->id) }}"
                                                             target="_blank">
                                                             View Invoice
+                                                        </a>
+                                                    </li>
+
+                                                    <li>
+                                                        <a class="dropdown-item"
+                                                            href="{{ route('sales_invoices.edit', $sales_invoice->id) }}">
+                                                            Edit
                                                         </a>
                                                     </li>
 

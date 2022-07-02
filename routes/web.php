@@ -77,12 +77,19 @@ Route::middleware('auth')->group(function () {
     Route::get('sale_invoice_pdf_download/{id}', array('as' => 'sale_invoice_pdf_download', 'uses' => 'Accounting\SalesInvoicesController@sale_invoice_pdf_download'));
 
 
+    // Sale Pay Now
+    Route::resource('sale_pay_now', 'Accounting\SalePaynowController');
+    Route::get('sales_inv_paynow_create/{id}', array('as' => 'sales_inv_paynow_create', 'uses' => 'Accounting\SalePaynowController@salePayNow'));
+
+
     Route::resource('sales_journal', 'Accounting\SalesJournalController');
     Route::get('get_sales_journals/{id}', array('as' => 'get_sales_journals', 'uses' => 'Accounting\SalesJournalController@get_sales_journals'));
 
     Route::resource('cash_collection', 'Accounting\CashCollectionController');
     Route::resource('sales_ledger', 'Accounting\SalesLedgerController');
     Route::resource('account_receivables', 'Accounting\AccountReceivablesController');
+    Route::resource('sale_cash_book', 'Accounting\SaleCashBookController');
+    Route::resource('sale_refund', 'Accounting\SaleRefundController');
 
     // Cart System
     Route::resource('sale_invoice_cart', 'Cart\SaleInvoiceCartController');

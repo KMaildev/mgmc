@@ -26,4 +26,10 @@ class CashCollection extends Model
     {
         return $this->belongsTo(Customers::class, 'customer_id', 'id');
     }
+
+
+    public function sale_pay_nows_table()
+    {
+        return $this->hasMany(SalePayNow::class, 'sales_invoice_id', 'sales_invoice_id');
+    }
 }

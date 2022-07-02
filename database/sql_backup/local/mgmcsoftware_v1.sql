@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jun 06, 2022 at 01:07 PM
+-- Generation Time: Jul 02, 2022 at 01:00 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 7.4.29
 
@@ -275,7 +275,18 @@ INSERT INTO `activity_log` (`id`, `log_name`, `description`, `subject_type`, `su
 (197, 'users_log', 'updated', 'App\\User', 1, 'App\\User', 1, '{\"attributes\":{\"name\":\"Dev Test\",\"email\":\"developer@gmail.com\",\"employee_id\":\"EMP-0001\",\"phone\":\"09444161997\",\"nrc_number\":null,\"address\":\"YGN\",\"department_id\":1,\"created_at\":\"2022-03-28T17:58:34.000000Z\",\"updated_at\":\"2022-06-06T04:59:36.000000Z\"},\"old\":{\"name\":\"Dev Test\",\"email\":\"developer@gmail.com\",\"employee_id\":\"EMP-0001\",\"phone\":\"09444161997\",\"nrc_number\":null,\"address\":\"YGN\",\"department_id\":1,\"created_at\":\"2022-03-28T17:58:34.000000Z\",\"updated_at\":\"2022-06-05T07:36:21.000000Z\"}}', '2022-06-05 22:29:36', '2022-06-05 22:29:36'),
 (198, 'sales_journals', 'created', 'App\\Models\\SalesJournal', 1, 'App\\User', 1, '{\"attributes\":{\"sales_journal_date\":\"2022-06-06\",\"customer_id\":1,\"sales_invoice_id\":1,\"post_ref\":\"R-1\",\"debited\":\"38500000\",\"credited\":\"38500000\",\"user_id\":\"1\",\"created_at\":\"2022-06-06T06:09:28.000000Z\",\"updated_at\":\"2022-06-06T06:09:28.000000Z\"}}', '2022-06-05 23:39:28', '2022-06-05 23:39:28'),
 (199, 'sales_journals', 'created', 'App\\Models\\SalesJournal', 2, 'App\\User', 1, '{\"attributes\":{\"sales_journal_date\":\"2022-06-06\",\"customer_id\":1,\"sales_invoice_id\":4,\"post_ref\":\"R-2\",\"debited\":\"56800000\",\"credited\":\"56800000\",\"user_id\":\"1\",\"created_at\":\"2022-06-06T06:09:44.000000Z\",\"updated_at\":\"2022-06-06T06:09:44.000000Z\"}}', '2022-06-05 23:39:45', '2022-06-05 23:39:45'),
-(200, 'cash_collections_log', 'created', 'App\\Models\\CashCollection', 1, 'App\\User', 1, '{\"attributes\":{\"cash_collection_date\":\"2022-06-06\",\"customer_id\":1,\"sales_invoice_id\":1,\"sales_journal_id\":1,\"cash_debited\":\"38500000\",\"sale_discount_debited\":\"0\",\"credited\":\"38500000\",\"user_id\":\"1\",\"created_at\":\"2022-06-06T06:10:09.000000Z\",\"updated_at\":\"2022-06-06T06:10:09.000000Z\"}}', '2022-06-05 23:40:09', '2022-06-05 23:40:09');
+(200, 'cash_collections_log', 'created', 'App\\Models\\CashCollection', 1, 'App\\User', 1, '{\"attributes\":{\"cash_collection_date\":\"2022-06-06\",\"customer_id\":1,\"sales_invoice_id\":1,\"sales_journal_id\":1,\"cash_debited\":\"38500000\",\"sale_discount_debited\":\"0\",\"credited\":\"38500000\",\"user_id\":\"1\",\"created_at\":\"2022-06-06T06:10:09.000000Z\",\"updated_at\":\"2022-06-06T06:10:09.000000Z\"}}', '2022-06-05 23:40:09', '2022-06-05 23:40:09'),
+(201, 'users_log', 'updated', 'App\\User', 1, 'App\\User', 1, '{\"attributes\":{\"name\":\"Dev Test\",\"email\":\"developer@gmail.com\",\"employee_id\":\"EMP-0001\",\"phone\":\"09444161997\",\"nrc_number\":null,\"address\":\"YGN\",\"department_id\":1,\"created_at\":\"2022-03-28T17:58:34.000000Z\",\"updated_at\":\"2022-06-08T04:05:06.000000Z\"},\"old\":{\"name\":\"Dev Test\",\"email\":\"developer@gmail.com\",\"employee_id\":\"EMP-0001\",\"phone\":\"09444161997\",\"nrc_number\":null,\"address\":\"YGN\",\"department_id\":1,\"created_at\":\"2022-03-28T17:58:34.000000Z\",\"updated_at\":\"2022-06-06T04:59:36.000000Z\"}}', '2022-06-07 21:35:06', '2022-06-07 21:35:06'),
+(202, 'sales_invoices_log', 'created', 'App\\Models\\SalesInvoices', 2, 'App\\User', 1, '{\"attributes\":{\"customer_id\":2,\"id_no\":\"Hanteng-2020-0002\",\"invoice_no\":\"Hanteng-2020-0002\",\"invoice_date\":\"2022-06-08\",\"showroom_name\":\"MGM\",\"sales_type\":\"1 Year\",\"payment_team\":\"1 Year\",\"sales_persons_id\":3,\"delivery_date\":\"2022-06-08\",\"user_id\":1,\"created_at\":\"2022-06-08T08:25:51.000000Z\",\"updated_at\":\"2022-06-08T08:25:51.000000Z\"}}', '2022-06-08 01:55:51', '2022-06-08 01:55:51'),
+(203, 'users_log', 'updated', 'App\\User', 1, 'App\\User', 1, '{\"attributes\":{\"name\":\"Dev Test\",\"email\":\"developer@gmail.com\",\"employee_id\":\"EMP-0001\",\"phone\":\"09444161997\",\"nrc_number\":null,\"address\":\"YGN\",\"department_id\":1,\"created_at\":\"2022-03-28T17:58:34.000000Z\",\"updated_at\":\"2022-07-01T03:33:45.000000Z\"},\"old\":{\"name\":\"Dev Test\",\"email\":\"developer@gmail.com\",\"employee_id\":\"EMP-0001\",\"phone\":\"09444161997\",\"nrc_number\":null,\"address\":\"YGN\",\"department_id\":1,\"created_at\":\"2022-03-28T17:58:34.000000Z\",\"updated_at\":\"2022-06-08T04:05:06.000000Z\"}}', '2022-06-30 21:03:45', '2022-06-30 21:03:45'),
+(204, 'users_log', 'updated', 'App\\User', 1, 'App\\User', 1, '{\"attributes\":{\"name\":\"Dev Test\",\"email\":\"developer@gmail.com\",\"employee_id\":\"EMP-0001\",\"phone\":\"09444161997\",\"nrc_number\":null,\"address\":\"YGN\",\"department_id\":1,\"created_at\":\"2022-03-28T17:58:34.000000Z\",\"updated_at\":\"2022-07-01T05:04:12.000000Z\"},\"old\":{\"name\":\"Dev Test\",\"email\":\"developer@gmail.com\",\"employee_id\":\"EMP-0001\",\"phone\":\"09444161997\",\"nrc_number\":null,\"address\":\"YGN\",\"department_id\":1,\"created_at\":\"2022-03-28T17:58:34.000000Z\",\"updated_at\":\"2022-07-01T03:33:45.000000Z\"}}', '2022-06-30 22:34:12', '2022-06-30 22:34:12'),
+(205, 'users_log', 'updated', 'App\\User', 1, 'App\\User', 1, '{\"attributes\":{\"name\":\"Dev Test\",\"email\":\"developer@gmail.com\",\"employee_id\":\"EMP-0001\",\"phone\":\"09444161997\",\"nrc_number\":null,\"address\":\"YGN\",\"department_id\":1,\"created_at\":\"2022-03-28T17:58:34.000000Z\",\"updated_at\":\"2022-07-01T09:25:54.000000Z\"},\"old\":{\"name\":\"Dev Test\",\"email\":\"developer@gmail.com\",\"employee_id\":\"EMP-0001\",\"phone\":\"09444161997\",\"nrc_number\":null,\"address\":\"YGN\",\"department_id\":1,\"created_at\":\"2022-03-28T17:58:34.000000Z\",\"updated_at\":\"2022-07-01T05:04:12.000000Z\"}}', '2022-07-01 02:55:54', '2022-07-01 02:55:54'),
+(206, 'sales_invoices_log', 'created', 'App\\Models\\SalesInvoices', 3, 'App\\User', 1, '{\"attributes\":{\"customer_id\":1,\"id_no\":\"ID-00001\",\"invoice_no\":\"INV-00001\",\"invoice_date\":\"2022-07-01\",\"showroom_name\":\"MGM\",\"sales_type\":\"1 Year\",\"payment_team\":\"1 Year\",\"sales_persons_id\":3,\"delivery_date\":\"2022-07-01\",\"user_id\":1,\"created_at\":\"2022-07-01T09:39:02.000000Z\",\"updated_at\":\"2022-07-01T09:39:02.000000Z\"}}', '2022-07-01 03:09:02', '2022-07-01 03:09:02'),
+(207, 'users_log', 'updated', 'App\\User', 1, 'App\\User', 1, '{\"attributes\":{\"name\":\"Dev Test\",\"email\":\"developer@gmail.com\",\"employee_id\":\"EMP-0001\",\"phone\":\"09444161997\",\"nrc_number\":null,\"address\":\"YGN\",\"department_id\":1,\"created_at\":\"2022-03-28T17:58:34.000000Z\",\"updated_at\":\"2022-07-02T03:02:51.000000Z\"},\"old\":{\"name\":\"Dev Test\",\"email\":\"developer@gmail.com\",\"employee_id\":\"EMP-0001\",\"phone\":\"09444161997\",\"nrc_number\":null,\"address\":\"YGN\",\"department_id\":1,\"created_at\":\"2022-03-28T17:58:34.000000Z\",\"updated_at\":\"2022-07-01T09:25:54.000000Z\"}}', '2022-07-01 20:32:51', '2022-07-01 20:32:51'),
+(208, 'sales_journals', 'created', 'App\\Models\\SalesJournal', 3, 'App\\User', 1, '{\"attributes\":{\"sales_journal_date\":\"2022-07-02\",\"customer_id\":1,\"sales_invoice_id\":3,\"post_ref\":\"R-3\",\"debited\":\"3000\",\"credited\":\"3000\",\"user_id\":\"1\",\"created_at\":\"2022-07-02T07:13:38.000000Z\",\"updated_at\":\"2022-07-02T07:13:38.000000Z\"}}', '2022-07-02 00:43:38', '2022-07-02 00:43:38'),
+(209, 'sales_journals', 'updated', 'App\\Models\\SalesJournal', 2, 'App\\User', 1, '{\"attributes\":{\"sales_journal_date\":\"2022-06-06\",\"customer_id\":2,\"sales_invoice_id\":2,\"post_ref\":\"R-2\",\"debited\":\"1000\",\"credited\":\"1000\",\"user_id\":\"1\",\"created_at\":\"2022-06-06T06:09:44.000000Z\",\"updated_at\":\"2022-07-02T07:14:36.000000Z\"},\"old\":{\"sales_journal_date\":\"2022-06-06\",\"customer_id\":1,\"sales_invoice_id\":4,\"post_ref\":\"R-2\",\"debited\":\"56800000\",\"credited\":\"56800000\",\"user_id\":\"1\",\"created_at\":\"2022-06-06T06:09:44.000000Z\",\"updated_at\":\"2022-06-06T06:09:44.000000Z\"}}', '2022-07-02 00:44:36', '2022-07-02 00:44:36'),
+(210, 'cash_collections_log', 'created', 'App\\Models\\CashCollection', 2, 'App\\User', 1, '{\"attributes\":{\"cash_collection_date\":\"2022-07-02\",\"customer_id\":2,\"sales_invoice_id\":2,\"sales_journal_id\":2,\"cash_debited\":\"1000\",\"sale_discount_debited\":\"0\",\"credited\":\"1000\",\"user_id\":\"1\",\"created_at\":\"2022-07-02T09:18:44.000000Z\",\"updated_at\":\"2022-07-02T09:18:44.000000Z\"}}', '2022-07-02 02:48:44', '2022-07-02 02:48:44'),
+(211, 'sale_refund_log', 'created', 'App\\Models\\SaleRefund', 3, 'App\\User', 1, '{\"attributes\":{\"sales_invoice_id\":2,\"refund\":\"192011\",\"refund_date\":\"2022-07-02\",\"user_id\":\"1\",\"created_at\":\"2022-07-02T10:42:16.000000Z\",\"updated_at\":\"2022-07-02T10:42:16.000000Z\"}}', '2022-07-02 04:12:16', '2022-07-02 04:12:16');
 
 -- --------------------------------------------------------
 
@@ -342,7 +353,8 @@ CREATE TABLE `cash_collections` (
 --
 
 INSERT INTO `cash_collections` (`id`, `cash_collection_date`, `customer_id`, `sales_invoice_id`, `sales_journal_id`, `cash_debited`, `sale_discount_debited`, `credited`, `user_id`, `created_at`, `updated_at`) VALUES
-(1, '2022-06-06', 1, 1, 1, '38500000', '0', '38500000', '1', '2022-06-05 23:40:09', '2022-06-05 23:40:09');
+(1, '2022-06-06', 1, 1, 1, '38500000', '0', '38500000', '1', '2022-06-05 23:40:09', '2022-06-05 23:40:09'),
+(2, '2022-07-02', 2, 2, 2, '1000', '0', '1000', '1', '2022-07-02 02:48:44', '2022-07-02 02:48:44');
 
 -- --------------------------------------------------------
 
@@ -500,7 +512,10 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (20, '2022_06_05_104600_create_cash_collections_table', 6),
 (21, '2022_06_06_093238_create_temporary_sales_items_table', 7),
 (22, '2022_06_01_184253_create_sales_invoices_table', 8),
-(23, '2022_06_01_184854_create_sales_invoices_payments_table', 8);
+(23, '2022_06_01_184854_create_sales_invoices_payments_table', 8),
+(24, '2022_06_08_042917_add_description_to_sales_items_table', 9),
+(26, '2022_07_02_041220_create_sale_pay_nows_table', 10),
+(27, '2022_07_02_101145_create_sale_refunds_table', 11);
 
 -- --------------------------------------------------------
 
@@ -615,8 +630,9 @@ CREATE TABLE `sales_invoices` (
 --
 
 INSERT INTO `sales_invoices` (`id`, `customer_id`, `id_no`, `invoice_no`, `invoice_date`, `showroom_name`, `sales_type`, `payment_team`, `sales_persons_id`, `delivery_date`, `user_id`, `created_at`, `updated_at`) VALUES
-(1, 1, 'EMP-001', 'INV-00001', '2022-06-06', 'MGM', '1 Year', '1 Year', 3, '2022-06-06', 1, '2022-06-06 04:32:15', '2022-06-06 04:32:15'),
-(2, 35, 'INV-00001', 'INV-00001', '2022-06-06', 'MGM', '1 Year', '1 Year', 3, '2022-06-06', 1, '2022-06-06 04:36:18', '2022-06-06 04:36:18');
+(1, 1, 'IV-0001/20', 'IV-0001/20', '2022-06-08', 'MGM', '1 Year', '1 Year', 3, '2022-06-08', 1, '2022-06-08 01:49:56', '2022-06-08 01:49:56'),
+(2, 2, 'Hanteng-2020-0002', 'Hanteng-2020-0002', '2022-06-08', 'MGM', '1 Year', '1 Year', 3, '2022-06-08', 1, '2022-06-08 01:55:51', '2022-06-08 01:55:51'),
+(3, 1, 'ID-00001', 'INV-00001', '2022-07-01', 'MGM', '1 Year', '1 Year', 3, '2022-07-01', 1, '2022-07-01 03:09:02', '2022-07-01 03:09:02');
 
 -- --------------------------------------------------------
 
@@ -642,8 +658,20 @@ CREATE TABLE `sales_invoices_payments` (
 --
 
 INSERT INTO `sales_invoices_payments` (`id`, `total_amount`, `down_payment`, `discount`, `dealer_ercentage`, `balance_to_be_pay`, `balance_to_pay_be_date`, `sales_invoice_id`, `created_at`, `updated_at`) VALUES
-(1, '2000', '1000', '0', NULL, '1000', NULL, 1, '2022-06-06 04:32:15', '2022-06-06 04:32:15'),
-(2, '9023129', '0', '0', NULL, '9023129', NULL, 2, '2022-06-06 04:36:18', '2022-06-06 04:36:18');
+(1, '38501000', '25900000', '0', NULL, NULL, NULL, 1, '2022-06-06 04:32:15', '2022-06-08 01:53:14'),
+(2, '9023129', '0', '0', NULL, '9023129', NULL, 2, '2022-06-06 04:36:18', '2022-06-06 04:36:18'),
+(3, '3000', '0', '0', NULL, '3000', NULL, 3, '2022-06-07 21:38:58', '2022-06-07 21:38:58'),
+(4, '2000', '1000', '0', NULL, '1000', NULL, 4, '2022-06-07 22:02:44', '2022-06-07 22:55:53'),
+(5, '0', '0', '0', NULL, '0', NULL, 5, '2022-06-07 22:57:42', '2022-06-07 22:57:42'),
+(6, '0', '0', '0', NULL, '0', NULL, 6, '2022-06-07 23:00:13', '2022-06-07 23:00:13'),
+(7, '3000', '0', '0', NULL, '3000', NULL, 7, '2022-06-07 23:04:30', '2022-06-07 23:04:30'),
+(8, '3000', '0', '0', NULL, '3000', NULL, 8, '2022-06-07 23:05:08', '2022-06-07 23:05:08'),
+(9, '3000', '0', '0', NULL, '3000', NULL, 9, '2022-06-07 23:06:08', '2022-06-07 23:06:08'),
+(10, '3000', '0', '0', NULL, '3000', NULL, 10, '2022-06-07 23:06:43', '2022-06-07 23:06:43'),
+(11, '12000', '1000', '0', NULL, '10760', NULL, 11, '2022-06-07 23:07:23', '2022-06-07 23:08:32'),
+(12, '83500000', '25900000', '0', NULL, '57600000', NULL, 1, '2022-06-08 01:49:56', '2022-06-08 01:49:56'),
+(13, '1000', '1000', '0', NULL, '0', NULL, 2, '2022-06-08 01:55:51', '2022-06-08 01:55:51'),
+(14, '3000', '1000', '0', NULL, '2000', NULL, 3, '2022-07-01 03:09:02', '2022-07-01 03:09:02');
 
 -- --------------------------------------------------------
 
@@ -658,17 +686,20 @@ CREATE TABLE `sales_items` (
   `unit_price` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `sales_invoice_id` int(11) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `description` text COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `sales_items`
 --
 
-INSERT INTO `sales_items` (`id`, `product_id`, `qty`, `unit_price`, `sales_invoice_id`, `created_at`, `updated_at`) VALUES
-(1, 1, 1, '1000', 1, '2022-06-06 04:32:15', '2022-06-06 04:32:15'),
-(2, 2, 1, '1000', 1, '2022-06-06 04:32:15', '2022-06-06 04:32:15'),
-(3, 24, 1, '9023129', 2, '2022-06-06 04:36:18', '2022-06-06 04:36:18');
+INSERT INTO `sales_items` (`id`, `product_id`, `qty`, `unit_price`, `sales_invoice_id`, `created_at`, `updated_at`, `description`) VALUES
+(22, 1, 1, '38500000', 1, '2022-06-08 01:49:56', '2022-06-08 01:49:56', NULL),
+(24, 24, 1, '1000', 1, '2022-06-08 01:53:14', '2022-06-08 01:53:14', NULL),
+(25, 2, 1, '1000', 2, '2022-06-08 01:55:51', '2022-06-08 01:55:51', NULL),
+(26, 1, 1, '1000', 3, '2022-07-01 03:09:02', '2022-07-01 03:09:02', NULL),
+(27, 2, 1, '2000', 3, '2022-07-01 03:09:02', '2022-07-01 03:09:02', NULL);
 
 -- --------------------------------------------------------
 
@@ -695,7 +726,53 @@ CREATE TABLE `sales_journals` (
 
 INSERT INTO `sales_journals` (`id`, `sales_journal_date`, `customer_id`, `sales_invoice_id`, `post_ref`, `debited`, `credited`, `user_id`, `created_at`, `updated_at`) VALUES
 (1, '2022-06-06', 1, 1, 'R-1', '38500000', '38500000', '1', '2022-06-05 23:39:28', '2022-06-05 23:39:28'),
-(2, '2022-06-06', 1, 4, 'R-2', '56800000', '56800000', '1', '2022-06-05 23:39:44', '2022-06-05 23:39:44');
+(2, '2022-06-06', 2, 2, 'R-2', '1000', '1000', '1', '2022-06-05 23:39:44', '2022-07-02 00:44:36'),
+(3, '2022-07-02', 1, 3, 'R-3', '3000', '3000', '1', '2022-07-02 00:43:38', '2022-07-02 00:43:38');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `sale_pay_nows`
+--
+
+CREATE TABLE `sale_pay_nows` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `sales_invoice_id` int(11) DEFAULT NULL,
+  `sales_invoices_payment_id` int(11) DEFAULT NULL,
+  `receive_by` int(11) DEFAULT NULL,
+  `payment_status` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `payment_time` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `remark` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `received_date` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `pay_amount` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `user_id` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `sale_pay_nows`
+--
+
+INSERT INTO `sale_pay_nows` (`id`, `sales_invoice_id`, `sales_invoices_payment_id`, `receive_by`, `payment_status`, `payment_time`, `remark`, `received_date`, `pay_amount`, `user_id`, `created_at`, `updated_at`) VALUES
+(1, 1, 1, 3, 'In_Payment', '1st Payment', NULL, '2022-06-08', '10000', '1', '2022-07-02 03:02:32', '2022-07-02 03:02:32'),
+(2, 1, 1, 3, 'In_Payment', '2nd Payment', 'Ok Pay Now', '2022-06-08', '2000', '1', '2022-07-02 03:04:15', '2022-07-02 03:04:15');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `sale_refunds`
+--
+
+CREATE TABLE `sale_refunds` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `sales_invoice_id` int(11) DEFAULT NULL,
+  `refund` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `refund_date` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `user_id` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -740,14 +817,6 @@ CREATE TABLE `temporary_sales_items` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
---
--- Dumping data for table `temporary_sales_items`
---
-
-INSERT INTO `temporary_sales_items` (`id`, `product_id`, `qty`, `price`, `description`, `session_id`, `user_id`, `created_at`, `updated_at`) VALUES
-(1, 1, 1, '10', 'Hello', '0', '1', '2022-06-06 03:09:58', '2022-06-06 03:09:58'),
-(9, 24, 1, '9023129', 'Test', '1XIVHZ6n0NfN4rVM61w2ZPxI6FETs0fkX7VXwxDO', '1', '2022-06-06 04:35:51', '2022-06-06 04:35:51');
-
 -- --------------------------------------------------------
 
 --
@@ -779,7 +848,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`, `employee_id`, `phone`, `nrc_number`, `gender`, `address`, `department_id`, `last_login_at`, `last_login_ip`, `agent`) VALUES
-(1, 'Dev Test', 'developer@gmail.com', NULL, '$2y$10$fCdZ6o33mm5ftnDrz63j4O1ssBWd1mrEaCfHLwaVpgr2ei7t3RURe', NULL, '2022-03-28 11:28:34', '2022-06-05 22:29:36', 'EMP-0001', '09444161997', NULL, 'male', 'YGN', 1, '2022-06-06 04:59:36', '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.5005.61 Safari/537.36'),
+(1, 'Dev Test', 'developer@gmail.com', NULL, '$2y$10$fCdZ6o33mm5ftnDrz63j4O1ssBWd1mrEaCfHLwaVpgr2ei7t3RURe', NULL, '2022-03-28 11:28:34', '2022-07-01 20:32:51', 'EMP-0001', '09444161997', NULL, 'male', 'YGN', 1, '2022-07-02 03:02:51', '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36'),
 (2, 'U Aung Cho Tun', 'aungchotun@gmail.com', NULL, '$2y$10$tl7wt/VHxT8TX1cZwGzUhuT/RyFx.TU3kI/2gmAXywdc294eCHTra', 'KyAsL3PniXpQqZBoPCp50e8Pq9rw4IjSBsYgJD8eQJod5ICz3u8M4vcOKrdZ', '2022-03-28 19:41:13', '2022-03-31 08:39:12', 'EMP-00002', '09123123123', NULL, 'male', 'YGN', 1, '2022-03-31 15:39:12', '69.160.8.4', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:98.0) Gecko/20100101 Firefox/98.0'),
 (3, 'Ma May Myat Mon', 'mamaymyatmon@gmail.com', NULL, '$2y$10$sSmcokRLRJBbuuOogCQamOWL4FCnsBgZkLQIcJn4MkRPhGWx6krDC', NULL, '2022-05-15 00:08:07', '2022-05-15 00:08:07', 'EMP-00001', '0912312312', NULL, 'male', 'YGN', 3, NULL, NULL, NULL);
 
@@ -896,6 +965,18 @@ ALTER TABLE `sales_journals`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `sale_pay_nows`
+--
+ALTER TABLE `sale_pay_nows`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `sale_refunds`
+--
+ALTER TABLE `sale_refunds`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `suppliers`
 --
 ALTER TABLE `suppliers`
@@ -933,7 +1014,7 @@ ALTER TABLE `account_types`
 -- AUTO_INCREMENT for table `activity_log`
 --
 ALTER TABLE `activity_log`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=201;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=212;
 
 --
 -- AUTO_INCREMENT for table `brands`
@@ -951,7 +1032,7 @@ ALTER TABLE `cash_books`
 -- AUTO_INCREMENT for table `cash_collections`
 --
 ALTER TABLE `cash_collections`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `chartof_accounts`
@@ -981,7 +1062,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `products`
@@ -993,25 +1074,37 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT for table `sales_invoices`
 --
 ALTER TABLE `sales_invoices`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `sales_invoices_payments`
 --
 ALTER TABLE `sales_invoices_payments`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `sales_items`
 --
 ALTER TABLE `sales_items`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `sales_journals`
 --
 ALTER TABLE `sales_journals`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `sale_pay_nows`
+--
+ALTER TABLE `sale_pay_nows`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `sale_refunds`
+--
+ALTER TABLE `sale_refunds`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `suppliers`
@@ -1023,7 +1116,7 @@ ALTER TABLE `suppliers`
 -- AUTO_INCREMENT for table `temporary_sales_items`
 --
 ALTER TABLE `temporary_sales_items`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `users`

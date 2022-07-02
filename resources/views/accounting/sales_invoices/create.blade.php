@@ -192,7 +192,8 @@
 
                                     {{-- Price --}}
                                     <td>
-                                        <input type="text" class="form-control" id="UnitPrice" oninput="SetCalculator()">
+                                        <input type="text" class="form-control" id="UnitPrice"
+                                            oninput="SetCalculator()">
                                     </td>
 
                                     {{-- Amount --}}
@@ -221,14 +222,16 @@
 
                                             <td>
                                                 {{ $temporary_sales_item->products_table->chessi_no ?? '' }}
-                                                <input type="hidden" name="productFields[{{ $key + 1 }}][product_id]"
+                                                <input type="hidden"
+                                                    name="productFields[{{ $key + 1 }}][product_id]"
                                                     value="{{ $temporary_sales_item->products_table->id ?? '0' }}"
                                                     required />
                                             </td>
 
                                             <td>
                                                 {{ $temporary_sales_item->description ?? '' }}
-                                                <input type="hidden" name="productFields[{{ $key + 1 }}][description]"
+                                                <input type="hidden"
+                                                    name="productFields[{{ $key + 1 }}][description]"
                                                     value="{{ $temporary_sales_item->description }}" />
                                             </td>
 
@@ -314,7 +317,8 @@
                                                 $total_amount = array_sum($amount_total);
                                             @endphp
                                             <input type="text" class="form-control form-control-sm"
-                                                value="{{ number_format($total_amount, 2) }}" style="text-align:right;">
+                                                value="{{ number_format($total_amount, 2) }}"
+                                                style="text-align:right;">
                                             <input type="hidden" value="{{ $total_amount }}" name="total_amount">
                                         </div>
                                     </div>
@@ -342,8 +346,8 @@
                                             <div class="input-group input-group-sm">
                                                 <input type="text"
                                                     class="form-control form-control-sm @error('dealer_percentage') is-invalid @enderror"
-                                                    name="dealer_percentage" id="DealerPercentage" style="text-align:right;"
-                                                    oninput="SetCalculateDownPayment()" />
+                                                    name="dealer_percentage" id="DealerPercentage"
+                                                    style="text-align:right;" oninput="SetCalculateDownPayment()" />
                                                 <span class="input-group-text sm">%</span>
                                             </div>
                                             @error('dealer_percentage')

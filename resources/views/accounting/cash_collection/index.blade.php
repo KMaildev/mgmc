@@ -18,27 +18,39 @@
                             <th style="color: white; text-align: center; width: 1%;">
                                 Sr.No
                             </th>
-                            <th style="color: white; background-color: #2e696e; text-align: center; widht: 10%">
-                                Date
-                            </th>
-                            <th style="color: white; background-color: #2e696e; text-align: center; widht: 10%">
-                                Customer Name-Account Debited
-                            </th>
+
                             <th style="color: white; background-color: #2e696e; text-align: center; widht: 10%">
                                 Invoice No.
                             </th>
+
+                            <th style="color: white; background-color: #2e696e; text-align: center; widht: 10%">
+                                Invoice Date
+                            </th>
+
+                            <th style="color: white; background-color: #2e696e; text-align: center; widht: 10%">
+                                Customer Name-Account Debited
+                            </th>
+
                             <th style="color: white; background-color: #2e696e; text-align: center; widht: 10%">
                                 Post Ref.
                             </th>
+
                             <th style="color: white; background-color: #2e696e; text-align: center; widht: 10%">
                                 Cash-Debited
                             </th>
+
                             <th style="color: white; background-color: #2e696e; text-align: center; widht: 10%">
                                 Sales Discount -Debited
                             </th>
+
                             <th style="color: white; background-color: #2e696e; text-align: center; widht: 10%">
                                 AR (Vehicle )-Credited
                             </th>
+
+                            <th style="color: white; background-color: #2e696e; text-align: center; widht: 10%">
+                                Payment Time
+                            </th>
+
                             <th style="color: white; background-color: #2e696e; text-align: center; widht: 10%">
                                 Action
                             </th>
@@ -57,15 +69,15 @@
                                     </td>
 
                                     <td>
+                                        {{ $cash_collection->sales_invoices_table->invoice_no ?? '' }}
+                                    </td>
+
+                                    <td>
                                         {{ $cash_collection->sales_invoices_table->invoice_date ?? '' }}
                                     </td>
 
                                     <td>
                                         {{ $cash_collection->customers_table->name ?? '' }}
-                                    </td>
-
-                                    <td>
-                                        {{ $cash_collection->sales_invoices_table->invoice_no ?? '' }}
                                     </td>
 
                                     <td>
@@ -91,6 +103,35 @@
                                             $credited = $cash_collection->credited ?? 0;
                                             echo number_format($credited, 2);
                                         @endphp
+                                    </td>
+
+                                    <td>
+                                        <table style="width: 100%">
+                                            <tr>
+                                                <td style="background-color: #296166; color: white; font-size: 12px;">
+                                                    Received
+                                                </td>
+                                                <td style="background-color: #296166; color: white; font-size: 12px;">
+                                                    Time
+                                                </td>
+                                                <td style="background-color: #296166; color: white; font-size: 12px;">
+                                                    Amount
+                                                </td>
+                                            </tr>
+                                            @foreach ($cash_collection->sale_pay_nows_table as $sale_pay_now)
+                                                <tr>
+                                                    <td style="font-size: 12px;">
+                                                        {{ $sale_pay_now->received_date ?? '' }}
+                                                    </td>
+                                                    <td style="font-size: 12px;">
+                                                        {{ $sale_pay_now->payment_time ?? '' }}
+                                                    </td>
+                                                    <td style="font-size: 12px;">
+                                                        {{ number_format($sale_pay_now->pay_amount, 2) }}
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                        </table>
                                     </td>
 
                                     <td style="text-align: center;">

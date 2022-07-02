@@ -81,13 +81,32 @@
                         </a>
                     </li>
 
+
                     <li class="menu-item">
-                        <a href="{{ route('cash_collection.index') }}" class="menu-link">
-                            <div data-i2n="Without menu">
+                        <a href="#" class="menu-link menu-toggle">
+                            <div data-i18n="Cash Collection">
                                 Cash Collection
                             </div>
                         </a>
+                        <ul class="menu-sub">
+                            <li class="menu-item">
+                                <a href="{{ route('cash_collection.index') }}" class="menu-link">
+                                    <div data-i18n="Cash Collection">
+                                        Cash Collection
+                                    </div>
+                                </a>
+                            </li>
+
+                            <li class="menu-item">
+                                <a href="{{ route('sale_refund.index') }}" class="menu-link">
+                                    <div data-i18n="Refund">
+                                        Refund
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
                     </li>
+
 
                     <li class="menu-item">
                         <a href="{{ route('sales_ledger.index') }}" class="menu-link">
@@ -101,6 +120,14 @@
                         <a href="{{ route('account_receivables.index') }}" class="menu-link">
                             <div data-i2n="Without menu">
                                 Account Receivales
+                            </div>
+                        </a>
+                    </li>
+
+                    <li class="menu-item">
+                        <a href="{{ route('sale_cash_book.index') }}" class="menu-link">
+                            <div data-i2n="Without menu">
+                                Cash Book
                             </div>
                         </a>
                     </li>

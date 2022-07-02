@@ -5,7 +5,21 @@
     <tr>
         <td></td>
 
-        {{-- Date --}}
+        <td>
+            <select class="select2 form-select form-select-sm @error('sales_invoice_id') is-invalid @enderror"
+                data-allow-clear="false" id="SalesInvoiceID" name="sales_invoice_id" required>
+                <option value="">--Invoice No --</option>
+                @foreach ($form_sales_invoices as $form_sales_invoice)
+                    <option value="{{ $form_sales_invoice->id }}" @if ($form_sales_invoice->id == $cash_collections_data->sales_invoice_id) selected @endif>
+                        {{ $form_sales_invoice->invoice_no }}
+                    </option>
+                @endforeach
+            </select>
+            @error('sales_invoice_id')
+                <div class="invalid-feedback"> {{ $message }} </div>
+            @enderror
+        </td>
+
         <td>
             <input type="text"
                 class="form-control-custom input-text-center form-control-sm date_picker  @error('cash_collection_date') is-invalid @enderror"
@@ -25,21 +39,6 @@
             <input type="hidden" class="form-control-custom input-text-center form-control-sm" name="customer_id"
                 style="width: 100%" id="CustomerID" required />
             @error('customer_id')
-                <div class="invalid-feedback"> {{ $message }} </div>
-            @enderror
-        </td>
-
-        <td>
-            <select class="select2 form-select form-select-sm @error('sales_invoice_id') is-invalid @enderror"
-                data-allow-clear="false" id="SalesInvoiceID" name="sales_invoice_id" required>
-                <option value="">--Please Select Invoice No --</option>
-                @foreach ($form_sales_invoices as $form_sales_invoice)
-                    <option value="{{ $form_sales_invoice->id }}" @if ($form_sales_invoice->id == $cash_collections_data->sales_invoice_id) selected @endif>
-                        {{ $form_sales_invoice->invoice_no }}
-                    </option>
-                @endforeach
-            </select>
-            @error('sales_invoice_id')
                 <div class="invalid-feedback"> {{ $message }} </div>
             @enderror
         </td>
@@ -86,6 +85,8 @@
                 <div class="invalid-feedback"> {{ $message }} </div>
             @enderror
         </td>
+
+        <td></td>
 
         <td>
             <button type="submit" class="btn btn-primary btn-sm" style="width: 100%">Save</button>

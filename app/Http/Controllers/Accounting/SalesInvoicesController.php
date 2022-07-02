@@ -38,7 +38,7 @@ class SalesInvoicesController extends Controller
         $session_id = session()->getId();
         $customers = Customers::all();
         $products = Products::all();
-        $sales_persons = User::orderBy('id')->where('department_id', 3)->get();
+        $sales_persons = User::all();
         $temporary_sales_items = TemporarySalesItem::orderBy('id')->where('session_id', $session_id)->get();
         return view('accounting.sales_invoices.create', compact('customers', 'products', 'temporary_sales_items', 'sales_persons'));
     }
@@ -115,7 +115,7 @@ class SalesInvoicesController extends Controller
         $session_id = session()->getId();
         $customers = Customers::all();
         $products = Products::all();
-        $sales_persons = User::orderBy('id')->where('department_id', 3)->get();
+        $sales_persons = User::all();
         $temporary_sales_items = TemporarySalesItem::orderBy('id')->where('session_id', $session_id)->get();
 
         // Edit 
@@ -147,7 +147,6 @@ class SalesInvoicesController extends Controller
         $sale_invoice->user_id = auth()->user()->id ?? 0;
         $sale_invoice->update();
         $sale_invoice_id = $sale_invoice->id;
-
 
         if ($request->productFields) {
             foreach ($request->productFields as $key => $value) {

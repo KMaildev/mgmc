@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\Accounting;
 
 use App\Http\Controllers\Controller;
-use App\Models\SalesJournal;
+use App\Models\CashCollection;
 use Illuminate\Http\Request;
 
-class SalesLedgerController extends Controller
+class SaleCashBookController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,15 +15,8 @@ class SalesLedgerController extends Controller
      */
     public function index()
     {
-        // For List 
-        $sales_journals = SalesJournal::all();
-
-
-        $sales_journals_groups = SalesJournal::select('customer_id')
-            ->groupBy('customer_id')
-            ->selectRaw('sum(debited) as debited')
-            ->get();
-        return view('accounting.sales_ledger.index', compact('sales_journals', 'sales_journals_groups'));
+        $cash_collections = CashCollection::all();
+        return view('accounting.sale_cahs_book.index', compact('cash_collections'));
     }
 
     /**

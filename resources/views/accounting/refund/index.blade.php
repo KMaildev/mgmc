@@ -7,7 +7,7 @@
                 <div class="card-body">
                     <div class="card-title header-elements">
                         <h5 class="m-0 me-2">
-                            Sales Journal
+                            Refund
                         </h5>
                     </div>
                 </div>
@@ -18,70 +18,54 @@
                             <th style="color: white; text-align: center; width: 1%;">
                                 Sr.No
                             </th>
+
                             <th style="color: white; background-color: #2e696e; text-align: center; widht: 10%">
                                 Invoice No.
                             </th>
+
                             <th style="color: white; background-color: #2e696e; text-align: center; widht: 10%">
-                                Date
+                                Customer Name
                             </th>
+
                             <th style="color: white; background-color: #2e696e; text-align: center; widht: 10%">
-                                Customer Name-Account Debited
+                                Refund
                             </th>
+
                             <th style="color: white; background-color: #2e696e; text-align: center; widht: 10%">
-                                Post Ref.
+                                Refund Date
                             </th>
-                            <th style="color: white; background-color: #2e696e; text-align: center; widht: 10%">
-                                Account Receivable ( Vehicle )-Debited
-                            </th>
-                            <th style="color: white; background-color: #2e696e; text-align: center; widht: 10%">
-                                Revenue (Vehicle)-Credited
-                            </th>
+
                             <th style="color: white; background-color: #2e696e; text-align: center; widht: 10%">
                                 Action
                             </th>
                         </thead>
                         <tbody class="table-border-bottom-0">
                             @if ($form_status == 'is_create')
-                                @include('accounting.sales_journal.form.create_form')
+                                @include('accounting.refund.form.create_form')
                             @elseif ($form_status == 'is_edit')
-                                @include('accounting.sales_journal.form.edit_form')
+                                @include('accounting.refund.form.edit_form')
                             @endif
 
-                            @foreach ($sales_journals as $key => $sales_journal)
+                            @foreach ($sale_refunds as $key => $sale_refund)
                                 <tr>
                                     <td>
                                         {{ $key + 1 }}
                                     </td>
 
                                     <td>
-                                        {{ $sales_journal->sales_invoices_table->invoice_no ?? '' }}
+                                        {{ $sale_refund->sales_invoice_table->invoice_no ?? '' }}
                                     </td>
 
                                     <td>
-                                        {{ $sales_journal->sales_journal_date ?? '' }}
+                                        {{ $sale_refund->sales_invoice_table->customers_table->name ?? '' }}
+                                    </td>
+
+                                    <td style="text-align: right; font-weight: bold">
+                                        {{ number_format($sale_refund->refund, 2) }}
                                     </td>
 
                                     <td>
-                                        {{ $sales_journal->customers_table->name ?? '' }}
-                                    </td>
-
-
-                                    <td>
-                                        {{ $sales_journal->post_ref ?? '' }}
-                                    </td>
-
-                                    <td style="text-align: right; font-weight: bold;">
-                                        @php
-                                            $debited = $sales_journal->debited ?? 0;
-                                            echo number_format($debited, 2);
-                                        @endphp
-                                    </td>
-
-                                    <td style="text-align: right; font-weight: bold;">
-                                        @php
-                                            $credited = $sales_journal->credited ?? 0;
-                                            echo number_format($credited, 2);
-                                        @endphp
+                                        {{ $sale_refund->refund_date ?? '' }}
                                     </td>
 
                                     <td style="text-align: center;">
@@ -94,12 +78,12 @@
                                                 <ul class="dropdown-menu">
                                                     <li>
                                                         <a class="dropdown-item"
-                                                            href="{{ route('sales_journal.edit', $sales_journal->id) }}">Edit</a>
+                                                            href="{{ route('sale_refund.edit', $sale_refund->id) }}">Edit</a>
                                                     </li>
 
                                                     <li>
                                                         <form
-                                                            action="{{ route('sales_journal.destroy', $sales_journal->id) }}"
+                                                            action="{{ route('sale_refund.destroy', $sale_refund->id) }}"
                                                             method="POST">
                                                             @csrf
                                                             @method('DELETE')
@@ -115,14 +99,11 @@
                             @endforeach
                         </tbody>
                         <tr>
-                            <td colspan="5">Total:</td>
+                            <td colspan="3">Total:</td>
                             <td style="text-align: right; font-weight: bold">
-                                {{ number_format($sales_journals->sum('debited'), 2) }}
+                                {{ number_format($sale_refunds->sum('refund'), 2) }}
                             </td>
-                            <td style="text-align: right; font-weight: bold">
-                                {{ number_format($sales_journals->sum('credited'), 2) }}
-                            </td>
-                            <td></td>
+                            <td colspan="2"></td>
                         </tr>
 
                     </table>
