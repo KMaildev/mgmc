@@ -1655,9 +1655,10 @@
         <col width='72' style='mso-width-source:userset;width:54pt'>
 
         <td height='20' width='60' style='text-align: left;height:15pt;width:45pt;' align='left'
-            valign='top'>
+                            valign='top'>
             <span
                 style='mso-ignore:vglayout;position:absolute;z-index:1;margin-left:10px;margin-top:0px;width:666px;height:94px'>
+                <img src="{{ public_path('logo.png') }}" style="width: 200px; height: 200px">
             </span>
         </td>
 

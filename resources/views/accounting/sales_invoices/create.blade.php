@@ -125,7 +125,7 @@
                                     </div>
 
                                     <div class="row mb-1">
-                                        <label class="col-sm-3 col-form-label">Payment Team</label>
+                                        <label class="col-sm-3 col-form-label">Payment Term</label>
                                         <div class="col-sm-9">
                                             <input type="text"
                                                 class="form-control form-control-sm @error('payment_team') is-invalid @enderror"
@@ -169,9 +169,14 @@
                                             id="ChessiNO">
                                             <option value="">--Please Select Chessi No --</option>
                                             @foreach ($products as $product)
-                                                <option value="{{ $product->id }}">
-                                                    {{ $product->chessi_no }}
-                                                </option>
+                                                @php
+                                                    $sales_items = $product->sales_items_table->product_id ?? 0;
+                                                @endphp
+                                                @if ($sales_items != $product->id)
+                                                    <option value="{{ $product->id }}">
+                                                        {{ $product->chessi_no }}
+                                                    </option>
+                                                @endif
                                             @endforeach
                                         </select>
                                         @error('chessi_no')
@@ -495,13 +500,11 @@
                         type: "GET",
                         dataType: "json",
                         success: function(data) {
-                            Model.value = data.model_no;
+                            Model.value = data.product;
                         }
                     });
                 }
             });
-
-
 
         });
     </script>

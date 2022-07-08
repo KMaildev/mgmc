@@ -80,7 +80,7 @@ class SalesInvoicesController extends Controller
         $sale_inv_payment->total_amount = $request->total_amount;
         $sale_inv_payment->down_payment = $request->down_payment;
         $sale_inv_payment->discount = $request->discount;
-        $sale_inv_payment->dealer_ercentage = $request->dealer_ercentage;
+        $sale_inv_payment->dealer_ercentage = $request->dealer_percentage;
         $sale_inv_payment->balance_to_be_pay = $request->balance_to_be_pay;
         $sale_inv_payment->balance_to_pay_be_date = $request->balance_to_pay_be_date;
         $sale_inv_payment->sales_invoice_id = $sale_invoice_id;
@@ -234,6 +234,6 @@ class SalesInvoicesController extends Controller
         ];
 
         $pdf = PDF::loadView('accounting.sales_invoices.export.pdf.show_invoice', $data);
-        return $pdf->download('sale_invoice' . date("Y-m-d H:i:s") . '.pdf');
+        return $pdf->download('itsolutionstuff.pdf');
     }
 }

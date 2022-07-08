@@ -179,7 +179,8 @@ return [
 
         Darryldecode\Cart\CartServiceProvider::class,
 
-        Meneses\LaravelMpdf\LaravelMpdfServiceProvider::class
+        Meneses\LaravelMpdf\LaravelMpdfServiceProvider::class,
+        Barryvdh\DomPDF\ServiceProvider::class
 
     ],
 
@@ -235,7 +236,8 @@ return [
 
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
         'Cart' => Darryldecode\Cart\Facades\CartFacade::class,
-        'PDF' => Meneses\LaravelMpdf\Facades\LaravelMpdf::class
+        // 'PDF' => Meneses\LaravelMpdf\Facades\LaravelMpdf::class,
+        'PDF' => Barryvdh\DomPDF\Facade::class,
 
     ],
 

@@ -144,7 +144,7 @@
                                     <td>
                                         @foreach ($sales_invoice->sales_items_table as $sales_items)
                                             <table style="width: 100%;">
-                                                <tr>
+                                                <tr style="border: 1px solid black;">
                                                     <td>
                                                         {{ $sales_items->products_table->brand_name ?? '' }}
                                                     </td>
@@ -157,7 +157,7 @@
                                     <td>
                                         @foreach ($sales_invoice->sales_items_table as $sales_items)
                                             <table style="width: 100%;">
-                                                <tr>
+                                                <tr style="border: 1px solid black;">
                                                     <td>
                                                         {{ $sales_items->products_table->type ?? '' }}
                                                     </td>
@@ -170,9 +170,9 @@
                                     <td>
                                         @foreach ($sales_invoice->sales_items_table as $sales_items)
                                             <table style="width: 100%;">
-                                                <tr>
+                                                <tr style="border: 1px solid black;">
                                                     <td>
-                                                        {{ $sales_items->products_table->model_no ?? '' }}
+                                                        {{ $sales_items->products_table->product ?? '' }}
                                                     </td>
                                                 </tr>
                                             </table>
@@ -183,7 +183,7 @@
                                     <td>
                                         @foreach ($sales_invoice->sales_items_table as $sales_items)
                                             <table style="width: 100%;">
-                                                <tr>
+                                                <tr style="border: 1px solid black;">
                                                     <td>
                                                         {{ $sales_items->products_table->body_color ?? '' }}
                                                     </td>
@@ -196,7 +196,7 @@
                                     <td>
                                         @foreach ($sales_invoice->sales_items_table as $sales_items)
                                             <table style="width: 100%;">
-                                                <tr>
+                                                <tr style="border: 1px solid black;">
                                                     <td>
                                                         {{ $sales_items->products_table->chessi_no ?? '' }}
                                                     </td>
@@ -209,7 +209,7 @@
                                     <td>
                                         @foreach ($sales_invoice->sales_items_table as $sales_items)
                                             <table style="width: 100%;">
-                                                <tr>
+                                                <tr style="border: 1px solid black;">
                                                     <td>
                                                         {{ $sales_items->products_table->vehicle_no ?? '' }}
                                                     </td>
@@ -222,7 +222,7 @@
                                     <td>
                                         @foreach ($sales_invoice->sales_items_table as $sales_items)
                                             <table style="width: 100%;">
-                                                <tr>
+                                                <tr style="border: 1px solid black;">
                                                     <td style="text-align: right; font-weight: bold;">
                                                         {{ $sales_items->qty ?? 0 }}
                                                     </td>
@@ -235,7 +235,7 @@
                                     <td>
                                         @foreach ($sales_invoice->sales_items_table as $sales_items)
                                             <table style="width: 100%;">
-                                                <tr>
+                                                <tr style="border: 1px solid black;">
                                                     <td style="text-align: right; font-weight: bold;">
                                                         @php
                                                             echo number_format($sales_items->unit_price, 2);
@@ -253,7 +253,7 @@
                                         @endphp
                                         @foreach ($sales_invoice->sales_items_table as $sales_items)
                                             <table style="width: 100%;">
-                                                <tr>
+                                                <tr style="border: 1px solid black;">
                                                     <td style="text-align: right; font-weight: bold;">
                                                         @php
                                                             $qty = $sales_items->qty;

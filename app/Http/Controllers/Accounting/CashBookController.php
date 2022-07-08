@@ -36,7 +36,7 @@ class CashBookController extends Controller
         }
 
         if (request('from_date') && request('to_date')) {
-            $cash_books = CashBook::whereBetween('cash_book_date', [request('from_date'), request('to_date')])->paginate(500);
+            $cash_books = CashBook::whereBetween('cash_book_date', [request('from_date'), request('to_date')])->paginate(5000);
 
             // Closing Clash and Bank Balance
             $from_date = request('from_date');
@@ -48,7 +48,7 @@ class CashBookController extends Controller
         } else {
             $from_date = '2019-06-01'; //date('Y-m-d', strtotime('first day of this month'));
             $to_date = date('Y-m-d', strtotime('last day of this month'));
-            $cash_books = CashBook::whereBetween('cash_book_date', [$from_date, $to_date])->orderBy('cash_book_date', 'ASC')->paginate(500);
+            $cash_books = CashBook::whereBetween('cash_book_date', [$from_date, $to_date])->orderBy('cash_book_date', 'ASC')->paginate(5000);
 
             // Closing Clash and Bank Balance
             $beforeFirstDays = DB::table('cash_books')
@@ -128,7 +128,7 @@ class CashBookController extends Controller
 
         $from_date = '2019-06-01'; //date('Y-m-d', strtotime('first day of this month'));
         $to_date = date('Y-m-d', strtotime('last day of this month'));
-        $cash_books = CashBook::whereBetween('cash_book_date', [$from_date, $to_date])->paginate(500);
+        $cash_books = CashBook::whereBetween('cash_book_date', [$from_date, $to_date])->paginate(100);
 
         // Closing Clash and Bank Balance
         $beforeFirstDays = DB::table('cash_books')

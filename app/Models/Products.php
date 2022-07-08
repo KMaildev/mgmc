@@ -25,4 +25,10 @@ class Products extends Model
     {
         return $this->belongsTo(Brand::class, 'brand_id', 'id');
     }
+
+
+    public function sales_items_table()
+    {
+        return $this->belongsTo(SalesItems::class, 'id', 'product_id');
+    }
 }

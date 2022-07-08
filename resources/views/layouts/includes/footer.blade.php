@@ -49,6 +49,20 @@
             }
         });
     });
+
+
+
+    $(document).on("click", ".rm", function() {
+        if ($(this).text() == "More") {
+            $(this).text("Less");
+            $(this).parent().children(".more").show();
+            $(this).parent().children(".short").hide();
+        } else {
+            $(this).text("More");
+            $(this).parent().children(".more").hide();
+            $(this).parent().children(".short").show();
+        }
+    });
 </script>
 
 </html>
